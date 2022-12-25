@@ -1,0 +1,13 @@
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.btn-component {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}

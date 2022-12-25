@@ -1,0 +1,11 @@
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+  background-color: rgb(232, 183, 255);
+}
+
+.header-title {
+  font-weight: bold;
+}
