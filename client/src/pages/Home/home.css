@@ -1,0 +1,37 @@
+.add-client-btn {
+  border: none;
+  background-color: #5ca53c;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.add-client-btn:hover {
+  background-color: #a5823c;
+  color: white;
+}
+
+.add-project-btn {
+  border: none;
+  background-color: #507ba8;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.add-project-btn:hover {
+  background-color: #a5823c;
+  color: white;
+}
+
+.home-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

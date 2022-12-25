@@ -1,0 +1,22 @@
+.add-project-container {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.client-select {
+  margin-top: 30px;
+}
+
+.add-project-submit-btn {
+  border: none;
+  background-color: #5ca53c;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.add-project-submit-btn:hover {
+  background-color: #a5823c;
+}
