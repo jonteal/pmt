@@ -7,7 +7,7 @@ import "./home.css";
 
 const Home = () => {
   return (
-    <div>
+    <div className="home-main-container">
       <div className="home-button-container">
         <button className="add-client-btn">
           <Link to="/addClient">Add Client</Link>

@@ -1,0 +1,15 @@
+.client-info-container {
+  border: lightseagreen .5px solid;
+  height: auto;
+  min-height: 50px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+.client-inner-container {
+  margin: 15px;
+}
+
+.client-name {
+  margin-top: 10px;
+}

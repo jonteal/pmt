@@ -1,0 +1,35 @@
+.project-view-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border: .5px solid lightseagreen;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+.project-view-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.project-view-project-info {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-view-title {
+  font-weight: bold;
+}
+
+.project-view-description {
+  margin-top: 15px;
+}
+
+.project-view-status {
+  margin-top: 15px;
+}
