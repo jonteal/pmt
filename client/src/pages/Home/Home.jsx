@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Clients from "../../components/Clients/Clients";
 import Projects from "../../components/Projects/Projects";
-import AddClient from "../AddClient/AddClient";
 
 import "./home.css";
 

@@ -1,16 +1,21 @@
-import { useParams } from "react-router-dom";
+// LIBRARIES
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
+// GRAPHQL
 import { GET_CLIENT } from "../../graphql/queries/clientQueries";
 import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
-import Spinner from "../../components/Spinner/Spinner";
 
-import "./clientView.css";
+// COMPONENTS
+import Spinner from "../../components/Spinner/Spinner";
 import ProjectRow from "../../components/ProjectRow/ProjectRow";
 import ClientCard from "../../components/ClientCard/ClientCard";
 
+import "./clientView.css";
+
 const ClientView = () => {
   const { id } = useParams();
+  const rootClass = "client-view";
 
   const {
     loading: clientLoading,
@@ -34,13 +39,24 @@ const ClientView = () => {
   if (projectsError)
     return <p>There was a problem loading the client projects...</p>;
 
+    const client = clientData.client;
+
   // Add a project add form to this component
   return (
-    <div className="client-view-container">
-      {!clientLoading && !clientError && <ClientCard clientData={clientData} />}
+    <div className={`${rootClass}-container`}>
+      <div className={`${rootClass}-info-container`}>
+        <div className={`${rootClass}-btn-container`}>
+        <Link to={`/clients/${client.id}/edit`}>
+          <button className={`${rootClass}-edit-btn`}>Edit Client</button>
+          </Link>
+        </div>
+        {!clientLoading && !clientError && (
+          <ClientCard clientData={clientData} />
+        )}
+      </div>
 
-      <div className="client-view-projects-container">
-        <h3 className="client-view-project-header">Projects</h3>
+      <div className={`${rootClass}-projects-container`}>
+        <h3 className={`${rootClass}-project-header`}>Projects</h3>
         {!projectsLoading &&
           !projectsError &&
           (projectsData ? (

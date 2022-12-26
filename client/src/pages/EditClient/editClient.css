@@ -1,0 +1,58 @@
+.edit-client-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border: .5px solid lightseagreen;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+.edit-client-name-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.edit-client-firstName {
+  margin-right: 10px;
+}
+
+.edit-client-lastName {
+  margin-right: 10px;
+}
+
+.edit-client-submit-btn {
+  border: none;
+  background-color: #5ca53c;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 5px;
+}
+
+.edit-client-submit-btn:hover {
+  background-color: #a5823c;
+  color: white;
+}
+
+.edit-client-back-btn {
+  border: none;
+  background-color: #507ba8;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 5px;
+}
+
+.edit-client-back-btn:hover {
+  background-color: #a5823c;
+  color: white;
+}

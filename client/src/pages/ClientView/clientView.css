@@ -6,6 +6,37 @@
   margin-left: auto;
 }
 
+.client-view-info-container {
+  border: lightseagreen .5px solid;
+  height: auto;
+  min-height: 50px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+.client-view-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.client-view-edit-btn {
+  border: none;
+  background-color: #507ba8;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 10px;
+}
+
+.client-view-edit-btn:hover {
+  background-color: #a5823c;
+  color: white;
+}
+
 .client-view-projects-container {
   border: lightseagreen .5px solid;
   margin-top: 15px;

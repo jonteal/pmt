@@ -1,8 +1,6 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECT } from "../../graphql/queries/projectQueries";
-import { Link } from "react-router-dom";
 
 import "./projectView.css";
 import EditProject from "../EditProject/EditProject";
@@ -20,10 +18,14 @@ const ProjectView = () => {
 
   const project = data.project;
 
+  console.log(project.id);
+
   return (
     <div className={`${rootClass}-main-container`}>
       <div className={`${rootClass}-btn-container`}>
-          <button>Edit</button>
+        <Link to={`/projects/${project.id}/edit`}>
+          <button className={`${rootClass}-edit-btn`}>Edit</button>
+        </Link>
       </div>
       <div className={`${rootClass}-project-info`}>
         <h4 className={`${rootClass}-title`}>{project.title}</h4>

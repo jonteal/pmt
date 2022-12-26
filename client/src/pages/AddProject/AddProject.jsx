@@ -26,8 +26,6 @@ const AddProject = () => {
 
   const { loading, error, data } = useQuery(GET_CLIENTS);
 
-  console.log(data);
-
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -45,8 +43,6 @@ const AddProject = () => {
 
   if (loading) return <Spinner />;
   if (error) return <p>There was an error loading the content</p>;
-
-  console.log(data);
 
   return (
     <>

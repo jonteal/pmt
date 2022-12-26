@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Dropdown = () => {
   return (
@@ -11,9 +12,9 @@ const Dropdown = () => {
       </button>
       <ul className="dropdown-menu">
         <li>
-          <a className="dropdown-item" href="/">
+          <Link className="dropdown-item" to="/">
             Delete Project
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

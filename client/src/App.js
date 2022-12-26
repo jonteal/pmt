@@ -9,6 +9,8 @@ import ProjectView from "./pages/ProjectView/ProjectView";
 import NotFound from "./pages/NotFound/NotFound";
 import AddClient from "./pages/AddClient/AddClient";
 import AddProject from "./pages/AddProject/AddProject";
+import EditProject from "./pages/EditProject/EditProject";
+import EditClient from "./pages/EditClient/EditClient";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -43,10 +45,12 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="addClient" element={<AddClient />} />
-            <Route path="addProject" element={<AddProject />} />
+            <Route path="/addClient" element={<AddClient />} />
+            <Route path="/addProject" element={<AddProject />} />
             <Route path="/clients/:id" element={<ClientView />} />
             <Route path="/projects/:id" element={<ProjectView />} />
+            <Route path="/projects/:id/edit" element={<EditProject />} />
+            <Route path="/clients/:id/edit" element={<EditClient />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
