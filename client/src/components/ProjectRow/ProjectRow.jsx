@@ -5,6 +5,8 @@ const ProjectRow = ({ project }) => {
   console.log(project.id);
 
   const clientName = project.client.firstName + " " + project.client.lastName;
+
+  console.log(project);
   
   return (
     <>
@@ -20,7 +22,7 @@ const ProjectRow = ({ project }) => {
             <p>Deadline</p>
           </div>
           <div className="project-client-name">
-            <p>{clientName}</p>
+            <a href={`/clients/${project.client.id}`}>{clientName}</a>
           </div>
           <div className="project-row-options">
             <Dropdown />

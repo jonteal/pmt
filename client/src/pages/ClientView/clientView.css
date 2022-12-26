@@ -1,0 +1,11 @@
+.client-view-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.client-header {
+  font-weight: bold;
+}
