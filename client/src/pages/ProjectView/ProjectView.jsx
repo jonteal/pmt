@@ -26,6 +26,15 @@ const ProjectView = () => {
 
   const project = projectData.project;
 
+  const projectId = projectData.project.id;
+  const activityCommentArray = activityCommentData.activityComments;
+
+  const matchingActivityComments = activityCommentArray.filter(
+    (activityComment) => activityComment.project.id === projectId
+  );
+
+  console.log('matchingComments: ', matchingActivityComments);
+
   console.log(project.id);
 
   return (

@@ -41,6 +41,15 @@ const ClientView = () => {
 
   const client = clientData.client;
 
+  const clientId = clientData.client.id;
+  const projectsArray = projectsData.projects;
+
+  const matchingProjects = projectsArray.filter(
+    (project) => project.client.id === clientId
+  );
+
+  console.log('matchingProjects: ', matchingProjects);
+
   // Add a project add form to this component
   return (
     <div className={`${rootClass}-container`}>
@@ -59,8 +68,8 @@ const ClientView = () => {
         <h3 className={`${rootClass}-project-header`}>Projects</h3>
         {!projectsLoading &&
           !projectsError &&
-          (projectsData ? (
-            projectsData.projects.map((project) => (
+          (matchingProjects ? (
+            matchingProjects.map((project) => (
               <ProjectRow key={project.id} project={project} />
             ))
           ) : (
