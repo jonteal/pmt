@@ -1,5 +1,6 @@
 const Client = require("../models/Client");
 const Project = require("../models/Project");
+const ActivityComment = require("../models/ActivityComment");
 
 const {
   GraphQLObjectType,
@@ -25,6 +26,12 @@ const ProjectType = new GraphQLObjectType({
         return Client.findById(parent.clientId);
       },
     },
+    activityComments: {
+      type: ActivityCommentType,
+      resolve(parent, args) {
+        return ActivityComment.findById(parent.projectId);
+      }
+    }
   }),
 });
 
@@ -36,6 +43,21 @@ const ClientType = new GraphQLObjectType({
     lastName: { type: GraphQLString },
   }),
 });
+
+const ActivityCommentType = new GraphQLObjectType({
+  name: "ActivityComment",
+  fields: () => ({
+    id: { type: GraphQLID },
+    commentText: { type: GraphQLString },
+    createdAt: { type: GraphQLString },
+    project: {
+      type: ProjectType,
+      resolve(parent, args) {
+        return Project.findById(parent.projectId);
+      }
+    }
+  })
+})
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -66,6 +88,19 @@ const RootQuery = new GraphQLObjectType({
         return Client.findById(args.id);
       },
     },
+    activityComment: {
+      type: ActivityCommentType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return ActivityComment.findById(args.id);
+      }
+    },
+    activityComments: {
+      type: new GraphQLList(ActivityCommentType),
+      resolve(parent, args) {
+        return ActivityComment.find();
+      }
+    }
   },
 });
 
@@ -160,7 +195,7 @@ const mutation = new GraphQLObjectType({
     },
   },
 
-  // Delete an index card
+  // Delete an Project
   deleteProject: {
     type: ProjectType,
     args: {
@@ -171,7 +206,7 @@ const mutation = new GraphQLObjectType({
     },
   },
 
-  // Update an Index Card
+  // Update an Project
   updateProject: {
     type: ProjectType,
     args: {
@@ -201,6 +236,36 @@ const mutation = new GraphQLObjectType({
         },
         { new: true }
       );
+    },
+  },
+
+  // Add a comment
+  addActivityComment: {
+    type: ActivityCommentType,
+    args: {
+      commentText: { type: new GraphQLNonNull(GraphQLString) },
+      // createdAt: { type: new GraphQLNonNull(GraphQLString) },
+      projectId: { type: new GraphQLNonNull(GraphQLID) },
+    },
+    resolve(parent, args) {
+      const activityComment = new ActivityComment({
+        commentText: args.commentText,
+        createdAt: args.createdAt,
+        projectId: args.projectId,
+      });
+
+      return activityComment.save();
+    },
+  },
+
+  // Delete a comment
+  deleteActiviyComment: {
+    type: ActivityCommentType,
+    args: {
+      id: { type: new GraphQLNonNull(GraphQLID) },
+    },
+    resolve(parent, args) {
+      return Project.findByIdAndRemove(args.id);
     },
   },
   },

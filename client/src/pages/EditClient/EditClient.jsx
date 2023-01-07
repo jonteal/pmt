@@ -13,7 +13,6 @@ const EditClient = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  
   const handleBackNavigate = () => {
     navigate(-1);
   };
@@ -24,9 +23,11 @@ const EditClient = () => {
   
   const clientLocation = `/clients/${data.client.id}`;
 
+  const clientEditLocation = `/clients/${data.client.id}/edit`;
+
   useEffect(() => {
-    navigate({to: `/clients/${data.client.id}/edit`});
-  }, [data.client.id, navigate])
+    navigate(clientEditLocation);
+  }, [clientEditLocation, navigate])
 
   console.log(data);
 

@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECT } from "../../graphql/queries/projectQueries";
+import { GET_ACTIVITY_COMMENTS } from "../../graphql/queries/activityCommentQueries";
 
 import "./projectView.css";
 import EditProject from "../EditProject/EditProject";
@@ -9,14 +10,21 @@ const ProjectView = () => {
   const rootClass = "project-view";
   const { id } = useParams();
 
-  const { loading, error, data } = useQuery(GET_PROJECT, {
+  const { loading: projectLoading, error: projectError, data: projectData } = useQuery(GET_PROJECT, {
     variables: { id },
   });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>There was an error...</p>;
+  const { loading: activityCommentsLoading, error: activityCommentsError, data: activityCommentData } = useQuery(GET_ACTIVITY_COMMENTS);
 
-  const project = data.project;
+  if (projectLoading) return <p>Loading...</p>;
+  if (projectError) return <p>There was an error...</p>;
+
+  if (activityCommentsLoading) return <p>Loading...</p>;
+  if (activityCommentsError) return <p>There was an error...</p>;
+
+  console.log('comments: ', activityCommentData);
+
+  const project = projectData.project;
 
   console.log(project.id);
 

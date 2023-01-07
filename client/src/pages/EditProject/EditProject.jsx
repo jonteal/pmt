@@ -11,21 +11,19 @@ const EditProject = () => {
   const rootClass = 'edit-project';
   const { id } = useParams();
   const navigate = useNavigate();
-
-  const handleBackNavigate = () => {
-    navigate(-1);
-  };
-
+  
   const { loading, error, data } = useQuery(GET_PROJECT, {
     variables: { id },
   });
 
-  const project = data.project;
-
-  const [title, setTitle] = useState(project.title);
-  const [description, setDescription] = useState(project.description);
+  const handleBackNavigate = () => {
+    navigate(-1);
+  };
+  
+  const [title, setTitle] = useState(data.project.title);
+  const [description, setDescription] = useState(data.project.description);
   const [status, setStatus] = useState(() => {
-    switch (project.status) {
+    switch (data.project.status) {
       case "Not Started":
         return "new";
       case "In Progress":
@@ -33,16 +31,16 @@ const EditProject = () => {
       case "Completed":
         return "completed";
       default:
-        throw new Error(`Unknown status: ${project.status}`);
+        throw new Error(`Unknown status: ${data.project.status}`);
     }
   });
 
   const [updateProject] = useMutation(UPDATE_PROJECT, {
-    variables: { id: project.id, title, description, status },
-    refetchQueries: [{ query: GET_PROJECT, variables: { id: project.id } }],
+    variables: { id: data.project.id, title, description, status },
+    refetchQueries: [{ query: GET_PROJECT, variables: { id: data.project.id } }],
   });
 
-  const projectLocation = `/projects/${project.id}`;
+  const projectLocation = `/projects/${data.project.id}`;
 
   const onSubmit = (e) => {
     e.preventDefault();

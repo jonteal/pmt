@@ -39,7 +39,7 @@ const ClientView = () => {
   if (projectsError)
     return <p>There was a problem loading the client projects...</p>;
 
-    const client = clientData.client;
+  const client = clientData.client;
 
   // Add a project add form to this component
   return (

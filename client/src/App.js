@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+
+// Pages
 import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
 
-import "./App.css";
+// Components
 import ClientView from "./pages/ClientView/ClientView";
 import ProjectView from "./pages/ProjectView/ProjectView";
 import NotFound from "./pages/NotFound/NotFound";
@@ -11,6 +13,8 @@ import AddClient from "./pages/AddClient/AddClient";
 import AddProject from "./pages/AddProject/AddProject";
 import EditProject from "./pages/EditProject/EditProject";
 import EditClient from "./pages/EditClient/EditClient";
+
+import "./App.css";
 
 const cache = new InMemoryCache({
   typePolicies: {

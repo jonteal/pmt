@@ -1,6 +1,9 @@
 import { useState } from "react";
 
+// LIBRARIES
 import { useMutation } from "@apollo/client";
+
+// GRAPHQL
 import { ADD_CLIENT } from "../../graphql/mutations/clientMutations";
 import { GET_CLIENTS } from "../../graphql/queries/clientQueries";
 
