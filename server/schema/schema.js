@@ -9,7 +9,7 @@ const {
   GraphQLList,
   GraphQLNonNull,
   GraphQLSchema,
-  GraphQLEnumType
+  GraphQLEnumType,
 } = require("graphql");
 
 // Project Type
@@ -26,12 +26,6 @@ const ProjectType = new GraphQLObjectType({
         return Client.findById(parent.clientId);
       },
     },
-    activityComments: {
-      type: ActivityCommentType,
-      resolve(parent, args) {
-        return ActivityComment.findById(parent.projectId);
-      }
-    }
   }),
 });
 
@@ -54,10 +48,10 @@ const ActivityCommentType = new GraphQLObjectType({
       type: ProjectType,
       resolve(parent, args) {
         return Project.findById(parent.projectId);
-      }
-    }
-  })
-})
+      },
+    },
+  }),
+});
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -88,19 +82,19 @@ const RootQuery = new GraphQLObjectType({
         return Client.findById(args.id);
       },
     },
+    activityComments: {
+      type: new GraphQLList(ActivityCommentType),
+      resolve(parent, args) {
+        return ActivityComment.find();
+      },
+    },
     activityComment: {
       type: ActivityCommentType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return ActivityComment.findById(args.id);
-      }
+      },
     },
-    activityComments: {
-      type: new GraphQLList(ActivityCommentType),
-      resolve(parent, args) {
-        return ActivityComment.find();
-      }
-    }
   },
 });
 
@@ -164,110 +158,109 @@ const mutation = new GraphQLObjectType({
       },
     },
 
-   // Add a Project
-   addProject: {
-    type: ProjectType,
-    args: {
-      title: { type: new GraphQLNonNull(GraphQLString) },
-      description: { type: new GraphQLNonNull(GraphQLString) },
-      status: {
-        type: new GraphQLEnumType({
-          name: "ProjectStatus",
-          values: {
-            new: { value: "Not Started" },
-            progress: { value: "In Progress" },
-            completed: { value: "Completed" },
-          },
-        }),
-        defaultValue: "Not Started",
-      },
-      clientId: { type: new GraphQLNonNull(GraphQLID) },
-    },
-    resolve(parent, args) {
-      const project = new Project({
-        title: args.title,
-        description: args.description,
-        status: args.status,
-        clientId: args.clientId,
-      });
-
-      return project.save();
-    },
-  },
-
-  // Delete an Project
-  deleteProject: {
-    type: ProjectType,
-    args: {
-      id: { type: new GraphQLNonNull(GraphQLID) },
-    },
-    resolve(parent, args) {
-      return Project.findByIdAndRemove(args.id);
-    },
-  },
-
-  // Update an Project
-  updateProject: {
-    type: ProjectType,
-    args: {
-      id: { type: new GraphQLNonNull(GraphQLID) },
-      title: { type: GraphQLString },
-      description: { type: GraphQLString },
-      status: {
-        type: new GraphQLEnumType({
-          name: 'ProjectStatusUpdate',
-          values: {
-            new: { value: 'Not Started' },
-            progress: { value: 'In Progress' },
-            completed: { value: 'Completed' },
-          },
-        }),
-      },
-    },
-    resolve(parent, args) {
-      return Project.findByIdAndUpdate(
-        args.id,
-        {
-          $set: {
-            title: args.title,
-            description: args.description,
-            status: args.status,
-          },
+    // Add a Project
+    addProject: {
+      type: ProjectType,
+      args: {
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        description: { type: new GraphQLNonNull(GraphQLString) },
+        status: {
+          type: new GraphQLEnumType({
+            name: "ProjectStatus",
+            values: {
+              new: { value: "Not Started" },
+              progress: { value: "In Progress" },
+              completed: { value: "Completed" },
+            },
+          }),
+          defaultValue: "Not Started",
         },
-        { new: true }
-      );
-    },
-  },
+        clientId: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        const project = new Project({
+          title: args.title,
+          description: args.description,
+          status: args.status,
+          clientId: args.clientId,
+        });
 
-  // Add a comment
-  addActivityComment: {
-    type: ActivityCommentType,
-    args: {
-      commentText: { type: new GraphQLNonNull(GraphQLString) },
-      // createdAt: { type: new GraphQLNonNull(GraphQLString) },
-      projectId: { type: new GraphQLNonNull(GraphQLID) },
+        return project.save();
+      },
     },
-    resolve(parent, args) {
-      const activityComment = new ActivityComment({
-        commentText: args.commentText,
-        createdAt: args.createdAt,
-        projectId: args.projectId,
-      });
 
-      return activityComment.save();
+    // Delete an Project
+    deleteProject: {
+      type: ProjectType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Project.findByIdAndRemove(args.id);
+      },
     },
-  },
 
-  // Delete a comment
-  deleteActiviyComment: {
-    type: ActivityCommentType,
-    args: {
-      id: { type: new GraphQLNonNull(GraphQLID) },
+    // Update an Project
+    updateProject: {
+      type: ProjectType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        title: { type: GraphQLString },
+        description: { type: GraphQLString },
+        status: {
+          type: new GraphQLEnumType({
+            name: "ProjectStatusUpdate",
+            values: {
+              new: { value: "Not Started" },
+              progress: { value: "In Progress" },
+              completed: { value: "Completed" },
+            },
+          }),
+        },
+      },
+      resolve(parent, args) {
+        return Project.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              title: args.title,
+              description: args.description,
+              status: args.status,
+            },
+          },
+          { new: true }
+        );
+      },
     },
-    resolve(parent, args) {
-      return Project.findByIdAndRemove(args.id);
+
+    // Add a comment
+    addActivityComment: {
+      type: ActivityCommentType,
+      args: {
+        commentText: { type: new GraphQLNonNull(GraphQLString) },
+        projectId: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        const activityComment = new ActivityComment({
+          commentText: args.commentText,
+          createdAt: args.createdAt,
+          projectId: args.projectId,
+        });
+
+        return activityComment.save();
+      },
     },
-  },
+
+    // Delete a comment
+    deleteActiviyComment: {
+      type: ActivityCommentType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Project.findByIdAndRemove(args.id);
+      },
+    },
   },
 });
 

@@ -48,8 +48,6 @@ const ClientView = () => {
     (project) => project.client.id === clientId
   );
 
-  console.log('matchingProjects: ', matchingProjects);
-
   // Add a project add form to this component
   return (
     <div className={`${rootClass}-container`}>

@@ -1,0 +1,8 @@
+.activity-comment-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  border: .5px solid lightseagreen;
+  padding: 10px;
+  border-radius: 5px;
+}

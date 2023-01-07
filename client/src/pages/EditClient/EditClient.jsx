@@ -29,8 +29,6 @@ const EditClient = () => {
     navigate(clientEditLocation);
   }, [clientEditLocation, navigate])
 
-  console.log(data);
-
   const client = data.client;
 
   const [firstName, setFirstName] = useState(client.firstName);

@@ -5,8 +5,6 @@ import "./projectRow.css";
 const ProjectRow = ({ project }) => {
   const clientName = project.client.firstName + " " + project.client.lastName;
 
-  console.log(project);
-
   return (
     <>
       <div className="project-row-container">

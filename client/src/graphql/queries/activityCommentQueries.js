@@ -2,18 +2,20 @@ import { gql } from "@apollo/client";
 
 const GET_ACTIVITY_COMMENTS = gql`
   query getActivityComments {
-    id
-    commentText
-    createdAt
-    project {
+    activityComments {
       id
-      title
-      description
-      status
-      client {
+      commentText
+      createdAt
+      project {
         id
-        firstName
-        lastName
+        title
+        description
+        status
+        client {
+          id
+          firstName
+          lastName
+        }
       }
     }
   }
