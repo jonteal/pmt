@@ -1,9 +1,29 @@
+// ROUTING
 import { Link } from "react-router-dom";
+
+// GRAPHQL
+import { useMutation } from "@apollo/client";
+import { DELETE_PROJECT } from "../../graphql/mutations/projectMutations";
+import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
+import { GET_CLIENTS } from "../../graphql/queries/clientQueries";
+
+// COMPONENTS
 import Dropdown from "../Dropdown/Dropdown";
+
 import "./projectRow.css";
 
 const ProjectRow = ({ project }) => {
   const clientName = project.client.firstName + " " + project.client.lastName;
+
+  const [deleteProject] = useMutation(DELETE_PROJECT, {
+    variables: { id: project.id },
+    refetchQueries: [
+      { query: GET_CLIENTS },
+      {
+        query: GET_PROJECTS,
+      },
+    ],
+  });
 
   return (
     <>
@@ -23,7 +43,7 @@ const ProjectRow = ({ project }) => {
           <Link to={`/clients/${project.client.id}`}>{clientName}</Link>
         </div>
         <div className="project-row-options">
-          <Dropdown />
+          <Dropdown deleteProject={deleteProject} />
         </div>
       </div>
     </>

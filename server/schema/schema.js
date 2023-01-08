@@ -196,6 +196,11 @@ const mutation = new GraphQLObjectType({
         id: { type: new GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
+        ActivityComment.find({ projectId: args.id }).then((activityComments) => {
+          activityComments.forEach((activityComment) => {
+            activityComment.remove();
+          })
+        })
         return Project.findByIdAndRemove(args.id);
       },
     },

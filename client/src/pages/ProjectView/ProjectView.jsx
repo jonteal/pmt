@@ -34,14 +34,15 @@ const ProjectView = () => {
   if (activityCommentsError) return <p>There was an error...</p>;
 
   const project = projectData.project;
-
+  
   const projectId = projectData.project.id;
-
+  
   const activityCommentsArray = activityCommentData.activityComments;
-
+  
   const matchingActivityComments = activityCommentsArray.filter(
     (activityComment) => activityComment.project.id === projectId
-  );
+    );
+  console.log('activityCommentsArray: ', activityCommentsArray);
 
   return (
     <div>
