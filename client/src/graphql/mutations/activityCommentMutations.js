@@ -14,6 +14,14 @@ const ADD_ACTIVITY_COMMENT = gql`
       createdAt
       project {
         id
+        title 
+        description 
+        status 
+        client {
+          id
+          firstName
+          lastName 
+        }
       }
     }
   }

@@ -7,9 +7,6 @@ import { DELETE_PROJECT } from "../../graphql/mutations/projectMutations";
 import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 import { GET_CLIENTS } from "../../graphql/queries/clientQueries";
 
-// COMPONENTS
-import Dropdown from "../Dropdown/Dropdown";
-
 import "./projectRow.css";
 
 const ProjectRow = ({ project }) => {
@@ -42,8 +39,20 @@ const ProjectRow = ({ project }) => {
         <div className="project-client-name">
           <Link to={`/clients/${project.client.id}`}>{clientName}</Link>
         </div>
-        <div className="project-row-options">
-          <Dropdown deleteProject={deleteProject} />
+        <div className="dropdown">
+          <button
+            className="dropdown-toggle dropdown"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          ></button>
+          <ul className="dropdown-menu">
+            <li>
+              <Link onClick={deleteProject} className="dropdown-item" to="/">
+                Delete Project
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </>

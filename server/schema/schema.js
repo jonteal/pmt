@@ -257,13 +257,13 @@ const mutation = new GraphQLObjectType({
     },
 
     // Delete a comment
-    deleteActiviyComment: {
+    deleteActivityComment: {
       type: ActivityCommentType,
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
-        return Project.findByIdAndRemove(args.id);
+        return ActivityComment.findByIdAndRemove(args.id);
       },
     },
   },

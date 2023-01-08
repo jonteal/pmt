@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 import { Link } from "react-router-dom";
 
-const Dropdown = ({ deleteProject }) => {
+const Dropdown = ({ type }) => {
+
   return (
     <div className="dropdown">
       <button
@@ -12,9 +15,9 @@ const Dropdown = ({ deleteProject }) => {
       </button>
       <ul className="dropdown-menu">
         <li>
-          <Link onClick={deleteProject} className="dropdown-item" to="/">
+          {/* <Link onClick={} className="dropdown-item" to="/">
             Delete Project
-          </Link>
+  </Link>*/}
         </li>
       </ul>
     </div>
