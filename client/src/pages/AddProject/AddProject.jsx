@@ -45,7 +45,7 @@ const AddProject = () => {
   if (error) return <p>There was an error loading the content</p>;
 
   return (
-    <>
+    <div>
       {!loading && !error && (
         <div className="add-project-container">
           <label className="form-label client-select">Client Name</label>
@@ -102,7 +102,7 @@ const AddProject = () => {
           </form>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

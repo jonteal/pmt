@@ -7,6 +7,7 @@ import "./projectView.css";
 import EditProject from "../EditProject/EditProject";
 import ActivityFeed from "../../components/ActivityFeed/ActivityFeed";
 import ActivityComment from "../../components/ActivityComment/ActivityComment";
+import AddComment from "../../components/AddComment/AddComment";
 
 const ProjectView = () => {
   const rootClass = "project-view";
@@ -35,16 +36,13 @@ const ProjectView = () => {
   const project = projectData.project;
 
   const projectId = projectData.project.id;
-  console.log('projectId: ', projectId);
 
   const activityCommentsArray = activityCommentData.activityComments;
-  console.log("activityCommentsArray: ", activityCommentsArray);
 
   const matchingActivityComments = activityCommentsArray.filter(
     (activityComment) => activityComment.project.id === projectId
   );
 
-  console.log("matchingComments: ", matchingActivityComments);
 
   return (
     <div>
@@ -64,6 +62,7 @@ const ProjectView = () => {
       </div>
 
       <div className={`${rootClass}-main-container`}>
+        <AddComment projectId={projectId} />
         <ul>
           {matchingActivityComments.map((comment) => (
             <li key={comment.id}>

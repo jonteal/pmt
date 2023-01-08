@@ -1,20 +1,19 @@
 import { gql } from "@apollo/client";
 
 const ADD_ACTIVITY_COMMENT = gql`
-  mutation AddActivityComment(
+  mutation addActivityComment(
     $commentText: String!
-    $createdAt: String!
+    # $createdAt: String!
     $projectId: ID!
   ) {
     addActivityComment(
       commentText: $commentText
-      status: $status
-      clientId: $clientId
+      projectId: $projectId
     ) {
       id
       commentText
       createdAt
-      projectId {
+      project {
         id
       }
     }
