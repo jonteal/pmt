@@ -6,3 +6,12 @@
   padding: 10px;
   border-radius: 5px;
 }
+
+.activity-comment-commentText {
+  font-weight: 400;
+}
+
+.activity-comment-created-at {
+  margin-top: 5px;
+  font-size: .8rem;
+}

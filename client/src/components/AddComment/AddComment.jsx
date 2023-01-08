@@ -5,7 +5,6 @@ import { GET_ACTIVITY_COMMENTS } from '../../graphql/queries/activityCommentQuer
 
 const AddComment = ({ projectId }) => {
   const [commentText, setCommentText] = useState("");
-  // const [projectId, setProjectId] = useState("");
 
   const [ addActivityComment ] = useMutation(ADD_ACTIVITY_COMMENT, {
     variables: { commentText, projectId },
@@ -18,10 +17,6 @@ const AddComment = ({ projectId }) => {
     },
   });
 
-  console.log('projectId: ', projectId);
-
-  // const currentProjectId = 
-
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -32,7 +27,6 @@ const AddComment = ({ projectId }) => {
     addActivityComment(commentText, projectId);
 
     setCommentText("");
-    // setProjectId("");
   };
 
   return (

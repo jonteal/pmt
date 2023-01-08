@@ -2,11 +2,11 @@
 import './activityComment.css';
 
 const ActivityComment = ({ comment }) => {
+  const rootClass = 'activity-comment';
   return (
-    <div className='activity-comment-container'>
-      <p>{comment.commentText}</p>
-      <p>{comment.createdAt}</p>
-      <p>{comment.project.title}</p>
+    <div className={`${rootClass}-container`}>
+      <p className={`${rootClass}-commentText`}>{comment.commentText}</p>
+      <p className={`${rootClass}-created-at`}>{comment.createdAt}</p>
     </div>
   )
 }

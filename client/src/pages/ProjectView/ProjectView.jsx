@@ -43,7 +43,6 @@ const ProjectView = () => {
     (activityComment) => activityComment.project.id === projectId
   );
 
-
   return (
     <div>
       <div className={`${rootClass}-main-container`}>
@@ -61,16 +60,10 @@ const ProjectView = () => {
         </div>
       </div>
 
-      <div className={`${rootClass}-main-container`}>
-        <AddComment projectId={projectId} />
-        <ul>
-          {matchingActivityComments.map((comment) => (
-            <li key={comment.id}>
-              <ActivityComment key={comment.id} comment={comment}/>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ActivityFeed
+        matchingActivityComments={matchingActivityComments}
+        projectId={projectId}
+      />
     </div>
   );
 };

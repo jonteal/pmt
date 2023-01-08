@@ -3,7 +3,6 @@ import { gql } from "@apollo/client";
 const ADD_ACTIVITY_COMMENT = gql`
   mutation addActivityComment(
     $commentText: String!
-    # $createdAt: String!
     $projectId: ID!
   ) {
     addActivityComment(
