@@ -3,7 +3,7 @@ import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 import ProjectsContainer from "../ProjectsContainer/ProjectsContainer";
 import Spinner from "../Spinner/Spinner";
 
-import './projects.css';
+import "./projects.css";
 
 const Projects = () => {
   const {
@@ -14,15 +14,15 @@ const Projects = () => {
 
   const projectContainers = [
     {
-      id: "Not Started",
+      id: "not-started",
       state: "Not Started",
     },
     {
-      id: "In Progress",
+      id: "in-progress",
       state: "In Progress",
     },
     {
-      id: "Completed",
+      id: "completed",
       state: "Completed",
     },
   ];
@@ -32,10 +32,15 @@ const Projects = () => {
 
   return (
     <div className="projects-parent-container">
-      <ProjectsContainer
-        projectContainers={projectContainers}
-        projectData={projectData}
-      />
+      <ul>
+        {projectContainers.map((projectContainer) => (
+          <ProjectsContainer
+            key={projectContainer.id}
+            projectContainer={projectContainer}
+            projectData={projectData}
+          />
+        ))}
+      </ul>
     </div>
   );
 };

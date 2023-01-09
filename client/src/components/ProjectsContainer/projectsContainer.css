@@ -4,3 +4,13 @@
   padding: 10px;
   border-radius: 5px;
 }
+
+.project-container-header-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.project-container-carrot {
+  margin-left: 5px;
+}
