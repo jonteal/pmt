@@ -63,7 +63,7 @@ const AddProject = () => {
               </option>
             ))}
           </select>
-          <form onSubmit={onSubmit}>
+          <form className="add-project-form" onSubmit={onSubmit}>
             <div>
               <div className="mb-3">
                 <label className="form-label">Title</label>

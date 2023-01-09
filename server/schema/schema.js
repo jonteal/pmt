@@ -26,6 +26,9 @@ const ProjectType = new GraphQLObjectType({
         return Client.findById(parent.clientId);
       },
     },
+    createdAt: { type: GraphQLString },
+    startDate: { type: GraphQLString },
+    deadline: { type: GraphQLString }
   }),
 });
 
@@ -176,6 +179,8 @@ const mutation = new GraphQLObjectType({
           defaultValue: "Not Started",
         },
         clientId: { type: new GraphQLNonNull(GraphQLID) },
+        startDate: { type: GraphQLString },
+        deadline: { type: GraphQLString },
       },
       resolve(parent, args) {
         const project = new Project({
@@ -183,6 +188,9 @@ const mutation = new GraphQLObjectType({
           description: args.description,
           status: args.status,
           clientId: args.clientId,
+          startDate: args.startDate,
+          deadline: args.deadline,
+          createdAt: args.createdAt,
         });
 
         return project.save();

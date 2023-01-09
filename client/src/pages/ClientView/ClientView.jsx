@@ -53,8 +53,11 @@ const ClientView = () => {
     <div className={`${rootClass}-container`}>
       <div className={`${rootClass}-info-container`}>
         <div className={`${rootClass}-btn-container`}>
-        <Link to={`/clients/${client.id}/edit`}>
-          <button className={`${rootClass}-edit-btn`}>Edit Client</button>
+          <Link to="/addProject">
+            <button className={`${rootClass}-add-project-btn`}>Add Project</button>
+          </Link>
+          <Link to={`/clients/${client.id}/edit`}>
+            <button className={`${rootClass}-edit-btn`}>Edit Client</button>
           </Link>
         </div>
         {!clientLoading && !clientError && (

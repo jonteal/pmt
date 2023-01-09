@@ -8,15 +8,20 @@
   margin-top: 30px;
 }
 
+.add-project-form {
+  margin-top: 15px;
+}
+
 .add-project-submit-btn {
   border: none;
-  background-color: #5ca53c;
+  background-color: #c03221;
   padding: 10px;
-  color: white;
+  color: #f7f7ff;
   border-radius: 5px;
   margin-top: 20px;
 }
 
 .add-project-submit-btn:hover {
-  background-color: #a5823c;
+  background-color: #f2d0a4;
+  color: #545e75;
 }
