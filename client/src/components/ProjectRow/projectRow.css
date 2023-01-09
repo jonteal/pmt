@@ -41,3 +41,13 @@
   margin-right: 3px;
   margin-left: 3px;
 }
+
+.project-dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: .5px solid gray;
+  padding: 5px;
+  margin-right: 3px;
+  margin-left: 3px;
+}

@@ -39,7 +39,7 @@ const ProjectRow = ({ project }) => {
         <div className="project-client-name">
           <Link to={`/clients/${project.client.id}`}>{clientName}</Link>
         </div>
-        <div className="dropdown">
+        <div className="dropdown project-dropdown">
           <button
             className="dropdown-toggle dropdown"
             type="button"

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Clients from "../../components/Clients/Clients";
+// import Clients from "../../components/Clients/Clients";
 import Projects from "../../components/Projects/Projects";
 
 import "./home.css";
@@ -15,9 +15,10 @@ const Home = () => {
           <Link to="/addProject">Add Project</Link>
         </button>
       </div>
+
       <Projects />
+
       <hr />
-      <Clients />
     </div>
   );
 };
