@@ -16,14 +16,8 @@ const ProjectSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Client',
   },
-  startDate: {
-    type: Date,
-    default: Date.now(),
-    get: (timeValue) => moment(timeValue).format('MM/DD/YYYY')
-  },
   deadline: {
-    type: Date,
-    default: Date.now(),
+    type: String,
     get: (timeValue) => moment(timeValue).format('MM/DD/YYYY')
   },
   createdAt: {

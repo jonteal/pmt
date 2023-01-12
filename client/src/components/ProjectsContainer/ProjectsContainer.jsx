@@ -12,9 +12,6 @@ const ProjectsContainer = ({ projectData, projectContainer }) => {
     setIsExpanded(!isExpanded);
   };
 
-  console.log('projectData: ', projectData);
-  console.log('projectContainers: ', projectContainer);
-
   return (
     <div>
       <div className={`${rootClass}-main-container`}>

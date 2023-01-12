@@ -30,6 +30,8 @@ const Projects = () => {
   if (projectLoading) return <Spinner />;
   if (projectError) return <p>Something went wrong...</p>;
 
+  console.log('projectData: ', projectData);
+
   return (
     <div className="projects-parent-container">
       <ul>

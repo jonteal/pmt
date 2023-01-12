@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-// import Clients from "../../components/Clients/Clients";
+import Clients from "../../components/Clients/Clients";
 import Projects from "../../components/Projects/Projects";
 
 import "./home.css";
@@ -19,6 +19,7 @@ const Home = () => {
       <Projects />
 
       <hr />
+      <Clients />
     </div>
   );
 };

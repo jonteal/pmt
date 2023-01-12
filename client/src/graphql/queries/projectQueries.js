@@ -12,6 +12,8 @@ const GET_PROJECTS = gql`
         firstName
         lastName
       }
+      createdAt
+      deadline
     }
   }
 `;
@@ -28,6 +30,8 @@ const GET_PROJECT = gql`
         firstName
         lastName 
       }
+      createdAt
+      deadline
     }
   }
 `;

@@ -42,7 +42,6 @@ const ProjectView = () => {
   const matchingActivityComments = activityCommentsArray.filter(
     (activityComment) => activityComment.project.id === projectId
     );
-  console.log('activityCommentsArray: ', activityCommentsArray);
 
   return (
     <div>

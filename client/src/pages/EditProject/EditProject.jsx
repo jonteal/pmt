@@ -5,13 +5,14 @@ import { GET_PROJECT } from "../../graphql/queries/projectQueries";
 import { UPDATE_PROJECT } from "../../graphql/mutations/projectMutations";
 import Spinner from "../../components/Spinner/Spinner";
 
+
 import "./editProject.css";
 
 const EditProject = () => {
-  const rootClass = 'edit-project';
+  const rootClass = "edit-project";
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   const { loading, error, data } = useQuery(GET_PROJECT, {
     variables: { id },
   });
@@ -19,7 +20,7 @@ const EditProject = () => {
   const handleBackNavigate = () => {
     navigate(-1);
   };
-  
+
   const [title, setTitle] = useState(data.project.title);
   const [description, setDescription] = useState(data.project.description);
   const [status, setStatus] = useState(() => {
@@ -37,7 +38,9 @@ const EditProject = () => {
 
   const [updateProject] = useMutation(UPDATE_PROJECT, {
     variables: { id: data.project.id, title, description, status },
-    refetchQueries: [{ query: GET_PROJECT, variables: { id: data.project.id } }],
+    refetchQueries: [
+      { query: GET_PROJECT, variables: { id: data.project.id } },
+    ],
   });
 
   const projectLocation = `/projects/${data.project.id}`;
@@ -59,7 +62,7 @@ const EditProject = () => {
   return (
     <div className={`${rootClass}-main-container`}>
       {!loading && !error && (
-              <div className="mt-2">
+        <div className="mt-2">
           <form onSubmit={onSubmit}>
             <div className="mb-3">
               <label className="form-label">Title</label>
@@ -95,10 +98,18 @@ const EditProject = () => {
             </div>
 
             <div>
-              <button onClick={onSubmit} type="submit" className={`${rootClass}-submit-btn`}>
+              <button
+                onClick={onSubmit}
+                type="submit"
+                className={`${rootClass}-submit-btn`}
+              >
                 Submit
               </button>
-              <button onClick={handleBackNavigate} type="button" className={`${rootClass}-back-btn`}>
+              <button
+                onClick={handleBackNavigate}
+                type="button"
+                className={`${rootClass}-back-btn`}
+              >
                 Back
               </button>
             </div>

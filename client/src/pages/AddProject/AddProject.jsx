@@ -1,9 +1,21 @@
+// REACT
 import { useState } from "react";
+
+// APOLLO
 import { useMutation, useQuery } from "@apollo/client";
+
+// GRAPHQL
 import { ADD_PROJECT } from "../../graphql/mutations/projectMutations";
 import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 import { GET_CLIENTS } from "../../graphql/queries/clientQueries";
+
+// COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
+
+// DATE PICKING
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { parseISO } from 'date-fns'
 
 import "./addProject.css";
 
@@ -12,9 +24,10 @@ const AddProject = () => {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("new");
   const [clientId, setClientId] = useState("");
+  const [deadline, setDeadline] = useState(new Date());
 
   const [addProject] = useMutation(ADD_PROJECT, {
-    variables: { title, description, clientId, status },
+    variables: { title, description, clientId, status, deadline },
     update(cache, { data: { addProject } }) {
       const { projects } = cache.readQuery({ query: GET_PROJECTS });
       cache.writeQuery({
@@ -25,6 +38,11 @@ const AddProject = () => {
   });
 
   const { loading, error, data } = useQuery(GET_CLIENTS);
+  
+  const handleDeadlineChange = (date) => {
+    setDeadline(date);
+    console.log('deadline: ', deadline);
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -33,12 +51,13 @@ const AddProject = () => {
       return alert("Please fill in all fields");
     }
 
-    addProject(title, description, clientId, status);
+    addProject(title, description, clientId, status, deadline);
 
     setTitle("");
     setDescription("");
     setStatus("new");
     setClientId("");
+    setDeadline(new Date());
   };
 
   if (loading) return <Spinner />;
@@ -96,6 +115,15 @@ const AddProject = () => {
                 <option value="completed">Completed</option>
               </select>
             </div>
+
+            <div className="mb-3">
+              <label className="form-label">Deadline</label>
+              <DatePicker
+                selected={deadline}
+                onChange={handleDeadlineChange}
+              />
+            </div>
+
             <button className="add-project-submit-btn" type="submit">
               Submit
             </button>
