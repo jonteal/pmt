@@ -8,7 +8,6 @@ import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 import { GET_CLIENTS } from "../../graphql/queries/clientQueries";
 
 import "./projectRow.css";
-import DatePickerComponent from "../DatePickerComponent/DatePickerComponent";
 
 const ProjectRow = ({ project }) => {
   const clientName = project.client.firstName + " " + project.client.lastName;
@@ -24,7 +23,7 @@ const ProjectRow = ({ project }) => {
   });
 
   return (
-    <>
+    <div>
       <div className="project-row-container">
         <div className="project-title">
           <Link to={`/projects/${project.id}`}>
@@ -59,7 +58,7 @@ const ProjectRow = ({ project }) => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

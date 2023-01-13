@@ -39,10 +39,17 @@ const EditProject = () => {
     }
   });
   const [deadline, setDeadline] = useState(new Date());
-
+  const [startDate, setStartDate] = useState(new Date());
 
   const [updateProject] = useMutation(UPDATE_PROJECT, {
-    variables: { id: data.project.id, title, description, status, deadline },
+    variables: {
+      id: data.project.id,
+      title,
+      description,
+      status,
+      startDate,
+      deadline,
+    },
     refetchQueries: [
       { query: GET_PROJECT, variables: { id: data.project.id } },
     ],
@@ -50,9 +57,12 @@ const EditProject = () => {
 
   const projectLocation = `/projects/${data.project.id}`;
 
+  const handleStartDateChange = (date) => {
+    setStartDate(date);
+  };
+
   const handleDeadlineChange = (date) => {
     setDeadline(date);
-    console.log('deadline: ', deadline);
   };
 
   const onSubmit = (e) => {
@@ -62,7 +72,7 @@ const EditProject = () => {
       return alert("Please fill out all fields");
     }
 
-    updateProject(title, description, status, deadline);
+    updateProject(title, description, status, startDate, deadline);
     navigate(projectLocation);
   };
 
@@ -108,12 +118,14 @@ const EditProject = () => {
             </div>
 
             <div className="mb-3">
-            <label className="form-label">Deadline</label>
-            <DatePicker
-              selected={deadline}
-              onChange={handleDeadlineChange}
-            />
-          </div>
+              <label className="form-label">Start Date</label>
+              <DatePicker selected={startDate} onChange={handleStartDateChange} />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Deadline</label>
+              <DatePicker selected={deadline} onChange={handleDeadlineChange} />
+            </div>
 
             <div>
               <button

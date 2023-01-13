@@ -4,10 +4,7 @@ import { GET_PROJECT } from "../../graphql/queries/projectQueries";
 import { GET_ACTIVITY_COMMENTS } from "../../graphql/queries/activityCommentQueries";
 
 import "./projectView.css";
-import EditProject from "../EditProject/EditProject";
 import ActivityFeed from "../../components/ActivityFeed/ActivityFeed";
-import ActivityComment from "../../components/ActivityComment/ActivityComment";
-import AddComment from "../../components/AddComment/AddComment";
 
 const ProjectView = () => {
   const rootClass = "project-view";
@@ -34,14 +31,14 @@ const ProjectView = () => {
   if (activityCommentsError) return <p>There was an error...</p>;
 
   const project = projectData.project;
-  
+
   const projectId = projectData.project.id;
-  
+
   const activityCommentsArray = activityCommentData.activityComments;
-  
+
   const matchingActivityComments = activityCommentsArray.filter(
     (activityComment) => activityComment.project.id === projectId
-    );
+  );
 
   return (
     <div>
@@ -53,9 +50,34 @@ const ProjectView = () => {
             </Link>
           </div>
           <div className={`${rootClass}-project-info`}>
-            <h4 className={`${rootClass}-title`}>{project.title}</h4>
-            <p className={`${rootClass}-description`}>{project.description}</p>
-            <p className={`${rootClass}-status`}>{project.status}</p>
+
+            <div className={`${rootClass}-item-container`}>
+              <p className={`${rootClass}-header`}>Project Name</p>
+              <h4 className={`${rootClass}-title`}>{project.title}</h4>
+            </div>
+
+            <div className={`${rootClass}-item-container`}>
+              <p className={`${rootClass}-header`}>Description</p>
+              <p className={`${rootClass}-description`}>
+                {project.description}
+              </p>
+            </div>
+
+            <div className={`${rootClass}-item-container`}>
+              <p className={`${rootClass}-header`}>Status</p>
+              <p className={`${rootClass}-status`}>{project.status}</p>
+            </div>
+
+            <div className={`${rootClass}-item-container`}>
+              <p className={`${rootClass}-header`}>Start Date</p>
+              <p className={`${rootClass}-startDate`}>{project.startDate}</p>
+            </div>
+
+            <div className={`${rootClass}-item-container`}>
+              <p className={`${rootClass}-header`}>Deadline</p>
+              <p className={`${rootClass}-deadline`}>{project.deadline}</p>
+            </div>
+
           </div>
         </div>
       </div>

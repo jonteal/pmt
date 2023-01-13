@@ -1,0 +1,13 @@
+.add-comment-main-container {
+  width: 100%;
+}
+
+.add-comment-form {
+  width: 90%;
+}
+
+.add-comment-input {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

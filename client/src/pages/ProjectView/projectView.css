@@ -34,19 +34,50 @@
 }
 
 .project-view-project-info {
-  width: 90%;
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
 }
 
 .project-view-title {
   font-weight: bold;
+  border: .5px solid #545e75;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .project-view-description {
-  margin-top: 15px;
+  border: .5px solid #545e75;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .project-view-status {
-  margin-top: 15px;
+  border: .5px solid #545e75;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.project-view-startDate {
+  border: .5px solid #545e75;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.project-view-deadline {
+  border: .5px solid #545e75;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.project-view-item-container {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.project-view-header {
+  font-size: .8rem;
+  color: #929aae;
+  margin-bottom: 5px;
 }
