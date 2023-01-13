@@ -14,3 +14,15 @@
 .project-container-carrot {
   margin-left: 5px;
 }
+
+.project-container-headers {
+  display: grid;
+  grid-template-columns: 30% 15% 15% 15% 20% 5%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: .8rem;
+  color: #929aae;
+  width: 100%;
+}
+

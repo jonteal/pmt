@@ -13,6 +13,7 @@ const GET_PROJECTS = gql`
         lastName
       }
       createdAt
+      startDate
       deadline
     }
   }
@@ -31,6 +32,7 @@ const GET_PROJECT = gql`
         lastName 
       }
       createdAt
+      startDate
       deadline
     }
   }

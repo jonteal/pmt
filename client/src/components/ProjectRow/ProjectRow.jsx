@@ -35,6 +35,9 @@ const ProjectRow = ({ project }) => {
           <p>{project.status}</p>
         </div>
         <div className="project-deadline">
+          <p>{project.startDate}</p> 
+        </div>
+        <div className="project-deadline">
           <p>{project.deadline}</p> 
         </div>
         <div className="project-client-name">

@@ -15,7 +15,6 @@ import Spinner from "../../components/Spinner/Spinner";
 // DATE PICKING
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { parseISO } from 'date-fns'
 
 import "./addProject.css";
 
@@ -24,10 +23,11 @@ const AddProject = () => {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("new");
   const [clientId, setClientId] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
   const [deadline, setDeadline] = useState(new Date());
 
   const [addProject] = useMutation(ADD_PROJECT, {
-    variables: { title, description, clientId, status, deadline },
+    variables: { title, description, clientId, status, startDate, deadline },
     update(cache, { data: { addProject } }) {
       const { projects } = cache.readQuery({ query: GET_PROJECTS });
       cache.writeQuery({
@@ -39,9 +39,12 @@ const AddProject = () => {
 
   const { loading, error, data } = useQuery(GET_CLIENTS);
   
+  const handleStartDateChange = (date) => {
+    setStartDate(date);
+  };
+
   const handleDeadlineChange = (date) => {
     setDeadline(date);
-    console.log('deadline: ', deadline);
   };
 
   const onSubmit = (e) => {
@@ -57,6 +60,7 @@ const AddProject = () => {
     setDescription("");
     setStatus("new");
     setClientId("");
+    setStartDate(new Date());
     setDeadline(new Date());
   };
 
@@ -114,6 +118,14 @@ const AddProject = () => {
                 <option value="progress">In Progress</option>
                 <option value="completed">Completed</option>
               </select>
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Start Date</label>
+              <DatePicker
+                selected={startDate}
+                onChange={handleStartDateChange}
+              />
             </div>
 
             <div className="mb-3">

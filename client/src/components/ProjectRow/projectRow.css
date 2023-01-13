@@ -1,7 +1,7 @@
 .project-row-container {
   /* border: .5px solid #545e75; */
   display: grid;
-  grid-template-columns: 30% 20% 20% 25% 5%;
+  grid-template-columns: 30% 15% 15% 15% 20% 5%;
   margin-top: 10px;
   padding: 5px;
   border-radius: 5px;

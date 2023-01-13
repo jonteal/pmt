@@ -5,6 +5,9 @@ import { GET_PROJECT } from "../../graphql/queries/projectQueries";
 import { UPDATE_PROJECT } from "../../graphql/mutations/projectMutations";
 import Spinner from "../../components/Spinner/Spinner";
 
+// DATE PICKING
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import "./editProject.css";
 
@@ -35,15 +38,22 @@ const EditProject = () => {
         throw new Error(`Unknown status: ${data.project.status}`);
     }
   });
+  const [deadline, setDeadline] = useState(new Date());
+
 
   const [updateProject] = useMutation(UPDATE_PROJECT, {
-    variables: { id: data.project.id, title, description, status },
+    variables: { id: data.project.id, title, description, status, deadline },
     refetchQueries: [
       { query: GET_PROJECT, variables: { id: data.project.id } },
     ],
   });
 
   const projectLocation = `/projects/${data.project.id}`;
+
+  const handleDeadlineChange = (date) => {
+    setDeadline(date);
+    console.log('deadline: ', deadline);
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +62,7 @@ const EditProject = () => {
       return alert("Please fill out all fields");
     }
 
-    updateProject(title, description, status);
+    updateProject(title, description, status, deadline);
     navigate(projectLocation);
   };
 
@@ -96,6 +106,14 @@ const EditProject = () => {
                 <option value="completed">Completed</option>
               </select>
             </div>
+
+            <div className="mb-3">
+            <label className="form-label">Deadline</label>
+            <DatePicker
+              selected={deadline}
+              onChange={handleDeadlineChange}
+            />
+          </div>
 
             <div>
               <button
