@@ -6,6 +6,8 @@ const GET_CLIENTS = gql`
       id,
       firstName
       lastName
+      phoneNumber
+      emailAddress
     }
   }
 `;
@@ -16,6 +18,8 @@ const GET_CLIENT = gql`
       id
       firstName
       lastName
+      phoneNumber
+      emailAddress
     }
   }
 `;

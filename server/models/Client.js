@@ -6,6 +6,12 @@ const ClientSchema = new mongoose.Schema({
   },
   lastName: {
     type: String
+  },
+  phoneNumber: {
+    type: String
+  },
+  emailAddress: {
+    type: String
   }
 });
 

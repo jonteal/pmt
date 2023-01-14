@@ -12,9 +12,11 @@ import "./addClient.css";
 const AddClient = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
 
   const [addClient] = useMutation(ADD_CLIENT, {
-    variables: { firstName, lastName },
+    variables: { firstName, lastName, phoneNumber, emailAddress },
     update(cache, { data: { addClient } }) {
       const { clients } = cache.readQuery({ query: GET_CLIENTS });
 
@@ -36,6 +38,8 @@ const AddClient = () => {
 
     setFirstName("");
     setLastName("");
+    setPhoneNumber("");
+    setEmailAddress("");
   };
 
   return (
@@ -62,6 +66,26 @@ const AddClient = () => {
               aria-label="Last name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <input
+              type="text"
+              className="form-control phoneNumber"
+              placeholder="Phone Number"
+              aria-label="Phone Number"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <input
+              type="text"
+              className="form-control emailAddress"
+              placeholder="Email Address"
+              aria-label="Email Address"
+              value={emailAddress}
+              onChange={(e) => setEmailAddress(e.target.value)}
             />
           </div>
         </div>
