@@ -25,9 +25,18 @@ const AddProject = () => {
   const [clientId, setClientId] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [deadline, setDeadline] = useState(new Date());
+  const [notes, setNotes] = useState("");
 
   const [addProject] = useMutation(ADD_PROJECT, {
-    variables: { title, description, clientId, status, startDate, deadline },
+    variables: {
+      title,
+      description,
+      clientId,
+      status,
+      startDate,
+      deadline,
+      notes,
+    },
     update(cache, { data: { addProject } }) {
       const { projects } = cache.readQuery({ query: GET_PROJECTS });
       cache.writeQuery({
@@ -38,7 +47,7 @@ const AddProject = () => {
   });
 
   const { loading, error, data } = useQuery(GET_CLIENTS);
-  
+
   const handleStartDateChange = (date) => {
     setStartDate(date);
   };
@@ -54,7 +63,15 @@ const AddProject = () => {
       return alert("Please fill in all fields");
     }
 
-    addProject(title, description, clientId, status, deadline);
+    addProject(
+      title,
+      description,
+      clientId,
+      status,
+      startDate,
+      deadline,
+      notes
+    );
 
     setTitle("");
     setDescription("");
@@ -62,6 +79,7 @@ const AddProject = () => {
     setClientId("");
     setStartDate(new Date());
     setDeadline(new Date());
+    setNotes("");
   };
 
   if (loading) return <Spinner />;
@@ -75,7 +93,7 @@ const AddProject = () => {
           <select
             className="form-select"
             aria-label="Default select example"
-            id="subjectId"
+            id="clientId"
             value={clientId}
             onChange={(e) => setClientId(e.target.value)}
           >
@@ -87,7 +105,7 @@ const AddProject = () => {
             ))}
           </select>
           <form className="add-project-form" onSubmit={onSubmit}>
-            <div>
+            <div className="mb-3">
               <div className="mb-3">
                 <label className="form-label">Title</label>
                 <input
@@ -99,6 +117,7 @@ const AddProject = () => {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
+
               <div className="mb-3">
                 <label className="form-label">Description</label>
                 <textarea
@@ -109,18 +128,21 @@ const AddProject = () => {
                   onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
               </div>
+
+              <label className="form-label">Status</label>
               <select
+                id="status"
                 className="form-select"
-                aria-label="Default select example"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
               >
-                <option value="">Status</option>
                 <option value="new">Not Started</option>
                 <option value="progress">In Progress</option>
                 <option value="completed">Completed</option>
               </select>
             </div>
 
-            <div className="mb-3">
+            <div className="mb-3 add-project-form-item">
               <label className="form-label">Start Date</label>
               <DatePicker
                 selected={startDate}
@@ -130,10 +152,18 @@ const AddProject = () => {
 
             <div className="mb-3">
               <label className="form-label">Deadline</label>
-              <DatePicker
-                selected={deadline}
-                onChange={handleDeadlineChange}
-              />
+              <DatePicker selected={deadline} onChange={handleDeadlineChange} />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Notes</label>
+              <textarea
+                className="form-control"
+                id="notes"
+                rows="3"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+              ></textarea>
             </div>
 
             <button className="add-project-submit-btn" type="submit">

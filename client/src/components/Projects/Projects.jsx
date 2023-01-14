@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 import ProjectsContainer from "../ProjectsContainer/ProjectsContainer";
 import Spinner from "../Spinner/Spinner";
+import { FaProjectDiagram } from "react-icons/fa";
 
 import "./projects.css";
 
@@ -32,7 +33,10 @@ const Projects = () => {
 
   return (
     <div className="projects-parent-container">
-      <h2 className="projects-header">Projects</h2>
+      <div className="projects-header-container">
+        <FaProjectDiagram className="projects-header-icon" />
+        <h2 className="projects-header-label">Projects</h2>
+      </div>
       <ul>
         {projectContainers.map((projectContainer) => (
           <ProjectsContainer

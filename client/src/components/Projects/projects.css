@@ -5,7 +5,15 @@
   padding: 10px;
 }
 
-.projects-header {
+.projects-header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.projects-header-label,
+.projects-header-icon {
   margin-bottom: 10px;
   color: rgb(119, 140, 150);
+  margin-right: 5px;
 }

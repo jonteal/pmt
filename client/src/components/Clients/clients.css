@@ -5,7 +5,15 @@
   padding: 10px;
 }
 
-.clients-header {
+.clients-header-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.clients-header-label,
+.clients-header-icon {
   margin-bottom: 10px;
   color: rgb(119, 140, 150);
+  margin-right: 5px;
 }
+

@@ -32,6 +32,8 @@ const ProjectView = () => {
 
   const project = projectData.project;
 
+  console.log('projects: ', project);
+
   const projectId = projectData.project.id;
 
   const activityCommentsArray = activityCommentData.activityComments;
@@ -60,6 +62,13 @@ const ProjectView = () => {
               <p className={`${rootClass}-header`}>Description</p>
               <p className={`${rootClass}-description`}>
                 {project.description}
+              </p>
+            </div>
+
+            <div className={`${rootClass}-item-container`}>
+              <p className={`${rootClass}-header`}>Notes</p>
+              <p className={`${rootClass}-notes`}>
+                {project.notes}
               </p>
             </div>
 

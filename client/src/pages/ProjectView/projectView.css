@@ -46,24 +46,10 @@
   border-radius: 5px;
 }
 
-.project-view-description {
-  border: .5px solid #545e75;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.project-view-status {
-  border: .5px solid #545e75;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.project-view-startDate {
-  border: .5px solid #545e75;
-  border-radius: 5px;
-  padding: 10px;
-}
-
+.project-view-description,
+.project-view-notes,
+.project-view-status,
+.project-view-startDate,
 .project-view-deadline {
   border: .5px solid #545e75;
   border-radius: 5px;
