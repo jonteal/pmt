@@ -3,9 +3,6 @@ import "./clientCard.css";
 const ClientCard = ({ clientData }) => {
   const rootClass = "client-card";
 
-  // const clientName =
-  //   clientData.client.firstName + " " + clientData.client.lastName;
-
   let formatPhoneNumber = (str) => {
     let cleaned = ("" + str).replace(/\D/g, "");
     let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
@@ -35,6 +32,13 @@ const ClientCard = ({ clientData }) => {
           <p className={`${rootClass}-header`}>Last Name</p>
           <h3 className={`${rootClass}-last-name`}>
             {clientData.client.lastName}
+          </h3>
+        </div>
+
+        <div className={`${rootClass}-item-container`}>
+          <p className={`${rootClass}-header`}>Company Name</p>
+          <h3 className={`${rootClass}-company-name`}>
+            {clientData.client.companyName}
           </h3>
         </div>
 

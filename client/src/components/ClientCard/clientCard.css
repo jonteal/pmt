@@ -22,6 +22,7 @@
 
 .client-card-first-name,
 .client-card-last-name,
+.client-card-company-name,
 .client-card-phone-number,
 .client-card-email-address {
   border: .5px solid #545e75;

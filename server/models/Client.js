@@ -12,6 +12,9 @@ const ClientSchema = new mongoose.Schema({
   },
   emailAddress: {
     type: String
+  },
+  companyName: {
+    type: String
   }
 });
 

@@ -14,9 +14,10 @@ const AddClient = () => {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
+  const [companyName, setCompanyName] = useState("");
 
   const [addClient] = useMutation(ADD_CLIENT, {
-    variables: { firstName, lastName, phoneNumber, emailAddress },
+    variables: { firstName, lastName, phoneNumber, emailAddress, companyName },
     update(cache, { data: { addClient } }) {
       const { clients } = cache.readQuery({ query: GET_CLIENTS });
 
@@ -34,12 +35,13 @@ const AddClient = () => {
       alert("Please fill in the client name");
     }
 
-    addClient(firstName, lastName);
+    addClient(firstName, lastName, phoneNumber, emailAddress, companyName);
 
     setFirstName("");
     setLastName("");
     setPhoneNumber("");
     setEmailAddress("");
+    setCompanyName("");
   };
 
   return (
@@ -66,6 +68,16 @@ const AddClient = () => {
               aria-label="Last name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <input
+              type="text"
+              className="form-control companyName"
+              placeholder="Company Name"
+              aria-label="Company Name"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
             />
           </div>
           <div className="col">

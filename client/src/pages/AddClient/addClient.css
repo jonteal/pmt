@@ -1,3 +1,11 @@
+.add-client-container {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .add-client-title {
   margin-top: 20px;
   font-weight: bold;
@@ -24,9 +32,4 @@
 
 .client-submit-btn:hover {
   background-color: #a5823c;
-}
-
-.firstName,
-.lastName {
-  width: 100%;
 }

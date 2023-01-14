@@ -8,6 +8,7 @@ const GET_CLIENTS = gql`
       lastName
       phoneNumber
       emailAddress
+      companyName
     }
   }
 `;
@@ -20,6 +21,7 @@ const GET_CLIENT = gql`
       lastName
       phoneNumber
       emailAddress
+      companyName
     }
   }
 `;
