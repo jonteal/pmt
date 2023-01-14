@@ -16,26 +16,49 @@ const EditClient = () => {
   const handleBackNavigate = () => {
     navigate(-1);
   };
-  
+
   const { loading, error, data } = useQuery(GET_CLIENT, {
     variables: { id },
   });
-  
+
   const clientLocation = `/clients/${data.client.id}`;
 
   const clientEditLocation = `/clients/${data.client.id}/edit`;
 
   useEffect(() => {
     navigate(clientEditLocation);
-  }, [clientEditLocation, navigate])
+  }, [clientEditLocation, navigate]);
 
   const client = data.client;
 
   const [firstName, setFirstName] = useState(client.firstName);
   const [lastName, setLastName] = useState(client.lastName);
+  const [companyName, setCompanyName] = useState(client.companyName);
+  const [phoneNumber, setPhoneNumber] = useState(client.phoneNumber);
+  const [emailAddress, setEmailAddress] = useState(client.emailAddress);
+  const [status, setStatus] = useState(() => {
+    switch (data.client.status) {
+      case "Prospect":
+        return "prospect";
+      case "Current":
+        return "current";
+      case "Former":
+        return "former";
+      default:
+        throw new Error(`Unknown status: ${data.client.status}`);
+    }
+  });
 
   const [updateClient] = useMutation(UPDATE_CLIENT, {
-    variables: { id: client.id, firstName, lastName },
+    variables: {
+      id: client.id,
+      firstName,
+      lastName,
+      phoneNumber,
+      emailAddress,
+      companyName,
+      status,
+    },
     refetchQueries: [
       {
         query: GET_CLIENT,
@@ -46,7 +69,6 @@ const EditClient = () => {
     ],
   });
 
-
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -54,7 +76,7 @@ const EditClient = () => {
       return alert("Please fill out all fields");
     }
 
-    updateClient(firstName, lastName);
+    updateClient(firstName, lastName, phoneNumber, emailAddress, companyName, status);
     navigate(clientLocation);
   };
 
@@ -87,7 +109,55 @@ const EditClient = () => {
                   onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
+
+              <div className="mb-3">
+                <label className="form-label">Company Name</label>
+                <input
+                  type="text"
+                  className={`${rootClass}-company-name form-control`}
+                  id="companyName"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Phone Number</label>
+                <input
+                  type="text"
+                  className={`${rootClass}-phone-number form-control`}
+                  id="phoneNumber"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Email Address</label>
+                <input
+                  type="text"
+                  className={`${rootClass}-email-address form-control`}
+                  id="emailAddress"
+                  value={emailAddress}
+                  onChange={(e) => setEmailAddress(e.target.value)}
+                />
+              </div>
+
+              <div className="mb-3">
+              <label className="form-label">Client Status</label>
+              <select
+                id="status"
+                className="form-select"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <option value="prospect">Prospect</option>
+                <option value="current">Current</option>
+                <option value="former">Former</option>
+              </select>
             </div>
+            </div>
+
             <div>
               <button
                 onClick={onSubmit}

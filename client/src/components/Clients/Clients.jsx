@@ -18,11 +18,11 @@ const Clients = () => {
     },
     {
       id: "current",
-      state: "Current Customer",
+      state: "Current",
     },
     {
       id: "former",
-      state: "Former Customer",
+      state: "Former",
     },
   ];
 

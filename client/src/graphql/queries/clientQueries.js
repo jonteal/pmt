@@ -9,6 +9,7 @@ const GET_CLIENTS = gql`
       phoneNumber
       emailAddress
       companyName
+      status
     }
   }
 `;
@@ -22,6 +23,7 @@ const GET_CLIENT = gql`
       phoneNumber
       emailAddress
       companyName
+      status 
     }
   }
 `;

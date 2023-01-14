@@ -22,13 +22,18 @@ const ClientRow = ({ client }) => {
   return (
     <div>
     <div className="client-row-container">
-      <div className="client-name">
+      <div className="client-first-name">
         <Link to={`/clients/${client.id}`}>
-          <h3>{clientName}</h3>
+          <h3>{client.firstName}</h3>
         </Link>
       </div>
-      <div className="client-company">
-        <p>{client.company}</p>
+      <div className="client-last-name">
+        <Link to={`/clients/${client.id}`}>
+          <h3>{client.lastName}</h3>
+        </Link>
+      </div>
+      <div className="client-company-name">
+        <p>{client.companyName}</p>
       </div>
       <div className="client-phone-number">
         <p>{formatPhoneNumber(client.phoneNumber)}</p> 

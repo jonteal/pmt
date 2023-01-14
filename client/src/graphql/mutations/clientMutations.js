@@ -7,6 +7,7 @@ const ADD_CLIENT = gql`
     $phoneNumber: String
     $emailAddress: String
     $companyName: String
+    $status: ClientStatus!
   ) {
     addClient(
       firstName: $firstName
@@ -14,6 +15,7 @@ const ADD_CLIENT = gql`
       phoneNumber: $phoneNumber
       emailAddress: $emailAddress
       companyName: $companyName
+      status: $status
     ) {
       id
       firstName
@@ -21,6 +23,7 @@ const ADD_CLIENT = gql`
       phoneNumber
       emailAddress
       companyName
+      status
     }
   }
 `;
@@ -41,6 +44,7 @@ const UPDATE_CLIENT = gql`
     $phoneNumber: String
     $emailAddress: String
     $companyName: String 
+    $status: ClientStatusUpdate
   ) {
     updateClient(
       id: $id
@@ -49,6 +53,7 @@ const UPDATE_CLIENT = gql`
       phoneNumber: $phoneNumber
       emailAddress: $emailAddress
       companyName: $companyName
+      status: $status 
     ) {
       id
       firstName
@@ -56,6 +61,7 @@ const UPDATE_CLIENT = gql`
       phoneNumber
       emailAddress
       companyName
+      status 
     }
   }
 `;

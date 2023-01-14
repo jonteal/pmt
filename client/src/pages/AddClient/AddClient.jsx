@@ -15,9 +15,10 @@ const AddClient = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const [status, setStatus] = useState("prospect");
 
   const [addClient] = useMutation(ADD_CLIENT, {
-    variables: { firstName, lastName, phoneNumber, emailAddress, companyName },
+    variables: { firstName, lastName, phoneNumber, emailAddress, companyName, status },
     update(cache, { data: { addClient } }) {
       const { clients } = cache.readQuery({ query: GET_CLIENTS });
 
@@ -35,13 +36,14 @@ const AddClient = () => {
       alert("Please fill in the client name");
     }
 
-    addClient(firstName, lastName, phoneNumber, emailAddress, companyName);
+    addClient(firstName, lastName, phoneNumber, emailAddress, companyName, status);
 
     setFirstName("");
     setLastName("");
     setPhoneNumber("");
     setEmailAddress("");
     setCompanyName("");
+    setStatus("prospect");
   };
 
   return (
@@ -100,9 +102,17 @@ const AddClient = () => {
               onChange={(e) => setEmailAddress(e.target.value)}
             />
           </div>
+          <select className="form-select" aria-label="Default select example">
+            <option value="">Client Status</option>
+            <option value="prospect">Prospect</option>
+            <option value="current">Current</option>
+            <option value="former">Former</option>
+          </select>
         </div>
 
-        <button className="client-submit-btn" type="submit">Submit</button>
+        <button className="client-submit-btn" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

@@ -1,22 +1,13 @@
 .client-row-container {
-  /* border: .5px solid #545e75; */
   display: grid;
-  grid-template-columns: 25% 20% 20% 20% 15%;
+  grid-template-columns: 15% 15% 20% 25% 20% 5%;
   margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
 }
 
-.client-name {
-  display: flex;
-  align-items: center;
-  border: .5px solid gray;
-  padding: 5px;
-  margin-right: 3px;
-  margin-left: 3px;
-  border-radius: 5px;
-}
-
+.client-first-name,
+.client-last-name,
 .client-phone-number,
 .client-email-address,
 .client-company-name,

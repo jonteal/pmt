@@ -41,6 +41,7 @@ const ClientType = new GraphQLObjectType({
     phoneNumber: { type: GraphQLString },
     emailAddress: { type: GraphQLString },
     companyName: { type: GraphQLString },
+    status: { type: GraphQLString },
   }),
 });
 
@@ -117,6 +118,17 @@ const mutation = new GraphQLObjectType({
         phoneNumber: { type: GraphQLString },
         emailAddress: { type: GraphQLString },
         companyName: { type: GraphQLString },
+        status: {
+          type: new GraphQLEnumType({
+            name: "ClientStatus",
+            values: {
+              prospect: { value: "Prospect" },
+              current: { value: "Current" },
+              former: { value: "Former" },
+            },
+          }),
+          defaultValue: "Prospect",
+        },
       },
       resolve(parent, args) {
         const client = new Client({
@@ -125,6 +137,7 @@ const mutation = new GraphQLObjectType({
           phoneNumber: args.phoneNumber,
           emailAddress: args.emailAddress,
           companyName: args.companyName,
+          status: args.status,
         });
 
         return client.save();
@@ -158,6 +171,16 @@ const mutation = new GraphQLObjectType({
         phoneNumber: { type: GraphQLString },
         emailAddress: { type: GraphQLString },
         companyName: { type: GraphQLString },
+        status: {
+          type: new GraphQLEnumType({
+            name: "ClientStatusUpdate",
+            values: {
+              prospect: { value: "Prospect" },
+              current: { value: "Current" },
+              former: { value: "Former" },
+            },
+          }),
+        },
       },
       resolve(parent, args) {
         return Client.findByIdAndUpdate(
@@ -169,6 +192,7 @@ const mutation = new GraphQLObjectType({
               phoneNumber: args.phoneNumber,
               emailAddress: args.emailAddress,
               companyName: args.companyName,
+              status: args.status,
             },
           },
           { new: true }
