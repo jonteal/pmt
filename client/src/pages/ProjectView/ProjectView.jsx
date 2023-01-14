@@ -2,9 +2,10 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECT } from "../../graphql/queries/projectQueries";
 import { GET_ACTIVITY_COMMENTS } from "../../graphql/queries/activityCommentQueries";
+import ActivityFeed from "../../components/ActivityFeed/ActivityFeed";
+import ProjectViewItem from "../../components/ProjectViewItem/ProjectViewItem";
 
 import "./projectView.css";
-import ActivityFeed from "../../components/ActivityFeed/ActivityFeed";
 
 const ProjectView = () => {
   const rootClass = "project-view";
@@ -32,8 +33,6 @@ const ProjectView = () => {
 
   const project = projectData.project;
 
-  console.log('projects: ', project);
-
   const projectId = projectData.project.id;
 
   const activityCommentsArray = activityCommentData.activityComments;
@@ -53,39 +52,35 @@ const ProjectView = () => {
           </div>
           <div className={`${rootClass}-project-info`}>
 
-            <div className={`${rootClass}-item-container`}>
-              <p className={`${rootClass}-header`}>Project Name</p>
-              <h4 className={`${rootClass}-title`}>{project.title}</h4>
-            </div>
+            <ProjectViewItem 
+              header="Project Name"
+              value={project.title}
+            />
 
-            <div className={`${rootClass}-item-container`}>
-              <p className={`${rootClass}-header`}>Description</p>
-              <p className={`${rootClass}-description`}>
-                {project.description}
-              </p>
-            </div>
+            <ProjectViewItem 
+              header="Description"
+              value={project.description}
+            />
 
-            <div className={`${rootClass}-item-container`}>
-              <p className={`${rootClass}-header`}>Notes</p>
-              <p className={`${rootClass}-notes`}>
-                {project.notes}
-              </p>
-            </div>
+            <ProjectViewItem 
+              header="Notes"
+              value={project.notes}
+            />
 
-            <div className={`${rootClass}-item-container`}>
-              <p className={`${rootClass}-header`}>Status</p>
-              <p className={`${rootClass}-status`}>{project.status}</p>
-            </div>
+            <ProjectViewItem 
+              header="Status"
+              value={project.status}
+            />
 
-            <div className={`${rootClass}-item-container`}>
-              <p className={`${rootClass}-header`}>Start Date</p>
-              <p className={`${rootClass}-startDate`}>{project.startDate}</p>
-            </div>
+            <ProjectViewItem 
+              header="Start Date"
+              value={project.startDate}
+            />
 
-            <div className={`${rootClass}-item-container`}>
-              <p className={`${rootClass}-header`}>Deadline</p>
-              <p className={`${rootClass}-deadline`}>{project.deadline}</p>
-            </div>
+            <ProjectViewItem 
+              header="Deadline"
+              value={project.deadline}
+            />
 
           </div>
         </div>
