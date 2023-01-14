@@ -1,3 +1,4 @@
+import ClientCardItem from "../ClientCardItem/ClientCardItem";
 import "./clientCard.css";
 
 const ClientCard = ({ clientData }) => {
@@ -21,40 +22,31 @@ const ClientCard = ({ clientData }) => {
           <h2 className={`${rootClass}-client-header`}>Client Information</h2>
         </div>
 
-        <div className={`${rootClass}-item-container`}>
-          <p className={`${rootClass}-header`}>First Name</p>
-          <h3 className={`${rootClass}-first-name`}>
-            {clientData.client.firstName}
-          </h3>
-        </div>
+        <ClientCardItem
+          header="First Name"
+          value={clientData.client.firstName}
+        />
 
-        <div className={`${rootClass}-item-container`}>
-          <p className={`${rootClass}-header`}>Last Name</p>
-          <h3 className={`${rootClass}-last-name`}>
-            {clientData.client.lastName}
-          </h3>
-        </div>
+        <ClientCardItem 
+          header="Last Name"
+          value={clientData.client.lastName}
+        />
 
-        <div className={`${rootClass}-item-container`}>
-          <p className={`${rootClass}-header`}>Company Name</p>
-          <h3 className={`${rootClass}-company-name`}>
-            {clientData.client.companyName}
-          </h3>
-        </div>
+        <ClientCardItem 
+          header="Company Name"
+          value={clientData.client.companyName}
+        />
 
-        <div className={`${rootClass}-item-container`}>
-          <p className={`${rootClass}-header`}>Email Address</p>
-          <p className={`${rootClass}-email-address`}>
-            {clientData.client.emailAddress}
-          </p>
-        </div>
+        <ClientCardItem 
+          header="Email Address"
+          value={clientData.client.emailAddress}
+        />
 
-        <div className={`${rootClass}-item-container`}>
-          <p className={`${rootClass}-header`}>Phone Number</p>
-          <p className={`${rootClass}-phone-number`}>
-            {formatPhoneNumber(clientData.client.phoneNumber)}
-          </p>
-        </div>
+        <ClientCardItem 
+          header="Phone Number"
+          value={formatPhoneNumber(clientData.client.phoneNumber)}
+        />
+
       </div>
     </div>
   );
