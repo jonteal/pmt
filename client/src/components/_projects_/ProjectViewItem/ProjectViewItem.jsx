@@ -1,5 +1,4 @@
-
-import '../../pages/ProjectView/projectView.css';
+import '../../../pages/ProjectView/projectView.css';
 
 const ProjectViewItem = ({ header, value }) => {
   const rootClass = "project-view";

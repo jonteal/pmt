@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
-import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
+import { GET_PROJECTS } from "../../../graphql/queries/projectQueries";
 import ProjectsContainer from "../ProjectsContainer/ProjectsContainer";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../Spinner/Spinner";
 import { FaProjectDiagram } from "react-icons/fa";
 
 import "./projects.css";

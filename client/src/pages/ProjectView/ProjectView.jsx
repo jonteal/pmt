@@ -2,8 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECT } from "../../graphql/queries/projectQueries";
 import { GET_ACTIVITY_COMMENTS } from "../../graphql/queries/activityCommentQueries";
-import ActivityFeed from "../../components/ActivityFeed/ActivityFeed";
-import ProjectViewItem from "../../components/ProjectViewItem/ProjectViewItem";
+import ActivityFeed from "../../components/_activityFeed_/ActivityFeed/ActivityFeed";
+import ProjectViewItem from "../../components/_projects_/ProjectViewItem/ProjectViewItem";
 
 import "./projectView.css";
 

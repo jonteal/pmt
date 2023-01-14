@@ -1,4 +1,3 @@
-import React from "react";
 import AddComment from "../AddComment/AddComment";
 import ActivityComment from "../ActivityComment/ActivityComment";
 

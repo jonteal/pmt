@@ -8,8 +8,8 @@ import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 
 // COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
-import ProjectRow from "../../components/ProjectRow/ProjectRow";
-import ClientCard from "../../components/ClientCard/ClientCard";
+import ProjectRow from "../../components/_projects_/ProjectRow/ProjectRow";
+import ClientCard from "../../components/_clients_/ClientCard/ClientCard";
 
 import "./clientView.css";
 

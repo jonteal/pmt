@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 // GRAPHQL
 import { useMutation } from "@apollo/client";
-import { DELETE_PROJECT } from "../../graphql/mutations/projectMutations";
-import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
-import { GET_CLIENTS } from "../../graphql/queries/clientQueries";
+import { DELETE_PROJECT } from "../../../graphql/mutations/projectMutations";
+import { GET_PROJECTS } from "../../../graphql/queries/projectQueries";
+import { GET_CLIENTS } from "../../../graphql/queries/clientQueries";
 
 import "./projectRow.css";
 

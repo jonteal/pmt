@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import Clients from "../../components/Clients/Clients";
-import Projects from "../../components/Projects/Projects";
+import Clients from "../../components/_clients_/Clients/Clients";
+import Projects from  "../../components/_projects_/Projects/Projects";
 
 import "./home.css";
 
 const Home = () => {
+
   return (
     <div className="home-main-container">
       <div className="home-button-container">

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
 
-import { DELETE_ACTIVITY_COMMENT } from "../../graphql/mutations/activityCommentMutations";
-import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
-import { GET_ACTIVITY_COMMENTS } from "../../graphql/queries/activityCommentQueries";
+import { DELETE_ACTIVITY_COMMENT } from "../../../graphql/mutations/activityCommentMutations";
+import { GET_PROJECTS } from "../../../graphql/queries/projectQueries";
+import { GET_ACTIVITY_COMMENTS } from "../../../graphql/queries/activityCommentQueries";
 
 import "./activityComment.css";
 

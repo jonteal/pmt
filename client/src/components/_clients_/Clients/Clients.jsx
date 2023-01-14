@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
-import { GET_CLIENTS } from "../../graphql/queries/clientQueries";
+import { GET_CLIENTS } from "../../../graphql/queries/clientQueries";
 import ClientsContainer from "../ClientsContainer/ClientsContainer";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../Spinner/Spinner";
 import { FaUserAlt } from "react-icons/fa";
 
 import "./clients.css";

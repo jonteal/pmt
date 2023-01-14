@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { ADD_ACTIVITY_COMMENT } from "../../graphql/mutations/activityCommentMutations";
-import { GET_ACTIVITY_COMMENTS } from "../../graphql/queries/activityCommentQueries";
+import { ADD_ACTIVITY_COMMENT } from "../../../graphql/mutations/activityCommentMutations";
+import { GET_ACTIVITY_COMMENTS } from "../../../graphql/queries/activityCommentQueries";
 
 import './addComment.css';
 
