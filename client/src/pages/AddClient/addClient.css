@@ -19,6 +19,10 @@
   align-items: center;
 }
 
+.add-client-form-item {
+  margin-bottom: 10px;
+}
+
 .client-submit-btn {
   border: none;
   background-color: #507ba8;

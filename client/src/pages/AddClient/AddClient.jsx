@@ -17,6 +17,8 @@ const AddClient = () => {
   const [companyName, setCompanyName] = useState("");
   const [status, setStatus] = useState("prospect");
 
+  const rootClass = 'add-client';
+
   const [addClient] = useMutation(ADD_CLIENT, {
     variables: { firstName, lastName, phoneNumber, emailAddress, companyName, status },
     update(cache, { data: { addClient } }) {
@@ -51,8 +53,8 @@ const AddClient = () => {
       <h3 className="add-client-title">Add Client</h3>
 
       <form className="add-client-form" onSubmit={onSubmit}>
-        <div className="row">
-          <div className="col">
+
+          <div className={`${rootClass}-form-item col`}>
             <input
               type="text"
               className="form-control firstName"
@@ -62,7 +64,8 @@ const AddClient = () => {
               onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
-          <div className="col">
+
+          <div className={`${rootClass}-form-item col`}>
             <input
               type="text"
               className="form-control lastName"
@@ -72,7 +75,8 @@ const AddClient = () => {
               onChange={(e) => setLastName(e.target.value)}
             />
           </div>
-          <div className="col">
+
+          <div className={`${rootClass}-form-item col`}>
             <input
               type="text"
               className="form-control companyName"
@@ -82,7 +86,8 @@ const AddClient = () => {
               onChange={(e) => setCompanyName(e.target.value)}
             />
           </div>
-          <div className="col">
+
+          <div className={`${rootClass}-form-item col`}>
             <input
               type="text"
               className="form-control phoneNumber"
@@ -92,7 +97,8 @@ const AddClient = () => {
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
-          <div className="col">
+
+          <div className={`${rootClass}-form-item col`}>
             <input
               type="text"
               className="form-control emailAddress"
@@ -102,13 +108,13 @@ const AddClient = () => {
               onChange={(e) => setEmailAddress(e.target.value)}
             />
           </div>
-          <select className="form-select" aria-label="Default select example">
+
+          <select className={`${rootClass}-form-item form-select`} aria-label="Default select example">
             <option value="">Client Status</option>
             <option value="prospect">Prospect</option>
             <option value="current">Current</option>
             <option value="former">Former</option>
           </select>
-        </div>
 
         <button className="client-submit-btn" type="submit">
           Submit

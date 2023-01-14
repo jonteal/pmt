@@ -12,7 +12,7 @@
 
 .edit-client-name-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .edit-client-firstName {
@@ -25,7 +25,7 @@
 
 .edit-client-submit-btn {
   border: none;
-  background-color: #5ca53c;
+  background-color: #507ba8;
   padding: 10px;
   color: white;
   border-radius: 5px;
@@ -42,7 +42,7 @@
 
 .edit-client-back-btn {
   border: none;
-  background-color: #507ba8;
+  background-color: #c03221;
   padding: 10px;
   color: white;
   border-radius: 5px;

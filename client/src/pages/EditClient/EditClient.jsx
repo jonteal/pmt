@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_CLIENT } from "../../graphql/queries/clientQueries";
@@ -6,7 +6,6 @@ import { UPDATE_CLIENT } from "../../graphql/mutations/clientMutations";
 import Spinner from "../../components/Spinner/Spinner";
 
 import "./editClient.css";
-import { useEffect } from "react";
 
 const EditClient = () => {
   const rootClass = "edit-client";
@@ -89,6 +88,7 @@ const EditClient = () => {
         <div className="mt-2">
           <form onSubmit={onSubmit}>
             <div className={`${rootClass}-name-container`}>
+            
               <div className="mb-3">
                 <label className="form-label">First Name</label>
                 <input
@@ -99,6 +99,7 @@ const EditClient = () => {
                   onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
+
               <div className="mb-3">
                 <label className="form-label">Last Name</label>
                 <input
