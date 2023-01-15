@@ -16,7 +16,8 @@
   border: none;
   background-color: #507ba8;
   padding: 10px;
-  color: #f7f7ff;
+  /* color: #f7f7ff; */
+  color: black;
   border-radius: 5px;
   margin-top: 20px;
 }
