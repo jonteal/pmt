@@ -32,6 +32,12 @@ const ProjectSchema = new mongoose.Schema({
     default: Date.now(),
     get: (timeValue) => moment(timeValue).format('MM/DD/YYYY')
   },
+  clientBudget: {
+    type: Number
+  },
+  projectEstimate: {
+    type: Number
+  }
 });
 
 module.exports = mongoose.model('Project', ProjectSchema);

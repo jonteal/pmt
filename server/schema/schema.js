@@ -29,7 +29,9 @@ const ProjectType = new GraphQLObjectType({
     },
     createdAt: { type: GraphQLString },
     startDate: { type: GraphQLString },
-    deadline: { type: GraphQLString }
+    deadline: { type: GraphQLString },
+    clientBudget: { type: GraphQLString },
+    projectEstimate: { type: GraphQLString },
   }),
 });
 
@@ -222,6 +224,8 @@ const mutation = new GraphQLObjectType({
         clientId: { type: new GraphQLNonNull(GraphQLID) },
         startDate: { type: GraphQLString },
         deadline: { type: GraphQLString },
+        clientBudget: { type: GraphQLString },
+        projectEstimate: { type: GraphQLString },
       },
       resolve(parent, args) {
         const project = new Project({
@@ -233,6 +237,8 @@ const mutation = new GraphQLObjectType({
           startDate: args.startDate,
           deadline: args.deadline,
           createdAt: args.createdAt,
+          clientBudget: args.clientBudget,
+          projectEstimate: args.clientBudget,
         });
 
         return project.save();
@@ -275,6 +281,8 @@ const mutation = new GraphQLObjectType({
         },
         startDate: { type: GraphQLString },
         deadline: { type: GraphQLString },
+        clientBudget: { type: GraphQLString },
+        projectEstimate: { type: GraphQLString },
       },
       resolve(parent, args) {
         return Project.findByIdAndUpdate(
@@ -288,6 +296,8 @@ const mutation = new GraphQLObjectType({
               clientId: args.clientId,
               startDate: args.startDate,
               deadline: args.deadline,
+              clientBudget: args.clientBudget,
+              projectEstimate: args.clientBudget,
             },
           },
           { new: true }

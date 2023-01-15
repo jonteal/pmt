@@ -16,6 +16,6 @@ export const ProjectsService = () => {
     data: projectData,
   } = useQuery(GET_PROJECTS);
 
-  console.log(projectData);
+  // console.log(projectData);
 }
 

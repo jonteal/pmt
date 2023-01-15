@@ -16,6 +16,8 @@ const GET_PROJECTS = gql`
       createdAt
       startDate
       deadline
+      clientBudget
+      projectEstimate
     }
   }
 `;
@@ -36,6 +38,8 @@ const GET_PROJECT = gql`
       createdAt
       startDate
       deadline
+      clientBudget
+      projectEstimate
     }
   }
 `;

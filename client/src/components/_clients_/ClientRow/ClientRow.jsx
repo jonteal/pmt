@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 import './clientRow.css';
 
 const ClientRow = ({ client }) => {
-  console.log('client: ', client);
-
-  const clientName = client.firstName + " " + client.lastName;
 
   let formatPhoneNumber = (str) => {
     let cleaned = ("" + str).replace(/\D/g, "");

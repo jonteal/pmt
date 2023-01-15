@@ -1,8 +1,8 @@
+import { useState } from "react";
 import ProjectRow from "../ProjectRow/ProjectRow";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import "./projectsContainer.css";
-import { useState } from "react";
 
 const ProjectsContainer = ({ projectData, projectContainer }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -37,7 +37,7 @@ const ProjectsContainer = ({ projectData, projectContainer }) => {
           </div>
 
           {isExpanded && (
-            <>
+            <div>
               <div className="project-container-headers">
                 <p className="project-container-header">Project</p>
                 <p className="project-container-header">Status</p>
@@ -56,7 +56,7 @@ const ProjectsContainer = ({ projectData, projectContainer }) => {
                     </li>
                   ))}
               </ul>
-            </>
+            </div>
           )}
         </div>
       </div>

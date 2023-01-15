@@ -26,6 +26,8 @@ const AddProject = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [deadline, setDeadline] = useState(new Date());
   const [notes, setNotes] = useState("");
+  const [clientBudget, setClientBudget] = useState("");
+  const [projectEstimate, setProjectEstimate] = useState("");
 
   const [addProject] = useMutation(ADD_PROJECT, {
     variables: {
@@ -36,6 +38,8 @@ const AddProject = () => {
       startDate,
       deadline,
       notes,
+      clientBudget,
+      projectEstimate,
     },
     update(cache, { data: { addProject } }) {
       const { projects } = cache.readQuery({ query: GET_PROJECTS });
@@ -70,7 +74,9 @@ const AddProject = () => {
       status,
       startDate,
       deadline,
-      notes
+      notes,
+      clientBudget,
+      projectEstimate,
     );
 
     setTitle("");
@@ -80,6 +86,8 @@ const AddProject = () => {
     setStartDate(new Date());
     setDeadline(new Date());
     setNotes("");
+    setClientBudget("");
+    setProjectEstimate("");
   };
 
   if (loading) return <Spinner />;
@@ -166,7 +174,31 @@ const AddProject = () => {
               ></textarea>
             </div>
 
-            <button className="add-project-submit-btn" type="submit">
+            <div className="mb-3">
+              <label className="form-label">Budget</label>
+              <input
+                type="clientBudget"
+                className="form-control"
+                id="exampleFormControlInput1"
+                placeholder="What is the budget for this project?"
+                value={clientBudget}
+                onChange={(e) => setClientBudget(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Project Estimate</label>
+              <input
+                type="projectEstimate"
+                className="form-control"
+                id="exampleFormControlInput1"
+                placeholder="What is the estimate for this project?"
+                value={projectEstimate}
+                onChange={(e) => setProjectEstimate(e.target.value)}
+              />
+            </div>
+
+            <button className="add-project-submit-btn mb-5" type="submit">
               Submit
             </button>
           </form>

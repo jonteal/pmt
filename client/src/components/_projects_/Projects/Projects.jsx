@@ -35,7 +35,7 @@ const Projects = () => {
     <div className="projects-parent-container">
       <div className="projects-header-container">
         <FaProjectDiagram className="projects-header-icon" />
-        <h2 className="projects-header-label">Projects</h2>
+        <h2 className="projects-header-label">Projects ({projectData?.projects.length})</h2>
       </div>
       <ul>
         {projectContainers.map((projectContainer) => (

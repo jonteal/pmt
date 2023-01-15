@@ -5,6 +5,8 @@ import { GET_ACTIVITY_COMMENTS } from "../../graphql/queries/activityCommentQuer
 import ActivityFeed from "../../components/_activityFeed_/ActivityFeed/ActivityFeed";
 import ProjectViewItem from "../../components/_projects_/ProjectViewItem/ProjectViewItem";
 
+import { formatCurrency } from "../../utilities/formatCurrency";
+
 import "./projectView.css";
 
 const ProjectView = () => {
@@ -80,6 +82,16 @@ const ProjectView = () => {
             <ProjectViewItem 
               header="Deadline"
               value={project.deadline}
+            />
+
+            <ProjectViewItem 
+              header="Budget"
+              value={formatCurrency(project.clientBudget)}
+            />
+
+            <ProjectViewItem 
+              header="Project Estimate"
+              value={formatCurrency(project.projectEstimate)}
             />
 
           </div>

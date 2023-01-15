@@ -9,6 +9,8 @@ const ADD_PROJECT = gql`
     $clientId: ID!
     $startDate: String
     $deadline: String
+    $clientBudget: String
+    $projectEstimate: String
   ) {
     addProject(
       title: $title
@@ -18,6 +20,8 @@ const ADD_PROJECT = gql`
       clientId: $clientId 
       startDate: $startDate
       deadline: $deadline
+      clientBudget: $clientBudget
+      projectEstimate: $projectEstimate
     ) {
       id
       title
@@ -31,6 +35,8 @@ const ADD_PROJECT = gql`
       }
       startDate
       deadline
+      clientBudget
+      projectEstimate
     }
   }
 `;
@@ -52,6 +58,8 @@ const UPDATE_PROJECT = gql`
     $notes: String
     $startDate: String
     $deadline: String
+    $clientBudget: String
+    $projectEstimate: String
   ) {
     updateProject(
       id: $id 
@@ -61,6 +69,8 @@ const UPDATE_PROJECT = gql`
       notes: $notes
       startDate: $startDate
       deadline: $deadline
+      clientBudget: $clientBudget
+      projectEstimate: $projectEstimate
     ) {
       id 
       title 
@@ -74,6 +84,8 @@ const UPDATE_PROJECT = gql`
       }
       startDate
       deadline
+      clientBudget
+      projectEstimate
     }
   }
 `;
