@@ -24,9 +24,9 @@
   width: 100%;
 }
 
-.client-submit-btn {
+.client-add-submit-btn {
   border: none;
-  background-color: #507ba8;
+  background-color: #1f3e5e;
   padding: 10px;
   color: white;
   border-radius: 5px;

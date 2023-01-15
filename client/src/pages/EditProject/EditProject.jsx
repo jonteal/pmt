@@ -43,6 +43,8 @@ const EditProject = () => {
   const [deadline, setDeadline] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
   const [notes, setNotes] = useState(data.project.notes);
+  const [clientBudget, setClientBudget] = useState(data.project.clientBudget);
+  const [projectEstimate, setProjectEstimate] = useState(data.project.projectEstimate);
 
   const [updateProject] = useMutation(UPDATE_PROJECT, {
     variables: {
@@ -53,7 +55,9 @@ const EditProject = () => {
       startDate,
       deadline,
       clientId,
-      notes
+      notes,
+      clientBudget,
+      projectEstimate
     },
     refetchQueries: [
       { query: GET_PROJECT, variables: { id: data.project.id } },
@@ -83,7 +87,7 @@ const EditProject = () => {
       return alert("Please fill out all fields");
     }
 
-    updateProject(title, description, status, startDate, deadline, notes);
+    updateProject(title, description, status, startDate, deadline, notes, projectEstimate, clientBudget);
     navigate(projectLocation);
   };
 
@@ -167,6 +171,30 @@ const EditProject = () => {
                 onChange={(e) => setNotes(e.target.value)}
               ></textarea>
             </div>
+
+            <div className="mb-3">
+            <label className="form-label">Budget</label>
+            <input
+              type="clientBudget"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder="What is the budget for this project?"
+              value={clientBudget}
+              onChange={(e) => setClientBudget(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Project Estimate</label>
+            <input
+              type="projectEstimate"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder="What is the estimate for this project?"
+              value={projectEstimate}
+              onChange={(e) => setProjectEstimate(e.target.value)}
+            />
+          </div>
 
             <div>
               <button
