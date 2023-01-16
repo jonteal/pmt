@@ -8,6 +8,16 @@ const Header = () => {
       <Link to="/">
         <h2 className="header-title">D Y N A</h2>
       </Link>
+
+      <div className="header-links-container">
+        <Link to="/projects">
+          <h2 className="header-link">Projects</h2>
+        </Link>
+
+        <Link to="/clients">
+          <h2 className="header-link">Clients</h2>
+        </Link>
+      </div>
     </div>
   );
 };

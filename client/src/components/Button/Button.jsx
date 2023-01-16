@@ -1,20 +1,17 @@
 import React from 'react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './button.css';
 
-const Button = ({ type, children }) => {
-  const [color, setColor] = useState('')
+const Button = ({  }) => {
 
-  if (type === 'add') {
-    setColor('green');
-  } else if (type === 'delete') {
-    setColor('red');
-  }
 
   return (
-    <button className={`${color} btn-component`}>
-      {children}
+    <button className='btn-component'>
+      <Link>
+        
+      </Link>
     </button>
   )
 }

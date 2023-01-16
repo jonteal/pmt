@@ -1,0 +1,17 @@
+.projects-page-main-container {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.projects-page-add-project-btn {
+  border: none;
+  background-color: #545e75;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 20px;
+}

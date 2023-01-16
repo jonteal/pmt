@@ -105,7 +105,7 @@ const AddProject = () => {
         <div className="add-project-container">
 
           {alertOn && (
-            <div className="alert alert-danger" role="alert">
+            <div className="alert alert-danger mt-3" role="alert">
               Please provide a title, description, and status!
             </div>
           )}

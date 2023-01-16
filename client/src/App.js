@@ -13,6 +13,8 @@ import AddClient from "./pages/AddClient/AddClient";
 import AddProject from "./pages/AddProject/AddProject";
 import EditProject from "./pages/EditProject/EditProject";
 import EditClient from "./pages/EditClient/EditClient";
+import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
+import ClientsPage from "./pages/ClientsPage/ClientsPage";
 
 import "./App.css";
 
@@ -55,6 +57,8 @@ function App() {
             <Route path="/projects/:id" element={<ProjectView />} />
             <Route path="/projects/:id/edit" element={<EditProject />} />
             <Route path="/clients/:id/edit" element={<EditClient />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/clients" element={<ClientsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
