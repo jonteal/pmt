@@ -17,6 +17,14 @@ const Header = () => {
         <Link to="/clients">
           <h2 className="header-link">Clients</h2>
         </Link>
+
+        <Link to="/dashboard">
+          <h2 className="header-link">Dashboard</h2>
+        </Link>
+
+        <Link to="/projects/:id/kanban">
+          <h2 className="header-link">Kanban</h2>
+        </Link>
       </div>
     </div>
   );

@@ -17,6 +17,8 @@ import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
 import ClientsPage from "./pages/ClientsPage/ClientsPage";
 
 import "./App.css";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Kanban from "./pages/Kanban/Kanban";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -59,6 +61,8 @@ function App() {
             <Route path="/clients/:id/edit" element={<EditClient />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/clients" element={<ClientsPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/projects/:id/kanban" element={<Kanban />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
