@@ -34,17 +34,17 @@
 export const ClientData = [
   {
     id: 1,
-    status: "prospect",
+    status: "Prospect",
     number: 5
   },
   {
     id: 2,
-    status: "current",
+    status: "Current",
     number: 10,
   },
   {
     id: 3,
-    status: "former",
+    status: "Former",
     number: 4,
   },
 ];
@@ -53,16 +53,16 @@ export const ProjectData = [
   {
     id: 1,
     status: "Not Started",
-    number: 10
+    number: 1
   },
   {
     id: 2,
     status: "In Progress",
-    number: 15,
+    number: 1,
   },
   {
     id: 3,
     status: "Completed",
-    number: 21,
+    number: 1,
   },
 ];

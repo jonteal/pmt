@@ -19,6 +19,7 @@ import ClientsPage from "./pages/ClientsPage/ClientsPage";
 import "./App.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Kanban from "./pages/Kanban/Kanban";
+import { useState } from "react";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -45,6 +46,7 @@ const client = new ApolloClient({
 });
 
 function App() {
+
   return (
     <div className="App">
       <ApolloProvider client={client}>

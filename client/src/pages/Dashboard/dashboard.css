@@ -1,3 +1,16 @@
+.dashboard-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-header-title {
+  align-self: center;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
 .dashboard-data-container {
   display: flex;
   flex-direction: column;
@@ -9,7 +22,7 @@
 .dashboard-project-parent-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 100px;
 }
 
