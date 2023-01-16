@@ -28,6 +28,7 @@ const AddProject = () => {
   const [notes, setNotes] = useState("");
   const [clientBudget, setClientBudget] = useState("");
   const [projectEstimate, setProjectEstimate] = useState("");
+  const [alertOn, setAlertOn] = useState(false);
 
   const [addProject] = useMutation(ADD_PROJECT, {
     variables: {
@@ -64,7 +65,12 @@ const AddProject = () => {
     e.preventDefault();
 
     if (title === "" || description === "" || status === "") {
-      return alert("Please fill in all fields");
+      setAlertOn(true);
+      return (
+        <div class="alert alert-danger" role="alert">
+          Please provide a title, description, and status!
+        </div>
+      );
     }
 
     addProject(
@@ -76,7 +82,7 @@ const AddProject = () => {
       deadline,
       notes,
       clientBudget,
-      projectEstimate,
+      projectEstimate
     );
 
     setTitle("");
@@ -97,6 +103,13 @@ const AddProject = () => {
     <div>
       {!loading && !error && (
         <div className="add-project-container">
+
+          {alertOn && (
+            <div className="alert alert-danger" role="alert">
+              Please provide a title, description, and status!
+            </div>
+          )}
+
           <label className="form-label client-select">Client Name</label>
           <select
             className="form-select"

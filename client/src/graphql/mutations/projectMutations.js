@@ -37,6 +37,7 @@ const ADD_PROJECT = gql`
       deadline
       clientBudget
       projectEstimate
+      createdAt
     }
   }
 `;
@@ -86,6 +87,7 @@ const UPDATE_PROJECT = gql`
       deadline
       clientBudget
       projectEstimate
+      createdAt
     }
   }
 `;

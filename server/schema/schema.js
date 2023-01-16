@@ -236,7 +236,6 @@ const mutation = new GraphQLObjectType({
           clientId: args.clientId,
           startDate: args.startDate,
           deadline: args.deadline,
-          createdAt: args.createdAt,
           clientBudget: args.clientBudget,
           projectEstimate: args.projectEstimate,
         });
