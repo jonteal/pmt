@@ -1,6 +1,8 @@
 const Client = require("../models/Client");
 const Project = require("../models/Project");
 const ActivityComment = require("../models/ActivityComment");
+const Ticket = require("../models/Ticket");
+const Kanban = require("../models/Kanban");
 
 const {
   GraphQLObjectType,
@@ -63,6 +65,43 @@ const ActivityCommentType = new GraphQLObjectType({
   }),
 });
 
+// Ticket type
+const TicketType = new GraphQLObjectType({
+  name: "Ticket",
+  fields: () => ({
+    id: { type: GraphQLID },
+    title: { type: GraphQLString },
+    description: { type: GraphQLString },
+    status: { type: GraphQLString },
+    kanban: {
+      type: KanbanType,
+      resolve(parent, args) {
+        return Kanban.findById(parent.kanbanId);
+      },
+    },
+    createdAt: {
+      type: GraphQLString,
+    },
+  }),
+});
+
+// Kanban Type
+const KanbanType = new GraphQLObjectType({
+  name: "Kanban",
+  fields: () => ({
+    id: { type: GraphQLID },
+    title: { type: GraphQLString },
+    description: { type: GraphQLString },
+    project: {
+      type: ProjectType,
+      resolve(parent, args) {
+        return Project.findById(parent.projectId);
+      },
+    },
+    createdAt: { type: GraphQLString },
+  }),
+});
+
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
@@ -103,6 +142,32 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return ActivityComment.findById(args.id);
+      },
+    },
+    tickets: {
+      type: new GraphQLList(TicketType),
+      resolve(parent, args) {
+        return Ticket.find();
+      },
+    },
+    ticket: {
+      type: TicketType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return Ticket.findById(args.id);
+      },
+    },
+    kanbans: {
+      type: new GraphQLList(KanbanType),
+      resolve(parent, args) {
+        return Kanban.find();
+      },
+    },
+    kanban: {
+      type: KanbanType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return Kanban.findById(args.id);
       },
     },
   },
@@ -251,11 +316,13 @@ const mutation = new GraphQLObjectType({
         id: { type: new GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
-        ActivityComment.find({ projectId: args.id }).then((activityComments) => {
-          activityComments.forEach((activityComment) => {
-            activityComment.remove();
-          })
-        })
+        ActivityComment.find({ projectId: args.id }).then(
+          (activityComments) => {
+            activityComments.forEach((activityComment) => {
+              activityComment.remove();
+            });
+          }
+        );
         return Project.findByIdAndRemove(args.id);
       },
     },
@@ -330,6 +397,145 @@ const mutation = new GraphQLObjectType({
       },
       resolve(parent, args) {
         return ActivityComment.findByIdAndRemove(args.id);
+      },
+    },
+
+    // Add a Ticket
+    addTicket: {
+      type: TicketType,
+      args: {
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        description: { type: new GraphQLNonNull(GraphQLString) },
+        status: {
+          type: new GraphQLEnumType({
+            name: "TicketStatus",
+            values: {
+              pre: { value: "Ready" },
+              middle: { value: "In Progress" },
+              old: { value: "Done" },
+            },
+          }),
+          defaultValue: "Ready",
+        },
+        kanbanId: { type: new GraphQLNonNull(GraphQLID) },
+        createdAt: { type: GraphQLString },
+      },
+      resolve(parent, args) {
+        const ticket = new Ticket({
+          title: args.title,
+          description: args.description,
+          status: args.status,
+          kanbanId: args.kanbanId,
+          createdAt: args.createdAt,
+        });
+
+        return ticket.save();
+      },
+    },
+
+    // Delete a ticket
+    deleteTicket: {
+      type: TicketType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Ticket.findByIdAndRemove(args.id);
+      },
+    },
+
+    // Update an ticket
+    updateTicket: {
+      type: TicketType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        title: { type: GraphQLString },
+        description: { type: GraphQLString },
+        status: {
+          type: new GraphQLEnumType({
+            name: "TicketStatusUpdate",
+            values: {
+              pre: { value: "Ready" },
+              middle: { value: "In Progress" },
+              old: { value: "Done" },
+            },
+          }),
+        },
+        createdAt: { type: GraphQLString },
+      },
+      resolve(parent, args) {
+        return Ticket.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              title: args.title,
+              description: args.description,
+              status: args.status,
+            },
+          },
+          { new: true }
+        );
+      },
+    },
+
+    // Add a Kanban
+    addKanban: {
+      type: KanbanType,
+      args: {
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        description: { type: new GraphQLNonNull(GraphQLString) },
+        projectId: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        const kanban = new Kanban({
+          title: args.title,
+          description: args.description,
+          projectId: args.projectId,
+        });
+
+        return kanban.save();
+      },
+    },
+
+    // Delete a Kanban
+    deleteKanban: {
+      type: KanbanType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        Ticket.find({ kanbanId: args.id }).then(
+          (tickets) => {
+            tickets.forEach((ticket) => {
+              ticket.remove();
+            });
+          }
+        );
+        return Kanban.findByIdAndRemove(args.id);
+      },
+    },
+
+    // Update a Kanban
+    updateKanban: {
+      type: KanbanType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        title: { type: GraphQLString },
+        description: { type: GraphQLString },
+        projectId: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(parent, args) {
+        return Kanban.findByIdAndUpdate(
+          args.id,
+          {
+            $set: {
+              title: args.title,
+              description: args.description,
+              projectId: args.projectId,
+            },
+          },
+          { new: true }
+        );
       },
     },
   },

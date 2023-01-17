@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 import { ClientData, ProjectData } from "../../services/data";
 import BarChart from "../../components/_dashboard_/BarChart/BarChart";
-import LineChart from "../../components/_dashboard_/LineChart/LineChart";
+// import LineChart from "../../components/_dashboard_/LineChart/LineChart";
 import PieChart from "../../components/_dashboard_/PieChart/PieChart";
 
 import "./dashboard.css";
@@ -11,49 +11,47 @@ import "./dashboard.css";
 const Dashboard = () => {
   const { data: projectData } = useQuery(GET_PROJECTS);
   const [projects, setProjects] = useState([]);
-  // const [sortedByStatus, setSortedByStatus] = useState([]);
-
-
-
 
   useEffect(() => {
     if (projectData) {
       setProjects(projectData?.projects);
     }
   }, [projectData]);
-  
-  const notStarted = 'Not Started';
-  const notStartedProjects = projects.filter((project) => project.status === notStarted);
-  const notStartedProjectsCount = notStartedProjects?.length;
 
-  const inProgress = 'In Progress';
-  const inProgressProjects = projects.filter((project) => project.status === inProgress);
-  const inProgressProjectsCount = inProgressProjects?.length;
-  
-  const completed = 'Completed';
-  const completedProjects = projects.filter((project) => project.status === completed);
-  const completedProjectsCount = completedProjects?.length;
+  const notStarted = "Not Started";
+  const notStartedProjects = projects.filter(
+    (project) => project.status === notStarted
+  );
 
+  const inProgress = "In Progress";
+  const inProgressProjects = projects.filter(
+    (project) => project.status === inProgress
+  );
+
+  const completed = "Completed";
+  const completedProjects = projects.filter(
+    (project) => project.status === completed
+  );
 
   const sortedProjects = [
     {
       id: 1,
-      status: 'Not Started',
-      projects: notStartedProjectsCount,
+      status: "Not Started",
+      projects: notStartedProjects?.length,
     },
     {
       id: 2,
-      status: 'In Progress',
-      projects: inProgressProjectsCount,
+      status: "In Progress",
+      projects: inProgressProjects?.length,
     },
     {
       id: 3,
-      status: 'Completed',
-      projects: completedProjectsCount,
-    }
-  ]
-
-  console.log('sortedProjects: ', sortedProjects);
+      status: "Completed",
+      projects: completedProjects?.length,
+    },
+  ];
+  
+  console.log("sortedProjects: ", sortedProjects);
 
   const [projectByStatus, setProjectByStatus] = useState({
     labels: sortedProjects.map((category) => category.status),
@@ -67,9 +65,6 @@ const Dashboard = () => {
       },
     ],
   });
-
-
-
 
   const [clientData, setClientData] = useState({
     labels: ClientData.map((data) => data.status),
@@ -133,19 +128,12 @@ const Dashboard = () => {
         </div>
       </div>
 
-             <div className="dashboard-data-container">
+      <div className="dashboard-data-container">
         <h2 className="dashboard-chart-title">Project By Status</h2>
         <div style={{ width: 700 }}>
           <BarChart chartData={projectByStatus} />
         </div>
-  </div> 
-
-      {/*      <div className="dashboard-data-container">
-        <h2 className="dashboard-chart-title">Total Project Count</h2>
-        <div style={{ width: 400 }}>
-          <PieChart chartData={totalProjectCount} />
-        </div>
-  </div> */}
+      </div>
 
       <div className="dashboard-data-container">
         <h2 className="dashboard-chart-title">Project By Status</h2>

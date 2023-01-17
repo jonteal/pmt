@@ -20,6 +20,7 @@ import "./App.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Kanban from "./pages/Kanban/Kanban";
 import { useState } from "react";
+import AddKanban from "./pages/AddKanban/AddKanban";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -64,7 +65,7 @@ function App() {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/clients" element={<ClientsPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/projects/:id/kanban" element={<Kanban />} />
+            <Route path="/projects/:id/addKanban" element={<AddKanban />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

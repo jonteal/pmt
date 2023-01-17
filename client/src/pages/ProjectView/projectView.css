@@ -13,10 +13,31 @@
 .project-view-btn-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
 }
 
 .project-view-edit-btn {
+  border: none;
+  background-color: #507ba8;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 5px;
+}
+
+.project-view-edit-btn:hover {
+  background-color: #a5823c;
+  color: white;
+}
+
+.project-view-add-kanban {
   border: none;
   background-color: #507ba8;
   padding: 10px;
