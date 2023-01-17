@@ -8,6 +8,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_TICKETS } from "../../graphql/queries/ticketQueries";
 import { GET_KANBANS } from "../../graphql/queries/kanbanQueries";
 import { ADD_TICKET } from "../../graphql/mutations/ticketMutations";
+import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 
 // COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
@@ -38,6 +39,9 @@ const AddKanban = () => {
   });
 
   const { loading, error, data } = useQuery(GET_KANBANS);
+  const { loading: projectsLoading, error: projectsError, data: projectsData } = useQuery(GET_PROJECTS);
+
+  console.log('projectsData: ', projectsData);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -66,7 +70,7 @@ const AddKanban = () => {
             onChange={(e) => setKanbanId(e.target.value)}
           >
             <option value="">Select Kanban</option>
-            {data.projects.map((project) => (
+            {projectsData.projects.map((project) => (
               <option key={project.id} value={project.id}>
                 {project.title}
               </option>

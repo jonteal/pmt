@@ -58,7 +58,7 @@ const Kanban = () => {
         <button className="add-ticket-btn">
           <Link to="/addTicket">Add Ticket</Link>
         </button>
-        <AddTicket />
+        {/*<AddTicket />*/}
       </div>
 
       <StatusColumn statusColumns={statusColumns} ticketData={ticketData} />
