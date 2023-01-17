@@ -1,0 +1,20 @@
+.add-ticket-modal-btn {
+  border: none;
+  background-color: #99c1b9;
+  padding: 10px;
+  color: black;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 5%;
+}
+
+.add-ticket-modal-btn:hover {
+  background-color: #a5823c;
+  color: white;
+}
+
+.add-ticket-btn-label {
+  margin-left: 10px;
+}

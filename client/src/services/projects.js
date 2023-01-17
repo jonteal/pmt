@@ -9,13 +9,13 @@ import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 //       })
 // }
 
-export const ProjectsService = () => {
-  const {
-    loading: projectLoading,
-    error: projectError,
-    data: projectData,
-  } = useQuery(GET_PROJECTS);
+// export const ProjectsService = () => {
+//   const {
+//     loading: projectLoading,
+//     error: projectError,
+//     data: projectData,
+//   } = useQuery(GET_PROJECTS);
 
-  // console.log(projectData);
-}
+
+// }
 

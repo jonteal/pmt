@@ -1,0 +1,12 @@
+.kanban-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.kanban-title {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-top: 20px;
+}

@@ -1,0 +1,11 @@
+.kanban-item {
+  border: .5px solid lightseagreen;
+  padding: 15px;
+  border-radius: 5px;
+  width: auto;
+  margin: 10px;
+}
+
+.kanban-item:hover {
+  cursor: pointer;
+}

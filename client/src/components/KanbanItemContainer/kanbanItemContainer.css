@@ -1,0 +1,11 @@
+.kanban-item-container {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border: .5px solid lightseagreen;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 5px;
+}

@@ -1,13 +1,15 @@
-import React from 'react'
+import { Link } from "react-router-dom";
+import "./kanbanItem.css";
 
-const KanbanItem = ({kanban}) => {
-  console.log(kanban);
+const KanbanItem = ({ kanban }) => {
 
   return (
-    <div>
-      <h2>{kanban.title}</h2>
+    <div className="kanban-item">
+      <Link to={`/projects/${kanban.project.id}/kanban/${kanban.id}`}>
+        <h2>{kanban.title}</h2>
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default KanbanItem
+export default KanbanItem;

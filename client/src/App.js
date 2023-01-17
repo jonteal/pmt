@@ -15,12 +15,12 @@ import EditProject from "./pages/EditProject/EditProject";
 import EditClient from "./pages/EditClient/EditClient";
 import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
 import ClientsPage from "./pages/ClientsPage/ClientsPage";
-
-import "./App.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Kanban from "./pages/Kanban/Kanban";
-import { useState } from "react";
 import AddKanban from "./pages/AddKanban/AddKanban";
+import AddTicket from './pages/AddTicket/AddTicket';
+
+import "./App.css";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -66,6 +66,8 @@ function App() {
             <Route path="/clients" element={<ClientsPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/projects/:id/addKanban" element={<AddKanban />} />
+            <Route path="/projects/:id/kanban/:id" element={<Kanban />} />
+            <Route path="/addTicket" element={<AddTicket />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

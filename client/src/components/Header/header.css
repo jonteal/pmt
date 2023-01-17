@@ -4,13 +4,13 @@
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
-  background-color: #3f826d;
+  background-color: #99c1b9;
 }
 
 .header-title {
   font-weight: bold;
   font-size: 1.1rem;
-  color: #f7f7ff;
+  color: rgb(62, 57, 57);
   margin-left: 20px;
 }
 
@@ -21,6 +21,6 @@
 
 .header-link {
   font-size: .9rem;
-  color: #f7f7ff;
+  color: rgb(62, 57, 57);
   margin-left: 25px;
 }

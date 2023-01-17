@@ -1,16 +1,19 @@
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+
+// GRAPHQL
 import { GET_PROJECT } from "../../graphql/queries/projectQueries";
 import { GET_KANBANS } from "../../graphql/queries/kanbanQueries";
 import { GET_ACTIVITY_COMMENTS } from "../../graphql/queries/activityCommentQueries";
+
+// COMPONENTS
 import ActivityFeed from "../../components/_activityFeed_/ActivityFeed/ActivityFeed";
 import ProjectViewItem from "../../components/_projects_/ProjectViewItem/ProjectViewItem";
-import Kanban from "../Kanban/Kanban";
+import KanbanItemContainer from "../../components/KanbanItemContainer/KanbanItemContainer";
 
 import { formatCurrency } from "../../utilities/formatCurrency";
 
 import "./projectView.css";
-import KanbanItem from "../../components/KanbanItem/KanbanItem";
 
 const ProjectView = () => {
   const rootClass = "project-view";
@@ -36,8 +39,6 @@ const ProjectView = () => {
     data: kanbanData,
   } = useQuery(GET_KANBANS);
 
-  console.log(kanbanData);
-
   if (projectLoading) return <p>Loading...</p>;
   if (projectError) return <p>There was an error...</p>;
 
@@ -56,9 +57,8 @@ const ProjectView = () => {
 
   return (
     <div>
-      {kanbanData.kanbans.map((kanban) => (
-        <KanbanItem key={kanban.id} kanban={kanban} />
-      ))}
+      {kanbanData && <KanbanItemContainer kanbanData={kanbanData} />}
+
       <div className={`${rootClass}-main-container`}>
         <div>
           <div className={`${rootClass}-btn-container`}>
