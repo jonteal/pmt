@@ -1,9 +1,11 @@
 import { useQuery } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
-import StatusColumn from "../../components/StatusColumn/StatusColumn";
 
+// COMPONENTS
+import StatusColumn from "../../components/_kanban_/StatusColumn/StatusColumn";
+
+// GRAPHQL
 import { GET_TICKETS } from "../../graphql/queries/ticketQueries";
-
 import { GET_KANBAN } from "../../graphql/queries/kanbanQueries";
 
 import "./kanban.css";
@@ -39,18 +41,12 @@ const Kanban = () => {
     },
   ];
 
-  if (kanbanLoading) return <p>Loading...</p>;
-  if (kanbanError) return <p>There was an error...</p>;
-  if (ticketLoading) return <p>Loading...</p>;
-  if (ticketError) return <p>There was an error...</p>;
+  if (kanbanLoading || ticketLoading) return <p>Loading...</p>;
+  if (kanbanError || ticketError) return <p>There was an error...</p>;
 
-  const ticketArray = ticketData.tickets;
-  
-  console.log('ticketArray: ', ticketArray);
-
-  const kanbanId = kanbanData.kanban.id;
-
-  const matchingTickets = ticketArray.filter((ticket) => ticket.kanban.id === kanbanId);
+  const matchingTickets = ticketData.tickets.filter(
+    (ticket) => ticket.kanban.id === kanbanData.kanban.id
+  );
 
   return (
     <div className="kanban-main-container">
@@ -63,12 +59,12 @@ const Kanban = () => {
         <button className="add-ticket-btn">
           <Link to="/addTicket">Add Ticket</Link>
         </button>
-        {/*<AddTicket />*/}
       </div>
 
-      {/* IT LOOKS LIKE ALL THE TICKETDATA IS BEING PASSED IN HERE AND IS LIKELY NOT FILTERING APPROPRIATELY OR SOMETHING... */}
-
-      <StatusColumn statusColumns={statusColumns} matchingTickets={matchingTickets} />
+      <StatusColumn
+        statusColumns={statusColumns}
+        matchingTickets={matchingTickets}
+      />
     </div>
   );
 };

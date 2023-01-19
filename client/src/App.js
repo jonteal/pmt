@@ -19,6 +19,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Kanban from "./pages/Kanban/Kanban";
 import AddKanban from "./pages/AddKanban/AddKanban";
 import AddTicket from './pages/AddTicket/AddTicket';
+import TicketView from "./pages/TicketView/TicketView";
 
 import "./App.css";
 
@@ -68,6 +69,7 @@ function App() {
             <Route path="/projects/:id/addKanban" element={<AddKanban />} />
             <Route path="/projects/:id/kanban/:id" element={<Kanban />} />
             <Route path="/addTicket" element={<AddTicket />} />
+            <Route path="/tickets/:id" element={<TicketView />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

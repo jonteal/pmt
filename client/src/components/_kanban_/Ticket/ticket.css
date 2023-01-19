@@ -18,11 +18,6 @@
   transition-timing-function: ease-out;
   transition-delay: 0s;
   transition-property: all;
-  cursor: grab;
-}
-
-.ticket-container:active {
-  cursor: grabbing;
 }
 
 .ticket-links {
@@ -31,6 +26,11 @@
   flex-direction: row;
   justify-content: flex-end;
 }
+
+.ticket-link {
+  margin-left: 10px;
+}
+
 .ticket-title {
   font-weight: bold;
   margin-bottom: 20px;

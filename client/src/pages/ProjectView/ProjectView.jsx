@@ -9,7 +9,7 @@ import { GET_ACTIVITY_COMMENTS } from "../../graphql/queries/activityCommentQuer
 // COMPONENTS
 import ActivityFeed from "../../components/_activityFeed_/ActivityFeed/ActivityFeed";
 import ProjectViewItem from "../../components/_projects_/ProjectViewItem/ProjectViewItem";
-import KanbanItemContainer from "../../components/KanbanItemContainer/KanbanItemContainer";
+import KanbanItemContainer from "../../components/_kanban_/KanbanItemContainer/KanbanItemContainer";
 
 import { formatCurrency } from "../../utilities/formatCurrency";
 

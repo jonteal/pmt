@@ -1,8 +1,11 @@
-import Spinner from "../Spinner/Spinner"
+import { useQuery } from '@apollo/client';
+
+// COMPONENTS
+import Spinner from "../../Spinner/Spinner"
 import Ticket from "../Ticket/Ticket";
 
-import { useQuery } from '@apollo/client';
-import { GET_TICKETS } from '../../graphql/queries/ticketQueries';
+// GRAPHQL
+import { GET_TICKETS } from '../../../graphql/queries/ticketQueries';
 
 import './tickets.css';
 
@@ -11,10 +14,6 @@ const Tickets = () => {
 
   if (loading) return <Spinner />;
   if (error) return <p>Something went wrong...</p>
-
-  // Get the ticket data
-  // Look at each ticket in the array and see what status it has
-  // Put it in the correct column based on state
 
   return (
     <div>
