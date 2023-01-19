@@ -1,7 +1,7 @@
 import Ticket from "../Ticket/Ticket";
 import "./statusColumn.css";
 
-const StatusColumn = ({ statusColumns, ticketData }) => {
+const StatusColumn = ({ statusColumns, matchingTickets }) => {
   return (
     <div className="status-column-container">
       {statusColumns.map((column) => (
@@ -10,7 +10,7 @@ const StatusColumn = ({ statusColumns, ticketData }) => {
             <h5>{column.state}</h5>
           </div>
           <ul className="ticket-list">
-            {ticketData.tickets
+            {matchingTickets
               .filter((ticket) => ticket.status === column.state)
               .map((ticket) => (
                 <li key={ticket.id} className="column-list-item">

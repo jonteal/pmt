@@ -8,7 +8,6 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_TICKETS } from "../../graphql/queries/ticketQueries";
 import { GET_KANBANS } from "../../graphql/queries/kanbanQueries";
 import { ADD_TICKET } from "../../graphql/mutations/ticketMutations";
-import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 
 // COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
@@ -38,10 +37,7 @@ const AddKanban = () => {
     },
   });
 
-  const { loading, error, data } = useQuery(GET_KANBANS);
-  const { loading: projectsLoading, error: projectsError, data: projectsData } = useQuery(GET_PROJECTS);
-
-  console.log('projectsData: ', projectsData);
+  const { loading: kanbanLoading, error: kanbanError, data: kanbanData } = useQuery(GET_KANBANS);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -54,13 +50,13 @@ const AddKanban = () => {
     setStatus("pre");
   };
 
-  if (loading) return <Spinner />;
-  if (error) return <p>There was an error loading the content</p>;
+  if (kanbanLoading) return <Spinner />;
+  if (kanbanError) return <p>There was an error loading the content</p>;
 
   return (
     <div>
-      {!loading && !error && (
-        <div className="add-project-container">
+      {!kanbanLoading && !kanbanError && (
+        <div className="add-ticket-container">
           <label className="form-label client-select">Kanban Title</label>
           <select
             className="form-select"
@@ -70,13 +66,13 @@ const AddKanban = () => {
             onChange={(e) => setKanbanId(e.target.value)}
           >
             <option value="">Select Kanban</option>
-            {projectsData.projects.map((project) => (
-              <option key={project.id} value={project.id}>
-                {project.title}
+            {kanbanData.kanbans.map((kanban) => (
+              <option key={kanban.id} value={kanban.id}>
+                {kanban.title}
               </option>
             ))}
           </select>
-          <form className="add-project-form" onSubmit={onSubmit}>
+          <form className="add-ticket-form" onSubmit={onSubmit}>
             <div className="mb-3">
               <div className="mb-3">
                 <label className="form-label">Title</label>
@@ -113,7 +109,7 @@ const AddKanban = () => {
               </div>
             </div>
 
-            <button className="add-project-submit-btn mb-5" type="submit">
+            <button className="add-ticket-submit-btn mb-5" type="submit">
               Submit
             </button>
           </form>

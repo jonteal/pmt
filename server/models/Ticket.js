@@ -14,7 +14,7 @@ const TicketSchema = new mongoose.Schema({
   },
   kanbanId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Project",
+    ref: "Kanban",
   },
   createdAt: {
     type: Date,

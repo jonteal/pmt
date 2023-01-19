@@ -45,6 +45,9 @@ const ProjectView = () => {
   if (activityCommentsLoading) return <p>Loading...</p>;
   if (activityCommentsError) return <p>There was an error...</p>;
 
+  if (kanbanLoading) return <p>Loading...</p>;
+  if (kanbanError) return <p>There is an error return your kanbans...</p>;
+
   const project = projectData.project;
 
   const projectId = projectData.project.id;
@@ -55,9 +58,17 @@ const ProjectView = () => {
     (activityComment) => activityComment.project.id === projectId
   );
 
+  const kanbansArray = kanbanData.kanbans;
+
+  const matchingKanbans = kanbansArray.filter(
+    (kanban) => kanban.project.id === projectId
+  );
+
   return (
     <div>
-      {kanbanData && <KanbanItemContainer kanbanData={kanbanData} />}
+      {matchingKanbans && (
+        <KanbanItemContainer matchingKanbans={matchingKanbans} />
+      )}
 
       <div className={`${rootClass}-main-container`}>
         <div>
