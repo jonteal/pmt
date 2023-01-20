@@ -1,13 +1,11 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_TICKET } from "../../graphql/queries/ticketQueries";
 import Spinner from "../../components/Spinner/Spinner";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
-// import UserRow from "../../components/UserRow/UserRow";
-// import { FaRegEdit } from "react-icons/fa";
+import { FaRegEdit } from "react-icons/fa";
 
 import "./ticketView.css";
-// import UpdateTicketModal from "../../components/UpdateTicketModal/UpdateTicketModal";
 
 const TicketView = ({ ticket }) => {
   const { id } = useParams();
@@ -34,19 +32,29 @@ const TicketView = ({ ticket }) => {
         <div className="ticket-view-card">
           <div className="mx-auto w-100 p-5">
             <div className="ticket-view-controls">
+              <Link to={`/tickets/${ticketData.ticket.id}/edit`}>
+                <FaRegEdit />
+              </Link>
               <button
                 onClick={handleBackNavigate}
-                className="btn btn-light btn-sm w-25 d-inline ms-auto back-btn"
+                className="btn btn-light btn-sm d-inline ms-auto ticket-view-back-btn"
               >
-                <FaRegArrowAltCircleLeft className="back-arrow" />{" "}
                 <span>Back</span>
               </button>
             </div>
 
             <div className="ticket-view-content">
-              <h4>{ticketData.ticket.title}</h4>
-              <div className="description">
+            <h3 className="ticket-view-header">Title</h3>
+              <div className="ticket-view-header-container">
+                <h4>{ticketData.ticket.title}</h4>
+              </div>
+              <h3 className="ticket-view-header">Description</h3>
+              <div className="ticket-view-description">
                 <p>{ticketData.ticket.description}</p>
+              </div>
+              <div className="ticket-view-createdAt-container">
+                <h3 className="ticket-view-header">Created at</h3>
+                <p>{ticketData.ticket.createdAt}</p>
               </div>
             </div>
           </div>

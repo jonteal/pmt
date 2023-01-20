@@ -56,7 +56,7 @@ const Kanban = () => {
       </div>
 
       <div className="kanban-button-container">
-        <button className="add-ticket-btn">
+        <button className="kanban-add-ticket-btn">
           <Link to="/addTicket">Add Ticket</Link>
         </button>
       </div>

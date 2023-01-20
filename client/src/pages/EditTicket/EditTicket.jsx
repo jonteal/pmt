@@ -1,61 +1,63 @@
-// REACT
 import { useState } from "react";
-
-// APOLLO
+import { useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 
 // GRAPHQL
-import { GET_TICKETS } from "../../graphql/queries/ticketQueries";
+import { UPDATE_TICKET } from "../../graphql/mutations/ticketMutations";
+import { GET_TICKET } from "../../graphql/queries/ticketQueries";
 import { GET_KANBANS } from "../../graphql/queries/kanbanQueries";
-import { ADD_TICKET } from "../../graphql/mutations/ticketMutations";
 
-// COMPONENTS
-import Spinner from "../../components/Spinner/Spinner";
 
-import "./addTicket.css";
+// import "./editTicket.css";
 
-const AddKanban = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [kanbanId, setKanbanId] = useState("");
-  const [status, setStatus] = useState("pre");
-
-  const [addTicket] = useMutation(ADD_TICKET, {
-    variables: {
-      title,
-      description,
-      kanbanId,
-      status,
-    },
-
-    update(cache, { data: { addTicket } }) {
-      const { tickets } = cache.readQuery({ query: GET_TICKETS });
-      cache.writeQuery({
-        query: GET_TICKETS,
-        data: { tickets: [...tickets, addTicket] },
-      });
-    },
+const EditTicket = () => {
+  const { id } = useParams();
+  const {
+    loading: ticketLoading,
+    error: ticketError,
+    data: ticketData,
+  } = useQuery(GET_TICKET, {
+    variables: { id },
   });
 
-  const { loading: kanbanLoading, error: kanbanError, data: kanbanData } = useQuery(GET_KANBANS);
+  const [title, setTitle] = useState(ticketData.ticket.title);
+  const [description, setDescription] = useState(ticketData.ticket.description);
+  const [kanbanId, setKanbanId] = useState("");
+  const [status, setStatus] = useState(() => {
+    switch (ticketData.ticket.status) {
+      case "Ready":
+        return "pre";
+      case "In Progress":
+        return "middle";
+      case "Done":
+        return "old";
+      default:
+        throw new Error(`Unknown status: ${ticketData.ticket.status}`);
+    }
+  });
+
+  const [updateTicket] = useMutation(UPDATE_TICKET, {
+    variables: { id: ticketData.ticket.id, title, description, status },
+    refetchQueries: [
+      { query: GET_TICKET, variables: { id: ticketData.ticket.id } },
+    ],
+  });
+
+  const { data: kanbanData } = useQuery(GET_KANBANS);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    addTicket(title, description, kanbanId, status);
+    if (!title || !description || !status) {
+      return alert("Please fill out all fields");
+    }
 
-    setTitle("");
-    setDescription("");
-    setKanbanId("");
-    setStatus("pre");
+    updateTicket(title, description, status);
   };
-
-  if (kanbanLoading) return <Spinner />;
-  if (kanbanError) return <p>There was an error loading the content</p>;
 
   return (
     <div>
-      {!kanbanLoading && !kanbanError && (
+      {!ticketLoading && !ticketError && (
         <div className="add-ticket-container">
           <label className="form-label client-select">Kanban Title</label>
           <select
@@ -119,4 +121,4 @@ const AddKanban = () => {
   );
 };
 
-export default AddKanban;
+export default EditTicket;

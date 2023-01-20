@@ -33,7 +33,7 @@ const Ticket = ({ ticket }) => {
         <p>{ticket.title}</p>
       </div>
       <div className="ticket-description">
-        <p>{ticket.description}</p>
+        <p>{ticket.description.substring(0, 80)}...</p>
       </div>
       <div className="ticket-timestamp">
         <p>Created at: {ticket.createdAt}</p>

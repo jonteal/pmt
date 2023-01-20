@@ -22,6 +22,7 @@ import AddTicket from './pages/AddTicket/AddTicket';
 import TicketView from "./pages/TicketView/TicketView";
 
 import "./App.css";
+import EditTicket from "./pages/EditTicket/EditTicket";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -70,6 +71,7 @@ function App() {
             <Route path="/projects/:id/kanban/:id" element={<Kanban />} />
             <Route path="/addTicket" element={<AddTicket />} />
             <Route path="/tickets/:id" element={<TicketView />} />
+            <Route path="/tickets/:id/edit" element={<EditTicket />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
