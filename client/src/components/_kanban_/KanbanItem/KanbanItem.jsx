@@ -5,8 +5,8 @@ const KanbanItem = ({ kanban }) => {
 
   return (
     <div className="kanban-item">
-      <Link to={`/projects/${kanban.project.id}/kanban/${kanban.id}`}>
-        <h2>{kanban.title}</h2>
+      <Link className="kanban-item-link" to={`/projects/${kanban.project.id}/kanban/${kanban.id}`}>
+        <p className="kanban-item-title">{kanban.title}</p>
       </Link>
     </div>
   );

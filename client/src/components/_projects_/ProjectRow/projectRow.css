@@ -17,6 +17,10 @@
   border-radius: 5px;
 }
 
+.project-row-link {
+  color: black;
+}
+
 .project-status,
 .project-deadline,
 .project-client-name,

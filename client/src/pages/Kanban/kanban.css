@@ -24,9 +24,8 @@
   align-items: center;
 }
 
-.kanban-edit-icon,
-.kanban-trash-icon {
-  margin: 5px;
+.kanban-edit-icon {
+  color: black;
 }
 
 .kanban-add-ticket-btn {
@@ -37,4 +36,9 @@
   padding-bottom: 10px;
   border-radius: 10px;
   margin-bottom: 10px;
+  border: none;
+}
+
+.kanban-add-ticket-btn-text {
+  color: black;
 }

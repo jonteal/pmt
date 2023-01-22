@@ -20,13 +20,13 @@ const ClientRow = ({ client }) => {
     <div>
     <div className="client-row-container">
       <div className="client-first-name">
-        <Link to={`/clients/${client.id}`}>
-          <h3>{client.firstName}</h3>
+        <Link className="client-row-link" to={`/clients/${client.id}`}>
+          <p className="client-row-text">{client.firstName}</p>
         </Link>
       </div>
       <div className="client-last-name">
-        <Link to={`/clients/${client.id}`}>
-          <h3>{client.lastName}</h3>
+        <Link className="client-row-link" to={`/clients/${client.id}`}>
+          <p className="client-row-text">{client.lastName}</p>
         </Link>
       </div>
       <div className="client-company-name">

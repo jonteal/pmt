@@ -26,21 +26,26 @@ const ProjectRow = ({ project }) => {
     <div>
       <div className="project-row-container">
         <div className="project-title">
-          <Link to={`/projects/${project.id}`}>
-            <h3>{project.title}</h3>
+          <Link className="project-row-link" to={`/projects/${project.id}`}>
+            <p>{project.title}</p>
           </Link>
         </div>
         <div className="project-status">
           <p>{project.status}</p>
         </div>
         <div className="project-deadline">
-          <p>{project.startDate}</p> 
+          <p>{project.startDate}</p>
         </div>
         <div className="project-deadline">
-          <p>{project.deadline}</p> 
+          <p>{project.deadline}</p>
         </div>
         <div className="project-client-name">
-          <Link to={`/clients/${project.client.id}`}>{clientName}</Link>
+          <Link
+            className="project-row-link"
+            to={`/clients/${project.client.id}`}
+          >
+            {clientName}
+          </Link>
         </div>
         <div className="dropdown project-dropdown">
           <button

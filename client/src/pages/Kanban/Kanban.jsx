@@ -11,15 +11,11 @@ import { GET_KANBAN, GET_KANBANS } from "../../graphql/queries/kanbanQueries";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 import "./kanban.css";
-// import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 
 const Kanban = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // const {
-  //   loading, error, data
-  // } = useQuery(GET_PROJECTS);
 
   const {
     loading: kanbanLoading,
@@ -35,10 +31,6 @@ const Kanban = () => {
     error: ticketError,
     data: ticketData,
   } = useQuery(GET_TICKETS);
-
-  // console.log('kanbanData.kanban.id: ', kanbanData.kanban.id)
-  
-
   
   const statusColumns = [
     {
@@ -54,7 +46,6 @@ const Kanban = () => {
       state: "Done",
     },
   ];
-  
   
   if (kanbanLoading) return <p>Loading kanbans...</p>;
   if (ticketLoading) return <p>Loading tickets...</p>;
@@ -84,7 +75,7 @@ const Kanban = () => {
 
           <div className="kanban-button-container">
             <button className="kanban-add-ticket-btn">
-              <Link to="/addTicket">Add Ticket</Link>
+              <Link className="kanban-add-ticket-btn-text" to="/addTicket">Add Ticket</Link>
             </button>
           </div>
 

@@ -20,9 +20,9 @@ const ProjectsContainer = ({ projectData, projectContainer }) => {
           className={`${rootClass}-status-container`}
         >
           <div className={`${rootClass}-header-section`}>
-            <div className={`${rootClass}-state-label`}>
-              <h5>{projectContainer.state}</h5>
-            </div>
+            <h5 className={`${rootClass}-state-label`}>
+              {projectContainer.state}
+            </h5>
             {isExpanded ? (
               <FaChevronUp
                 onClick={handleClick}

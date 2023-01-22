@@ -2,15 +2,22 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 
+import { useNavigate } from "react-router-dom";
+
 // GRAPHQL
 import { UPDATE_TICKET } from "../../graphql/mutations/ticketMutations";
 import { GET_TICKET } from "../../graphql/queries/ticketQueries";
+import { GET_TICKETS } from "../../graphql/queries/ticketQueries";
 import { GET_KANBANS } from "../../graphql/queries/kanbanQueries";
+import { DELETE_TICKET } from "../../graphql/mutations/ticketMutations";
+import AlertModal from "../../components/AlertModal/AlertModal";
 
 // import "./editTicket.css";
 
 const EditTicket = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const {
     loading: ticketLoading,
     error: ticketError,
@@ -36,15 +43,21 @@ const EditTicket = () => {
   });
 
   const [updateTicket] = useMutation(UPDATE_TICKET, {
-    variables: { 
-      id: ticketData.ticket.id, 
-      title, 
-      description, 
-      status 
+    variables: {
+      id: ticketData.ticket.id,
+      title,
+      description,
+      status,
     },
     refetchQueries: [
       { query: GET_TICKET, variables: { id: ticketData.ticket.id } },
     ],
+  });
+
+  const [deleteTicket] = useMutation(DELETE_TICKET, {
+    variables: { id: ticketData.ticket.id },
+    onCompleted: () => navigate("/"),
+    refetchQueries: [{ query: GET_TICKETS }],
   });
 
   const { data: kanbanData } = useQuery(GET_KANBANS);
@@ -58,6 +71,9 @@ const EditTicket = () => {
 
     updateTicket(title, description, status);
   };
+
+  const deleteMessage =
+    "Are you sure you want to delete this ticket? Once you delete it you cannot undo that action.";
 
   return (
     <div>
@@ -113,6 +129,16 @@ const EditTicket = () => {
                   <option value="old">Done</option>
                 </select>
               </div>
+            </div>
+
+            <div>
+              <AlertModal
+                modalHeader="Heads up!"
+                modalBody={deleteMessage}
+                promptLabel="Delete"
+                confirmLabel="Delete"
+                action={deleteTicket}
+              />
             </div>
 
             <button className="add-ticket-submit-btn mb-5">Submit</button>

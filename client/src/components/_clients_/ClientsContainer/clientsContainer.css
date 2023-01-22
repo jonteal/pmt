@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+.client-container-state-label {
+  font-size: 1rem;
+}
+
 .client-container-carrot {
   margin-left: 5px;
 }
@@ -24,4 +28,8 @@
   font-size: .8rem;
   color: #929aae;
   width: 100%;
+}
+
+.client-container-list {
+  list-style: none;
 }

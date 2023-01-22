@@ -22,11 +22,11 @@ const Ticket = ({ ticket }) => {
     <div className="ticket-container">
       <div className="ticket-links">
         <Link to={`/tickets/${ticket.id}`} className='ticket-link'>
-          <FaEye />
+          <FaEye className="ticket-icon" />
         </Link>
-        <Link to={`/tickets/${ticket.id}`} className='ticket-link'>
-          <FaTrashAlt onClick={deleteTicket} />
-        </Link>
+{ /*       <Link to={`/tickets/${ticket.id}`} className='ticket-link'>
+          <FaTrashAlt className="ticket-icon" onClick={deleteTicket} />
+  </Link>*/}
       </div>
 
       <div className="ticket-title">

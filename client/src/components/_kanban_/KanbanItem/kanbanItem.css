@@ -8,4 +8,13 @@
 
 .kanban-item:hover {
   cursor: pointer;
+  background-color: #99C1B9;
+}
+
+.kanban-item-link {
+  text-decoration: none;
+}
+
+.kanban-item-title {
+  color: black;
 }

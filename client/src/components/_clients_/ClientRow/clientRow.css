@@ -22,6 +22,10 @@
   border-radius: 5px;
 }
 
+.client-row-link {
+  color: black;
+}
+
 .client-dropdown {
   display: flex;
   justify-content: center;

@@ -31,6 +31,10 @@
   margin-left: 10px;
 }
 
+.ticket-icon {
+  color: black;
+}
+
 .ticket-title {
   font-weight: bold;
   margin-bottom: 20px;
