@@ -1,17 +1,20 @@
-import React from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import './button.css';
 
-const Button = ({  }) => {
+const Button = ({ type, children }) => {
+  const [buttonType, setButtonType] = useState('');
+
+  if (type === 'primary') {
+    setButtonType('primary');
+  } else if (type === 'secondary') {
+    setButtonType('secondary');
+  }
 
 
   return (
-    <button className='btn-component'>
-      <Link>
-        
-      </Link>
+    <button className={`btn-component ${buttonType}`}>
+      {children}
     </button>
   )
 }
