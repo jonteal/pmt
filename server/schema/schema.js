@@ -37,6 +37,7 @@ const ProjectType = new GraphQLObjectType({
   }),
 });
 
+// Client Type
 const ClientType = new GraphQLObjectType({
   name: "Client",
   fields: () => ({
@@ -50,6 +51,7 @@ const ClientType = new GraphQLObjectType({
   }),
 });
 
+// ActivityComment Type
 const ActivityCommentType = new GraphQLObjectType({
   name: "ActivityComment",
   fields: () => ({
@@ -102,6 +104,7 @@ const KanbanType = new GraphQLObjectType({
   }),
 });
 
+// RootQuery
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
@@ -323,11 +326,18 @@ const mutation = new GraphQLObjectType({
             });
           }
         );
+        Kanban.find({ projectId: args.id }).then(
+          (kanbans) => {
+            kanbans.forEach((kanban) => {
+              kanban.remove();
+            });
+          }
+        );
         return Project.findByIdAndRemove(args.id);
       },
     },
 
-    // Update an Project
+    // Update a Project
     updateProject: {
       type: ProjectType,
       args: {
@@ -522,7 +532,7 @@ const mutation = new GraphQLObjectType({
         id: { type: new GraphQLNonNull(GraphQLID) },
         title: { type: GraphQLString },
         description: { type: GraphQLString },
-        projectId: { type: new GraphQLNonNull(GraphQLID) },
+        // projectId: { type: GraphQLID },
       },
       resolve(parent, args) {
         return Kanban.findByIdAndUpdate(
@@ -531,7 +541,7 @@ const mutation = new GraphQLObjectType({
             $set: {
               title: args.title,
               description: args.description,
-              projectId: args.projectId,
+              // projectId: args.projectId,
             },
           },
           { new: true }

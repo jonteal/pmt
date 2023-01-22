@@ -15,6 +15,10 @@
   padding-right: 15px;
 }
 
+.add-client-link {
+  color: white;
+}
+
 .add-client-btn:hover {
   background-color: #a5823c;
   color: white;
@@ -29,6 +33,10 @@
   margin-top: 20px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.add-project-link {
+  color: white;
 }
 
 .add-project-btn:hover {

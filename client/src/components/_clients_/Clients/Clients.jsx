@@ -35,7 +35,7 @@ const Clients = () => {
     <div className="projects-parent-container">
       <div className="clients-header-container">
         <FaUserAlt className="clients-header-icon" />
-        <h2 className="clients-header-label">Clients ({clientData?.clients.length})</h2>
+        <h4 className="clients-header-label">Clients ({clientData?.clients.length})</h4>
       </div>
       <ul>
         {clientContainers.map((clientContainer) => (

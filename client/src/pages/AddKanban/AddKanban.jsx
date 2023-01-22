@@ -61,7 +61,7 @@ const AddKanban = () => {
       {!loading && !error && (
         <div className="add-project-container">
 
-          <label className="form-label client-select">Kanban Title</label>
+          <label className="form-label client-select">Associated Project</label>
           <select
             className="form-select"
             aria-label="Default select example"
@@ -84,7 +84,7 @@ const AddKanban = () => {
                   type="title"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  placeholder="Name of your project..."
+                  placeholder="Name of your kanban..."
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />

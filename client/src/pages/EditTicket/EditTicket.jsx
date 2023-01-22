@@ -7,7 +7,6 @@ import { UPDATE_TICKET } from "../../graphql/mutations/ticketMutations";
 import { GET_TICKET } from "../../graphql/queries/ticketQueries";
 import { GET_KANBANS } from "../../graphql/queries/kanbanQueries";
 
-
 // import "./editTicket.css";
 
 const EditTicket = () => {
@@ -37,7 +36,12 @@ const EditTicket = () => {
   });
 
   const [updateTicket] = useMutation(UPDATE_TICKET, {
-    variables: { id: ticketData.ticket.id, title, description, status },
+    variables: { 
+      id: ticketData.ticket.id, 
+      title, 
+      description, 
+      status 
+    },
     refetchQueries: [
       { query: GET_TICKET, variables: { id: ticketData.ticket.id } },
     ],
@@ -111,9 +115,7 @@ const EditTicket = () => {
               </div>
             </div>
 
-            <button className="add-ticket-submit-btn mb-5">
-              Submit
-            </button>
+            <button className="add-ticket-submit-btn mb-5">Submit</button>
           </form>
         </div>
       )}

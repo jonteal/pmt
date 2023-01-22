@@ -10,10 +10,10 @@ const Home = () => {
     <div className="home-main-container">
       <div className="home-button-container">
         <button className="add-client-btn">
-          <Link to="/addClient">Add Client</Link>
+          <Link className="add-client-link" to="/addClient">Add Client</Link>
         </button>
         <button className="add-project-btn">
-          <Link to="/addProject">Add Project</Link>
+          <Link className="add-project-link" to="/addProject">Add Project</Link>
         </button>
       </div>
 

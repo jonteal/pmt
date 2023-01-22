@@ -23,6 +23,7 @@ import TicketView from "./pages/TicketView/TicketView";
 
 import "./App.css";
 import EditTicket from "./pages/EditTicket/EditTicket";
+import EditKanban from "./pages/EditKanban/EditKanban";
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -60,18 +61,19 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/addClient" element={<AddClient />} />
             <Route path="/addProject" element={<AddProject />} />
+            <Route path="/addTicket" element={<AddTicket />} />
+            <Route path="/projects/:id/addKanban" element={<AddKanban />} />
             <Route path="/clients/:id" element={<ClientView />} />
             <Route path="/projects/:id" element={<ProjectView />} />
-            <Route path="/projects/:id/edit" element={<EditProject />} />
-            <Route path="/clients/:id/edit" element={<EditClient />} />
+            <Route path="/tickets/:id" element={<TicketView />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/clients" element={<ClientsPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/projects/:id/addKanban" element={<AddKanban />} />
             <Route path="/projects/:id/kanban/:id" element={<Kanban />} />
-            <Route path="/addTicket" element={<AddTicket />} />
-            <Route path="/tickets/:id" element={<TicketView />} />
+            <Route path="/projects/:id/edit" element={<EditProject />} />
+            <Route path="/clients/:id/edit" element={<EditClient />} />
             <Route path="/tickets/:id/edit" element={<EditTicket />} />
+            <Route path="/kanbans/:id/edit" element={<EditKanban />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

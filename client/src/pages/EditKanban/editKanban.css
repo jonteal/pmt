@@ -1,0 +1,25 @@
+.edit-kanban-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border: .5px solid lightseagreen;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+.edit-kanban-form {
+  margin-top: 15px;
+}
+
+.edit-kanban-submit-btn {
+  border: none;
+  background-color: #507ba8;
+  padding: 10px;
+  /* color: #f7f7ff; */
+  color: black;
+  border-radius: 5px;
+  margin-top: 20px;
+}

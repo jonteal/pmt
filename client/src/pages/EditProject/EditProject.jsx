@@ -102,7 +102,7 @@ const EditProject = () => {
           <select
             className="form-select mb-3"
             aria-label="Default select example"
-            id="subjectId"
+            id="clientId"
             value={clientId}
             onChange={(e) => setClientId(e.target.value)}
           >

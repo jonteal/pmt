@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ import { FaEye, FaTrashAlt } from "react-icons/fa";
 import "./ticket.css";
 
 const Ticket = ({ ticket }) => {
-  const [status, setStatus] = useState(ticket.status);
+  // const [status, setStatus] = useState(ticket.status);
   const navigate = useNavigate();
 
   const [deleteTicket] = useMutation(DELETE_TICKET, {

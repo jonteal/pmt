@@ -1,8 +1,16 @@
 import { gql } from "@apollo/client";
 
 const ADD_KANBAN = gql`
-  mutation AddKanban($title: String!, $description: String!, $projectId: ID!) {
-    addKanban(title: $title, description: $description, projectId: $projectId) {
+  mutation AddKanban(
+    $title: String!, 
+    $description: String!, 
+    $projectId: ID!
+  ) {
+    addKanban(
+      title: $title, 
+      description: $description, 
+      projectId: $projectId
+    ) {
       id
       title
       description
@@ -24,8 +32,16 @@ const DELETE_KANBAN = gql`
 `;
 
 const UPDATE_KANBAN = gql`
-  mutation UpdateKanban($id: ID!, $title: String, $description: String) {
-    updateKanban(id: $id, title: $title, description: $description) {
+  mutation UpdateKanban(
+    $id: ID!, 
+    $title: String, 
+    $description: String
+  ) {
+    updateKanban(
+      id: $id, 
+      title: $title, 
+      description: $description
+    ) {
       id
       title
       description

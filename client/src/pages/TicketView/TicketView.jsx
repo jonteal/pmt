@@ -2,7 +2,6 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_TICKET } from "../../graphql/queries/ticketQueries";
 import Spinner from "../../components/Spinner/Spinner";
-import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 
 import "./ticketView.css";
