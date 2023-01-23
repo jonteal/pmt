@@ -19,6 +19,7 @@ import Spinner from "../../components/Spinner/Spinner";
 
 import "./editKanban.css";
 import AlertModal from "../../components/AlertModal/AlertModal";
+import Button from "../../components/Button/Button";
 
 const EditKanban = () => {
   const { id } = useParams();
@@ -135,9 +136,9 @@ const EditKanban = () => {
               />
             </div>
 
-            <button className="edit-kanban-submit-btn mb-5" type="submit">
+            <Button buttonType='submit' className="edit-kanban-submit-btn mb-5" type="submit">
               Update
-            </button>
+            </Button>
           </form>
         </div>
       )}

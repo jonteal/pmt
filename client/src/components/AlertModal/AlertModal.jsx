@@ -1,17 +1,19 @@
 
+import Button from '../Button/Button';
 import './alertModal.css';
 
 const AlertModal = ({ buttonType, action, promptLabel, confirmLabel, modalHeader, modalBody }) => {
   return (
     <div>
-      <button
+      <Button
         type="button"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
         className={`${buttonType}`}
+        buttonType={`${buttonType}`}
       >
         {promptLabel}
-      </button>
+      </Button>
 
       <div
         className="modal fade"

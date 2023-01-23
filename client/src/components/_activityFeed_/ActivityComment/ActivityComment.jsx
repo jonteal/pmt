@@ -28,20 +28,20 @@ const ActivityComment = ({ comment }) => {
         <p className={`${rootClass}-created-at`}>{comment.createdAt}</p>
       </div>
       <div className="dropdown">
-      <button
-        className="dropdown-toggle dropdown"
-        type="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      ></button>
-      <ul className="dropdown-menu">
-        <li>
-          <Link onClick={deleteComment} className="dropdown-item" to="/">
-            Delete Update
-          </Link>
-        </li>
-      </ul>
-    </div>
+        <button
+          className="dropdown-toggle activity-comment-dropdown-item"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        ></button>
+        <ul className="dropdown-menu activity-comment-dropdown-list">
+          <li>
+            <Link onClick={deleteComment} to="/">
+              Delete Update
+            </Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

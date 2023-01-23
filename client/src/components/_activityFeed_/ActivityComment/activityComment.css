@@ -21,3 +21,12 @@
   margin-top: 5px;
   font-size: .8rem;
 }
+
+.activity-comment-dropdown-list {
+  list-style: none;
+}
+
+.activity-comment-dropdown-item {
+  border: none;
+  background-color: #f7f7ff;
+}

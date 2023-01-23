@@ -14,6 +14,7 @@ import KanbanItemContainer from "../../components/_kanban_/KanbanItemContainer/K
 import { formatCurrency } from "../../utilities/formatCurrency";
 
 import "./projectView.css";
+import Button from "../../components/Button/Button";
 
 const ProjectView = () => {
   const rootClass = "project-view";
@@ -73,8 +74,11 @@ const ProjectView = () => {
       <div className={`${rootClass}-main-container`}>
         <div>
           <div className={`${rootClass}-btn-container`}>
-            <Link className="project-view-link" to={`/projects/${project.id}/addKanban`}>
-              <button className={`${rootClass}-add-kanban`}>Add Kanban</button>
+            <Link
+              className="project-view-link"
+              to={`/projects/${project.id}/addKanban`}
+            >
+              <Button buttonType='submit' className={`${rootClass}-add-kanban`}>Add Kanban</Button>
             </Link>
             <Link to={`/projects/${project.id}/edit`}>
               <button className={`${rootClass}-edit-btn`}>Edit</button>

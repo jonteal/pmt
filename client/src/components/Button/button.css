@@ -1,15 +1,15 @@
-.btn-component {
+/* .btn-component {
   border: none;
   padding: 10px;
   border-radius: 10px;
-}
+}  */
 
-.primary:hover {
+.submit:hover {
   background-color: #a5823c;
   color: white;
 }
 
-.primary {
+.submit {
   border: none;
   background-color: #545e75;
   padding: 10px;
@@ -20,18 +20,18 @@
   padding-right: 15px;
 }
 
-.secondary {
+.delete {
   border: none;
-  background-color: #c03221;
-  padding: 10px;
   color: white;
+  padding: 10px;
+  background-color: #c03221;
   border-radius: 5px;
   margin-top: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 18px;
+  padding-right: 18px;
 }
 
-.secondary:hover {
+.delete:hover {
   background-color: #a5823c;
   color: white;
 }

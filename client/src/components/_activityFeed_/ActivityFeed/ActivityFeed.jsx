@@ -9,7 +9,7 @@ const ActivityFeed = ({ projectId, matchingActivityComments }) => {
   return (
     <div className={`${rootClass}-main-container`}>
       <AddComment projectId={projectId} />
-      <ul>
+      <ul className={`${rootClass}-comment-list`}>
         {matchingActivityComments.map((comment) => (
           <li key={comment.id}>
             <ActivityComment key={comment.id} comment={comment} />

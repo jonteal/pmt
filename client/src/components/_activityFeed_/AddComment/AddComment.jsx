@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
+
+// GRAPHQL
 import { ADD_ACTIVITY_COMMENT } from "../../../graphql/mutations/activityCommentMutations";
 import { GET_ACTIVITY_COMMENTS } from "../../../graphql/queries/activityCommentQueries";
 
-import './addComment.css';
+// COMPONENTS
+import Button from "../../Button/Button";
+
+import "./addComment.css";
 
 const AddComment = ({ projectId }) => {
   const [commentText, setCommentText] = useState("");
@@ -46,6 +51,13 @@ const AddComment = ({ projectId }) => {
           id="activityComment"
         />
       </form>
+      <Button
+        className="add-comment-submit-btn"
+        buttonType="submit"
+        onClick={onSubmit}
+      >
+        Post
+      </Button>
     </div>
   );
 };
