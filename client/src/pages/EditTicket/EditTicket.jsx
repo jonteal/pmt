@@ -10,9 +10,11 @@ import { GET_TICKET } from "../../graphql/queries/ticketQueries";
 import { GET_TICKETS } from "../../graphql/queries/ticketQueries";
 import { GET_KANBANS } from "../../graphql/queries/kanbanQueries";
 import { DELETE_TICKET } from "../../graphql/mutations/ticketMutations";
+
+// COMPONENT
 import AlertModal from "../../components/AlertModal/AlertModal";
 
-// import "./editTicket.css";
+import "./editTicket.css";
 
 const EditTicket = () => {
   const { id } = useParams();
@@ -138,6 +140,7 @@ const EditTicket = () => {
                 promptLabel="Delete"
                 confirmLabel="Delete"
                 action={deleteTicket}
+                buttonType='delete'
               />
             </div>
 

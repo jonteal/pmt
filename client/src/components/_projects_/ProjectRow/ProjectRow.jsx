@@ -8,6 +8,7 @@ import { GET_PROJECTS } from "../../../graphql/queries/projectQueries";
 import { GET_CLIENTS } from "../../../graphql/queries/clientQueries";
 
 import "./projectRow.css";
+import AlertModal from "../../AlertModal/AlertModal";
 
 const ProjectRow = ({ project }) => {
   const clientName = project.client.firstName + " " + project.client.lastName;
@@ -21,6 +22,9 @@ const ProjectRow = ({ project }) => {
       },
     ],
   });
+
+  const deleteMessage =
+    "Are you sure you want to delete this project? You cannot undo this action.";
 
   return (
     <div>
@@ -49,16 +53,25 @@ const ProjectRow = ({ project }) => {
         </div>
         <div className="dropdown project-dropdown">
           <button
-            className="dropdown-toggle dropdown"
+            className="dropdown-toggle project-dropdown-btn"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           ></button>
           <ul className="dropdown-menu">
             <li>
-              <Link onClick={deleteProject} className="dropdown-item" to="/">
+              <AlertModal
+                modalHeader="Heads up!"
+                modalBody={deleteMessage}
+                promptLabel="Delete"
+                confirmLabel="Delete"
+                action={deleteProject}
+                buttonType='no-class'
+              />
+
+              {/*  <Link onClick={deleteProject} className="dropdown-item" to="/">
                 Delete Project
-              </Link>
+  </Link>*/}
             </li>
           </ul>
         </div>

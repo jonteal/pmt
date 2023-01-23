@@ -17,6 +17,10 @@
   margin-top: 30px;
 }
 
+.ticket-view-edit-icon {
+  color: black;
+}
+
 .ticket-view-header-container {
   margin-bottom: 30px;
   border: .5px solid #929aae;

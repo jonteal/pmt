@@ -73,7 +73,7 @@ const ProjectView = () => {
       <div className={`${rootClass}-main-container`}>
         <div>
           <div className={`${rootClass}-btn-container`}>
-            <Link to={`/projects/${project.id}/addKanban`}>
+            <Link className="project-view-link" to={`/projects/${project.id}/addKanban`}>
               <button className={`${rootClass}-add-kanban`}>Add Kanban</button>
             </Link>
             <Link to={`/projects/${project.id}/edit`}>

@@ -60,6 +60,11 @@
   margin-right: auto;
 }
 
+.project-view-link {
+  text-decoration: none;
+  color: white;
+}
+
 .project-view-title {
   font-weight: bold;
   border: .5px solid #545e75;

@@ -131,6 +131,7 @@ const EditKanban = () => {
                 promptLabel="Delete"
                 confirmLabel="Delete"
                 action={deleteKanban}
+                buttonType='delete'
               />
             </div>
 

@@ -45,3 +45,8 @@
   margin-left: 3px;
   border-radius: 5px;
 }
+
+.project-dropdown-btn {
+  border: none;
+  background-color: #f7f7ff;
+}

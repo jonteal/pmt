@@ -1,12 +1,14 @@
-import React from "react";
 
-const AlertModal = ({ action, promptLabel, confirmLabel, modalHeader, modalBody }) => {
+import './alertModal.css';
+
+const AlertModal = ({ buttonType, action, promptLabel, confirmLabel, modalHeader, modalBody }) => {
   return (
     <div>
       <button
         type="button"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
+        className={`${buttonType}`}
       >
         {promptLabel}
       </button>
@@ -14,7 +16,6 @@ const AlertModal = ({ action, promptLabel, confirmLabel, modalHeader, modalBody 
       <div
         className="modal fade"
         id="exampleModal"
-        tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >

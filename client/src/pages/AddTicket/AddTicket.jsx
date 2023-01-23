@@ -3,6 +3,7 @@ import { useState } from "react";
 
 // APOLLO
 import { useMutation, useQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 
 // GRAPHQL
 import { GET_TICKETS } from "../../graphql/queries/ticketQueries";
@@ -15,6 +16,8 @@ import Spinner from "../../components/Spinner/Spinner";
 import "./addTicket.css";
 
 const AddKanban = () => {
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [kanbanId, setKanbanId] = useState("");
@@ -28,6 +31,7 @@ const AddKanban = () => {
       status,
     },
 
+    onCompleted: () => navigate("/"),
     update(cache, { data: { addTicket } }) {
       const { tickets } = cache.readQuery({ query: GET_TICKETS });
       cache.writeQuery({

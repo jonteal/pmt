@@ -32,7 +32,7 @@ const TicketView = ({ ticket }) => {
           <div className="mx-auto w-100 p-5">
             <div className="ticket-view-controls">
               <Link to={`/tickets/${ticketData.ticket.id}/edit`}>
-                <FaRegEdit />
+                <FaRegEdit className="ticket-view-edit-icon" />
               </Link>
               <button
                 onClick={handleBackNavigate}
@@ -43,16 +43,16 @@ const TicketView = ({ ticket }) => {
             </div>
 
             <div className="ticket-view-content">
-            <h3 className="ticket-view-header">Title</h3>
+              <p className="ticket-view-header">Title</p>
               <div className="ticket-view-header-container">
-                <h4>{ticketData.ticket.title}</h4>
+                <p>{ticketData.ticket.title}</p>
               </div>
-              <h3 className="ticket-view-header">Description</h3>
+              <p className="ticket-view-header">Description</p>
               <div className="ticket-view-description">
                 <p>{ticketData.ticket.description}</p>
               </div>
               <div className="ticket-view-createdAt-container">
-                <h3 className="ticket-view-header">Created at</h3>
+                <p className="ticket-view-header">Created at</p>
                 <p>{ticketData.ticket.createdAt}</p>
               </div>
             </div>
