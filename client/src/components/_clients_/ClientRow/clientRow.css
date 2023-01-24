@@ -6,12 +6,12 @@
   border-radius: 5px;
 }
 
-.client-first-name,
-.client-last-name,
-.client-phone-number,
-.client-email-address,
-.client-company-name,
-.client-row-options {
+.client-row-first-name,
+.client-row-last-name,
+.client-row-phone-number,
+.client-row-email-address,
+.client-row-company-name,
+.client-row-row-options {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +26,7 @@
   color: black;
 }
 
-.client-dropdown {
+.client-row-dropdown-container {
   display: flex;
   justify-content: center;
   align-items: center;

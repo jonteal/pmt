@@ -1,4 +1,6 @@
+// COMPONENTS
 import ClientCardItem from "../ClientCardItem/ClientCardItem";
+
 import "./clientCard.css";
 
 const ClientCard = ({ clientData }) => {
@@ -16,7 +18,7 @@ const ClientCard = ({ clientData }) => {
   };
 
   return (
-    <div className="client-info-container">
+    <div className={`${rootClass}-info-container`}>
       <div className={`${rootClass}-inner-name`}>
         <div className={`${rootClass}-item-container`}>
           <h2 className={`${rootClass}-client-header`}>Client Information</h2>

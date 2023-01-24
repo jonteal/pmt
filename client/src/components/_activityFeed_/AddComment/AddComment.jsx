@@ -11,6 +11,8 @@ import Button from "../../Button/Button";
 import "./addComment.css";
 
 const AddComment = ({ projectId }) => {
+  const rootClass = 'add-comment';
+
   const [commentText, setCommentText] = useState("");
 
   const [addActivityComment] = useMutation(ADD_ACTIVITY_COMMENT, {
@@ -39,20 +41,19 @@ const AddComment = ({ projectId }) => {
   };
 
   return (
-    <div className="add-comment-main-container">
-      <form className="add-comment-form" onSubmit={onSubmit}>
+    <div className={`${rootClass}-main-container`}>
+      <form className={`{rootClass}-form`} onSubmit={onSubmit}>
         <label className="form-label">Activity Feed</label>
         <input
           type="text"
           placeholder="Post an update..."
           onChange={(e) => setCommentText(e.target.value)}
           value={commentText}
-          className="form-control add-comment-input"
+          className={`${rootClass}-input`}
           id="activityComment"
         />
       </form>
       <Button
-        className="add-comment-submit-btn"
         buttonType="submit"
         onClick={onSubmit}
       >

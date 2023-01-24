@@ -16,13 +16,13 @@
   margin: 10px
 }
 
-.ticket-list {
+.status-column-ticket-list {
   list-style: none;
   padding-left: 0;
   width: 100%;
 }
 
-.column-list-item {
+.status-column-list-item {
   width: 100%;
 }
 

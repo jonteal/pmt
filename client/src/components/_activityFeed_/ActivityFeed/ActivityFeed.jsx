@@ -1,3 +1,4 @@
+// COMPONENTS
 import AddComment from "../AddComment/AddComment";
 import ActivityComment from "../ActivityComment/ActivityComment";
 

@@ -5,8 +5,9 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import "./projectsContainer.css";
 
 const ProjectsContainer = ({ projectData, projectContainer }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
   const rootClass = "project-container";
+
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClick = () => {
     setIsExpanded(!isExpanded);
@@ -38,12 +39,12 @@ const ProjectsContainer = ({ projectData, projectContainer }) => {
 
           {isExpanded && (
             <div>
-              <div className="project-container-headers">
-                <p className="project-container-header">Project</p>
-                <p className="project-container-header">Status</p>
-                <p className="project-container-header">Start Date</p>
-                <p className="project-container-header">Deadline</p>
-                <p className="project-container-header">Client</p>
+              <div className={`${rootClass}-headers`}>
+                <p className={`${rootClass}-header`}>Project</p>
+                <p className={`${rootClass}-header`}>Status</p>
+                <p className={`${rootClass}-header`}>Start Date</p>
+                <p className={`${rootClass}-header`}>Deadline</p>
+                <p className={`${rootClass}-header`}>Client</p>
               </div>
               <ul className={`${rootClass}-list`}>
                 {projectData.projects

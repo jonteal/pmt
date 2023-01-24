@@ -1,12 +1,19 @@
 import { useQuery } from "@apollo/client";
+
+// GRAPHQL
 import { GET_CLIENTS } from "../../../graphql/queries/clientQueries";
+
+// COMPONENTS
 import ClientsContainer from "../ClientsContainer/ClientsContainer";
 import Spinner from "../../Spinner/Spinner";
+
 import { FaUserAlt } from "react-icons/fa";
 
 import "./clients.css";
 
 const Clients = () => {
+  const rootClass = 'clients';
+
   const {
     loading: clientLoading,
     error: clientError,
@@ -32,10 +39,10 @@ const Clients = () => {
   ];
 
   return (
-    <div className="projects-parent-container">
-      <div className="clients-header-container">
-        <FaUserAlt className="clients-header-icon" />
-        <h4 className="clients-header-label">Clients ({clientData?.clients.length})</h4>
+    <div className={`${rootClass}-parent-container`}>
+      <div className={`${rootClass}-header-container`}>
+        <FaUserAlt className={`${rootClass}-header-icon`} />
+        <h4 className={`${rootClass}-header-label`}>Clients ({clientData?.clients.length})</h4>
       </div>
       <ul>
         {clientContainers.map((clientContainer) => (

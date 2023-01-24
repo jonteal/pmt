@@ -11,6 +11,8 @@ import "./projectRow.css";
 import AlertModal from "../../AlertModal/AlertModal";
 
 const ProjectRow = ({ project }) => {
+  const rootClass = 'project';
+
   const clientName = project.client.firstName + " " + project.client.lastName;
 
   const [deleteProject] = useMutation(DELETE_PROJECT, {
@@ -28,32 +30,32 @@ const ProjectRow = ({ project }) => {
 
   return (
     <div>
-      <div className="project-row-container">
-        <div className="project-title">
-          <Link className="project-row-link" to={`/projects/${project.id}`}>
+      <div className={`${rootClass}-row-container`}>
+        <div className={`${rootClass}-title`}>
+          <Link className={`${rootClass}-row-link`}to={`/projects/${project.id}`}>
             <p>{project.title}</p>
           </Link>
         </div>
-        <div className="project-status">
+        <div className={`${rootClass}-status`}>
           <p>{project.status}</p>
         </div>
-        <div className="project-deadline">
+        <div className={`${rootClass}-deadline`}>
           <p>{project.startDate}</p>
         </div>
-        <div className="project-deadline">
+        <div className={`${rootClass}-deadline`}>
           <p>{project.deadline}</p>
         </div>
-        <div className="project-client-name">
+        <div className={`${rootClass}-client-name`}>
           <Link
-            className="project-row-link"
+            className={`${rootClass}-row-link`}
             to={`/clients/${project.client.id}`}
           >
             {clientName}
           </Link>
         </div>
-        <div className="dropdown project-dropdown">
+        <div className={`dropdown ${rootClass}-dropdown`}>
           <button
-            className="dropdown-toggle project-dropdown-btn"
+            className={`dropdown-toggle ${rootClass}-dropdown-btn`}
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -68,10 +70,6 @@ const ProjectRow = ({ project }) => {
                 action={deleteProject}
                 buttonType='no-class'
               />
-
-              {/*  <Link onClick={deleteProject} className="dropdown-item" to="/">
-                Delete Project
-  </Link>*/}
             </li>
           </ul>
         </div>

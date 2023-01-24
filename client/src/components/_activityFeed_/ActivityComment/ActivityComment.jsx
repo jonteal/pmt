@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-
 import { useMutation } from "@apollo/client";
 
-import { DELETE_ACTIVITY_COMMENT } from "../../../graphql/mutations/activityCommentMutations";
+// GRAPHQL
 import { GET_PROJECTS } from "../../../graphql/queries/projectQueries";
 import { GET_ACTIVITY_COMMENTS } from "../../../graphql/queries/activityCommentQueries";
+import { DELETE_ACTIVITY_COMMENT } from "../../../graphql/mutations/activityCommentMutations";
 
 import "./activityComment.css";
 
@@ -29,12 +29,12 @@ const ActivityComment = ({ comment }) => {
       </div>
       <div className="dropdown">
         <button
-          className="dropdown-toggle activity-comment-dropdown-item"
+          className={`dropdown-toggle ${rootClass}-dropdown-item`}
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         ></button>
-        <ul className="dropdown-menu activity-comment-dropdown-list">
+        <ul className={`dropdown-menu ${rootClass}-dropdown-list`}>
           <li>
             <Link onClick={deleteComment} to="/">
               Delete Update

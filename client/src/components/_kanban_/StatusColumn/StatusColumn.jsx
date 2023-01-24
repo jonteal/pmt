@@ -1,19 +1,23 @@
+// COMPONENTS
 import Ticket from "../Ticket/Ticket";
+
 import "./statusColumn.css";
 
 const StatusColumn = ({ statusColumns, matchingTickets }) => {
+  const rootClass = 'status-column';
+  
   return (
-    <div className="status-column-container">
+    <div className={`${rootClass}-container`}>
       {statusColumns.map((column) => (
-        <div key={column.id} className="status-column">
-          <div className="column-state-label">
+        <div key={column.id} className={rootClass}>
+          <div className={`${rootClass}-state-label`}>
             <h5>{column.state}</h5>
           </div>
-          <ul className="ticket-list">
+          <ul className={`${rootClass}-ticket-list`}>
             {matchingTickets
               .filter((ticket) => ticket.status === column.state)
               .map((ticket) => (
-                <li key={ticket.id} className="column-list-item">
+                <li key={ticket.id} className={`${rootClass}-list-item`}>
                   <Ticket ticket={ticket} />
                 </li>
               ))}

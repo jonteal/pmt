@@ -7,6 +7,8 @@ import { FaProjectDiagram } from "react-icons/fa";
 import "./projects.css";
 
 const Projects = () => {
+  const rootClass = 'projects';
+
   const {
     loading: projectLoading,
     error: projectError,
@@ -32,10 +34,10 @@ const Projects = () => {
   if (projectError) return <p>Something went wrong...</p>;
 
   return (
-    <div className="projects-parent-container">
-      <div className="projects-header-container">
-        <FaProjectDiagram className="projects-header-icon" />
-        <h4 className="projects-header-label">Projects ({projectData?.projects.length})</h4>
+    <div className={`${rootClass}-parent-container`}>
+      <div className={`${rootClass}-header-container`}>
+        <FaProjectDiagram className={`${rootClass}-header-icon`} />
+        <h4 className={`{rootClass}-header-label`}>Projects ({projectData?.projects.length})</h4>
       </div>
       <ul>
         {projectContainers.map((projectContainer) => (

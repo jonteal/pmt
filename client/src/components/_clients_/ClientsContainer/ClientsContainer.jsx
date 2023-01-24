@@ -5,8 +5,9 @@ import ClientRow from "../ClientRow/ClientRow";
 import "./clientsContainer.css";
 
 const ClientsContainer = ({ clientData, clientContainer }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
   const rootClass = "client-container";
+
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClick = () => {
     setIsExpanded(!isExpanded);
@@ -38,12 +39,12 @@ const ClientsContainer = ({ clientData, clientContainer }) => {
 
           {isExpanded && (
             <>
-              <div className="client-container-headers">
-                <p className="client-container-header">First Name</p>
-                <p className="client-container-header">Last Name</p>
-                <p className="client-container-header">Company</p>
-                <p className="client-container-header">Email Address</p>
-                <p className="client-container-header">Phone Number</p>
+              <div className={`${rootClass}-headers`}>
+                <p className={`${rootClass}-header`}>First Name</p>
+                <p className={`${rootClass}-header`}>Last Name</p>
+                <p className={`${rootClass}-header`}>Company</p>
+                <p className={`${rootClass}-header`}>Email Address</p>
+                <p className={`${rootClass}-header`}>Phone Number</p>
               </div>
               <ul className={`${rootClass}-list`}>
                 {clientData.clients
