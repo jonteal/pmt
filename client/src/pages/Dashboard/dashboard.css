@@ -11,12 +11,6 @@
   margin-bottom: 40px;
 }
 
-.dashboard-data-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 .dashboard-client-parent-container,
 .dashboard-project-parent-container {
@@ -24,6 +18,13 @@
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 100px;
+}
+
+.dashboard-data-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .dashboard-chart-title {

@@ -16,10 +16,11 @@ import Button from "../../components/Button/Button";
 import "./addKanban.css";
 
 const AddKanban = () => {
+  const rootClass = "add-kanban";
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [projectId, setProjectId] = useState("");
-
 
   const [addKanban] = useMutation(ADD_KANBAN, {
     variables: {
@@ -39,15 +40,10 @@ const AddKanban = () => {
 
   const { loading, error, data } = useQuery(GET_PROJECTS);
 
-
   const onSubmit = (e) => {
     e.preventDefault();
 
-    addKanban(
-      title,
-      description,
-      projectId,
-    );
+    addKanban(title, description, projectId);
 
     setTitle("");
     setDescription("");
@@ -60,8 +56,7 @@ const AddKanban = () => {
   return (
     <div>
       {!loading && !error && (
-        <div className="add-project-container">
-
+        <div className={`${rootClass}-container`}>
           <label className="form-label client-select">Associated Project</label>
           <select
             className="form-select"
@@ -77,7 +72,7 @@ const AddKanban = () => {
               </option>
             ))}
           </select>
-          <form className="add-project-form" onSubmit={onSubmit}>
+          <form className={`${rootClass}-form`} onSubmit={onSubmit}>
             <div className="mb-3">
               <div className="mb-3">
                 <label className="form-label">Title</label>
@@ -103,7 +98,11 @@ const AddKanban = () => {
               </div>
             </div>
 
-            <Button buttonType='submit' className="add-project-submit-btn mb-5" type="submit">
+            <Button
+              buttonType="submit"
+              className={`${rootClass}-submit-btn mb-5`}
+              type="submit"
+            >
               Submit
             </Button>
           </form>

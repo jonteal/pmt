@@ -24,17 +24,3 @@
   width: 100%;
 }
 
-.client-add-submit-btn {
-  border: none;
-  background-color: #c03221;
-  padding: 10px;
-  color: white;
-  border-radius: 5px;
-  margin-top: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.client-submit-btn:hover {
-  background-color: #a5823c;
-}

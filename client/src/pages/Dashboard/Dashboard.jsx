@@ -1,14 +1,21 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
+
+// GRAPHQL
 import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 import { ClientData, ProjectData } from "../../services/data";
+
+// COMPONENTS
 import BarChart from "../../components/_dashboard_/BarChart/BarChart";
-// import LineChart from "../../components/_dashboard_/LineChart/LineChart";
 import PieChart from "../../components/_dashboard_/PieChart/PieChart";
+// import LineChart from "../../components/_dashboard_/LineChart/LineChart";
 
 import "./dashboard.css";
+import ChartContainer from "../../components/_dashboard_/ChartContainer/ChartContainer";
 
 const Dashboard = () => {
+  const rootClass = "dashboard";
+
   const { data: projectData } = useQuery(GET_PROJECTS);
   const [projects, setProjects] = useState([]);
 
@@ -50,7 +57,7 @@ const Dashboard = () => {
       projects: completedProjects?.length,
     },
   ];
-  
+
   console.log("sortedProjects: ", sortedProjects);
 
   const [projectByStatus, setProjectByStatus] = useState({
@@ -93,53 +100,37 @@ const Dashboard = () => {
   });
 
   return (
-    <div className="dashboard-main-container">
-      <h2 className="dashboard-header-title">My Dashboard</h2>
+    <div className={`${rootClass}-main-container`}>
+      <h2 className={`${rootClass}-header-title`}>My Dashboard</h2>
 
-      <div className="dashboard-client-parent-container">
-        <div className="dashboard-data-container">
-          <h2 className="dashboard-chart-title">Client Data</h2>
-          <div style={{ width: 700 }}>
-            <BarChart chartData={clientData} />
-          </div>
-        </div>
+      <div className={`${rootClass}-client-parent-container`}>
+        <ChartContainer title="Client Data" width="700">
+          <BarChart chartData={clientData} />
+        </ChartContainer>
 
-        <div className="dashboard-data-container">
-          <h2 className="dashboard-chart-title">Client Data</h2>
-          <div style={{ width: 400 }}>
-            <PieChart chartData={clientData} />
-          </div>
-        </div>
+        <ChartContainer title="Client Data" width="400">
+          <PieChart chartData={clientData} />
+        </ChartContainer>
       </div>
 
-      <div className="dashboard-project-parent-container">
-        <div className="dashboard-data-container">
-          <h2 className="dashboard-chart-title">Project Data</h2>
-          <div style={{ width: 700 }}>
-            <BarChart chartData={projectBreakdown} />
-          </div>
-        </div>
+      <div className={`${rootClass}-project-parent-container`}>
+        <ChartContainer title="Project Data" width="700">
+          <BarChart chartData={projectBreakdown} />
+        </ChartContainer>
 
-        <div className="dashboard-data-container">
-          <h2 className="dashboard-chart-title">Project Data</h2>
-          <div style={{ width: 400 }}>
-            <PieChart chartData={projectBreakdown} />
-          </div>
-        </div>
+        <ChartContainer title="Project Data" width="400">
+          <PieChart chartData={projectBreakdown} />
+        </ChartContainer>
       </div>
 
-      <div className="dashboard-data-container">
-        <h2 className="dashboard-chart-title">Project By Status</h2>
-        <div style={{ width: 700 }}>
+      <div className={`${rootClass}-project-parent-container`}>
+        <ChartContainer title="Project By Status" width="700">
           <BarChart chartData={projectByStatus} />
-        </div>
-      </div>
+        </ChartContainer>
 
-      <div className="dashboard-data-container">
-        <h2 className="dashboard-chart-title">Project By Status</h2>
-        <div style={{ width: 400 }}>
+        <ChartContainer title="Project By Status" width="400">
           <PieChart chartData={projectByStatus} />
-        </div>
+        </ChartContainer>
       </div>
 
       {/*<div style={{ width: 700 }}>

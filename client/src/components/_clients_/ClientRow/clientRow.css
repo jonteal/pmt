@@ -36,3 +36,8 @@
   margin-left: 3px;
   border-radius: 5px;
 }
+
+.client-row-dropdown {
+  border: none;
+  background-color: #f7f7ff;
+}

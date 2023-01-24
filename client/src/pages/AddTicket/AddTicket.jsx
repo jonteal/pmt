@@ -17,6 +17,8 @@ import "./addTicket.css";
 import Button from "../../components/Button/Button";
 
 const AddKanban = () => {
+  const rootClass = "add-ticket";
+
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
@@ -42,7 +44,11 @@ const AddKanban = () => {
     },
   });
 
-  const { loading: kanbanLoading, error: kanbanError, data: kanbanData } = useQuery(GET_KANBANS);
+  const {
+    loading: kanbanLoading,
+    error: kanbanError,
+    data: kanbanData,
+  } = useQuery(GET_KANBANS);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -61,7 +67,7 @@ const AddKanban = () => {
   return (
     <div>
       {!kanbanLoading && !kanbanError && (
-        <div className="add-ticket-container">
+        <div className={`${rootClass}-container`}>
           <label className="form-label client-select">Kanban Title</label>
           <select
             className="form-select"
@@ -77,7 +83,7 @@ const AddKanban = () => {
               </option>
             ))}
           </select>
-          <form className="add-ticket-form" onSubmit={onSubmit}>
+          <form className={`${rootClass}-form`} onSubmit={onSubmit}>
             <div className="mb-3">
               <div className="mb-3">
                 <label className="form-label">Title</label>
@@ -114,7 +120,10 @@ const AddKanban = () => {
               </div>
             </div>
 
-            <Button buttonType='submit' className="add-ticket-submit-btn mb-5">
+            <Button
+              buttonType="submit"
+              className={`${rootClass}-submit-btn mb-5`}
+            >
               Submit
             </Button>
           </form>

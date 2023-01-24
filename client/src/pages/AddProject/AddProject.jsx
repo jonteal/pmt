@@ -11,15 +11,17 @@ import { GET_CLIENTS } from "../../graphql/queries/clientQueries";
 
 // COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
+import Button from "../../components/Button/Button";
 
 // DATE PICKING
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import "./addProject.css";
-import Button from "../../components/Button/Button";
 
 const AddProject = () => {
+  const rootClass = 'add-project';
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("new");
@@ -103,8 +105,7 @@ const AddProject = () => {
   return (
     <div>
       {!loading && !error && (
-        <div className="add-project-container">
-
+        <div className={`${rootClass}-container"`}>
           {alertOn && (
             <div className="alert alert-danger mt-3" role="alert">
               Please provide a title, description, and status!
@@ -126,7 +127,7 @@ const AddProject = () => {
               </option>
             ))}
           </select>
-          <form className="add-project-form" onSubmit={onSubmit}>
+          <form className={`${rootClass}-form`} onSubmit={onSubmit}>
             <div className="mb-3">
               <div className="mb-3">
                 <label className="form-label">Title</label>
@@ -164,7 +165,7 @@ const AddProject = () => {
               </select>
             </div>
 
-            <div className="mb-3 add-project-form-item">
+            <div className={`mb-3 ${rootClass}-form-item`}>
               <label className="form-label">Start Date</label>
               <DatePicker
                 selected={startDate}
@@ -212,7 +213,11 @@ const AddProject = () => {
               />
             </div>
 
-            <Button buttonType='submit' className="add-project-submit-btn mb-5" type="submit">
+            <Button
+              buttonType="submit"
+              className="add-project-submit-btn mb-5"
+              type="submit"
+            >
               Submit
             </Button>
           </form>

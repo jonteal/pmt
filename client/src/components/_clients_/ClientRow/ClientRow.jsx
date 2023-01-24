@@ -40,7 +40,7 @@ const ClientRow = ({ client }) => {
       </div>
       <div className="dropdown client-dropdown">
         <button
-          className="dropdown-toggle dropdown"
+          className="dropdown-toggle dropdown client-row-dropdown"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"

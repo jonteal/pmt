@@ -1,0 +1,52 @@
+.chart-container-data-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-container-chart-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.chart-container-100 {
+  width: 100;
+}
+
+.chart-container-200 {
+  width: 200;
+}
+
+.chart-container-300 {
+  width: 300;
+}
+
+.chart-container-400 {
+  width: 400;
+}
+
+.chart-container-500 {
+  width: 500;
+}
+
+.chart-container-600 {
+  width: 600;
+}
+
+.chart-container-700 {
+  width: 700;
+}
+
+.chart-container-800 {
+  width: 800;
+}
+
+.chart-container-900 {
+  width: 900;
+}
+
+.chart-container-1000 {
+  width: 1000;
+}
