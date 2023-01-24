@@ -21,10 +21,7 @@
   color: black;
 }
 
-.project-status,
-.project-deadline,
-.project-client-name,
-.project-row-options {
+.project-client-name {
   display: flex;
   justify-content: center;
   align-items: center;

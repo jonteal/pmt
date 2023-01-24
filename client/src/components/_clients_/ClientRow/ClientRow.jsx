@@ -1,5 +1,6 @@
 // ROUTING
 import { Link } from "react-router-dom";
+import ClientRowItem from "../ClientRowItem/ClientRowItem";
 
 import "./clientRow.css";
 
@@ -30,15 +31,13 @@ const ClientRow = ({ client }) => {
             <p className={`${rootClass}-text`}>{client.lastName}</p>
           </Link>
         </div>
-        <div className={`${rootClass}-company-name`}>
-          <p>{client.companyName}</p>
-        </div>
-        <div className={`${rootClass}-phone-number`}>
-          <p>{formatPhoneNumber(client.phoneNumber)}</p>
-        </div>
-        <div className={`${rootClass}-email-address`}>
-          <p>{client.emailAddress}</p>
-        </div>
+
+        <ClientRowItem item={client.companyName} />
+
+        <ClientRowItem item={formatPhoneNumber(client.phoneNumber)} />
+
+        <ClientRowItem item={client.emailAddress} />
+
         <div className={`dropdown ${rootClass}-dropdown-container`}>
           <button
             className={`dropdown-toggle dropdown ${rootClass}-dropdown`}
@@ -48,8 +47,8 @@ const ClientRow = ({ client }) => {
           ></button>
           {/* <ul className="dropdown-menu">
           <li>
-            <Link onClick={deleteProject} className="dropdown-item" to="/">
-              Delete Project
+            <Link onClick={deleteClient} className="dropdown-item" to="/">
+              Delete Client
             </Link>
           </li>
   </ul> */}
