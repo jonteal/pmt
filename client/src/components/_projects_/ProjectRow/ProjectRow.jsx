@@ -9,6 +9,7 @@ import { GET_CLIENTS } from "../../../graphql/queries/clientQueries";
 
 import "./projectRow.css";
 import AlertModal from "../../AlertModal/AlertModal";
+import ProjectRowItem from "../ProjectRowItem/ProjectRowItem";
 
 const ProjectRow = ({ project }) => {
   const rootClass = 'project';
@@ -36,15 +37,13 @@ const ProjectRow = ({ project }) => {
             <p>{project.title}</p>
           </Link>
         </div>
-        <div className={`${rootClass}-status`}>
-          <p>{project.status}</p>
-        </div>
-        <div className={`${rootClass}-deadline`}>
-          <p>{project.startDate}</p>
-        </div>
-        <div className={`${rootClass}-deadline`}>
-          <p>{project.deadline}</p>
-        </div>
+        
+        <ProjectRowItem item={project.status} />
+
+        <ProjectRowItem item={project.startDate} />
+
+        <ProjectRowItem item={project.deadline} />
+
         <div className={`${rootClass}-client-name`}>
           <Link
             className={`${rootClass}-row-link`}
