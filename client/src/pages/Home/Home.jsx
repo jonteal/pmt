@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+
+// COMPONENTS
 import Button from "../../components/Button/Button";
 import Clients from "../../components/_clients_/Clients/Clients";
 import Projects from  "../../components/_projects_/Projects/Projects";

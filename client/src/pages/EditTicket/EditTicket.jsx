@@ -19,6 +19,7 @@ import Button from "../../components/Button/Button";
 
 const EditTicket = () => {
   const { id } = useParams();
+  const rootClass = "edit-ticket";
   const navigate = useNavigate();
 
   const {
@@ -81,7 +82,7 @@ const EditTicket = () => {
   return (
     <div>
       {!ticketLoading && !ticketError && (
-        <div className="add-ticket-container">
+        <div className={`${rootClass}-container`}>
           <label className="form-label client-select">Kanban Title</label>
           <select
             className="form-select"
@@ -97,7 +98,7 @@ const EditTicket = () => {
               </option>
             ))}
           </select>
-          <form className="add-ticket-form" onSubmit={onSubmit}>
+          <form className={`${rootClass}-form`} onSubmit={onSubmit}>
             <div className="mb-3">
               <div className="mb-3">
                 <label className="form-label">Title</label>
@@ -145,7 +146,7 @@ const EditTicket = () => {
               />
             </div>
 
-            <Button buttonType="submit" className="add-ticket-submit-btn mb-5">
+            <Button buttonType="submit" className="mb-5">
               Submit
             </Button>
           </form>

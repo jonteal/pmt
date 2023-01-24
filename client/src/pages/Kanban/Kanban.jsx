@@ -1,17 +1,17 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
-// COMPONENTS
-import StatusColumn from "../../components/_kanban_/StatusColumn/StatusColumn";
 
 // GRAPHQL
 import { GET_TICKETS } from "../../graphql/queries/ticketQueries";
-import { GET_KANBAN, GET_KANBANS } from "../../graphql/queries/kanbanQueries";
+import { GET_KANBAN } from "../../graphql/queries/kanbanQueries";
 
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+// COMPONENTS
+import StatusColumn from "../../components/_kanban_/StatusColumn/StatusColumn";
+import Button from "../../components/Button/Button";
+
+import { FaEdit } from "react-icons/fa";
 
 import "./kanban.css";
-import Button from "../../components/Button/Button";
 
 const Kanban = () => {
   const { id } = useParams();

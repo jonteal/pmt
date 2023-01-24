@@ -7,10 +7,12 @@ import Button from "../../components/Button/Button";
 import "./projectsPage.css";
 
 const ProjectsPage = () => {
+  const rootClass = "projects-page";
+
   return (
-    <div className="projects-page-main-container">
-      <Button buttonType="submit" className="projects-page-add-project-btn">
-        <Link className="projects-page-add-project-text" to="/addProject">
+    <div className={`${rootClass}-main-container`}>
+      <Button buttonType="submit" className={`${rootClass}-add-project-btn`}>
+        <Link className={`${rootClass}-add-project-text`} to="/addProject">
           Add Project
         </Link>
       </Button>

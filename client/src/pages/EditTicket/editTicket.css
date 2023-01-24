@@ -1,30 +1,13 @@
-.add-ticket-container {
+.edit-ticket-container {
   width: 90%;
   margin-right: auto;
   margin-left: auto;
 }
 
-.add-ticket-form {
+.edit-ticket-form {
   margin-top: 15px;
 }
 
-.add-ticket-submit-btn {
-  border: none;
-  background-color: #99c1b9;
-  padding: 10px;
-  color: black;
-  border-radius: 5px;
-  margin-top: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  border: 1px solid gray;
-}
-
-.add-ticket-submit-btn:hover {
-  background-color: #a5823c;
-  color: white;
-}
-
-.add-ticket-btn-label {
+.edit-ticket-btn-label {
   margin-left: 10px;
 }

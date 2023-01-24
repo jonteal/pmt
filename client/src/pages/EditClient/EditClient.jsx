@@ -8,9 +8,9 @@ import { UPDATE_CLIENT } from "../../graphql/mutations/clientMutations";
 
 // COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
+import Button from "../../components/Button/Button";
 
 import "./editClient.css";
-import Button from "../../components/Button/Button";
 
 const EditClient = () => {
   const rootClass = "edit-client";

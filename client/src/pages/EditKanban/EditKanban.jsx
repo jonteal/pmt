@@ -21,6 +21,7 @@ import "./editKanban.css";
 
 const EditKanban = () => {
   const { id } = useParams();
+  const rootClass = "edit-kanban";
   const navigate = useNavigate();
 
   const {
@@ -31,8 +32,6 @@ const EditKanban = () => {
     variables: { id },
   });
 
-  console.log("kanbanData: ", kanbanData);
-
   const handleBackNavigate = () => {
     navigate(-1);
   };
@@ -40,8 +39,6 @@ const EditKanban = () => {
   const [title, setTitle] = useState(kanbanData.kanban.title);
   const [description, setDescription] = useState(kanbanData.kanban.description);
   const [projectId, setProjectId] = useState("");
-
-  console.log("id: ", kanbanData.kanban.id);
 
   const [updateKanban] = useMutation(UPDATE_KANBAN, {
     variables: {
@@ -82,7 +79,7 @@ const EditKanban = () => {
   return (
     <div>
       {!projectsLoading && !projectsError && (
-        <div className="edit-kanban-container">
+        <div className={`${rootClass}-container`}>
           <label className="form-label client-select">Associated Project</label>
           <select
             className="form-select"
@@ -98,7 +95,7 @@ const EditKanban = () => {
               </option>
             ))}
           </select>
-          <form className="edit-kanban-form" onSubmit={onSubmit}>
+          <form className={`${rootClass}-form`} onSubmit={onSubmit}>
             <div className="mb-3">
               <div className="mb-3">
                 <label className="form-label">Title</label>
@@ -130,11 +127,15 @@ const EditKanban = () => {
                 promptLabel="Delete"
                 confirmLabel="Delete"
                 action={deleteKanban}
-                buttonType='delete'
+                buttonType="delete"
               />
             </div>
 
-            <Button buttonType='submit' className="edit-kanban-submit-btn mb-5" type="submit">
+            <Button
+              buttonType="submit"
+              className={`${rootClass}-submit-btn mb-5`}
+              type="submit"
+            >
               Update
             </Button>
           </form>

@@ -6,12 +6,12 @@ import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 import { ClientData, ProjectData } from "../../services/data";
 
 // COMPONENTS
+import ChartContainer from "../../components/_dashboard_/ChartContainer/ChartContainer";
 import BarChart from "../../components/_dashboard_/BarChart/BarChart";
 import PieChart from "../../components/_dashboard_/PieChart/PieChart";
 // import LineChart from "../../components/_dashboard_/LineChart/LineChart";
 
 import "./dashboard.css";
-import ChartContainer from "../../components/_dashboard_/ChartContainer/ChartContainer";
 
 const Dashboard = () => {
   const rootClass = "dashboard";
