@@ -11,6 +11,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import "./editProject.css";
+import Button from "../../components/Button/Button";
 
 const EditProject = () => {
   const rootClass = "edit-project";
@@ -197,20 +198,22 @@ const EditProject = () => {
           </div>
 
             <div>
-              <button
+              <Button
+                buttonType='submit'
                 onClick={onSubmit}
                 type="submit"
                 className={`${rootClass}-submit-btn`}
               >
                 Submit
-              </button>
-              <button
+              </Button>
+              <Button
+                buttonType='back'
                 onClick={handleBackNavigate}
                 type="button"
                 className={`${rootClass}-back-btn`}
               >
                 Back
-              </button>
+              </Button>
             </div>
           </form>
         </div>

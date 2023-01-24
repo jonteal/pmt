@@ -14,6 +14,7 @@ import { ADD_TICKET } from "../../graphql/mutations/ticketMutations";
 import Spinner from "../../components/Spinner/Spinner";
 
 import "./addTicket.css";
+import Button from "../../components/Button/Button";
 
 const AddKanban = () => {
   const navigate = useNavigate();
@@ -113,9 +114,9 @@ const AddKanban = () => {
               </div>
             </div>
 
-            <button className="add-ticket-submit-btn mb-5">
+            <Button buttonType='submit' className="add-ticket-submit-btn mb-5">
               Submit
-            </button>
+            </Button>
           </form>
         </div>
       )}

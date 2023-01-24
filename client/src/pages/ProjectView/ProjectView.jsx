@@ -10,11 +10,12 @@ import { GET_ACTIVITY_COMMENTS } from "../../graphql/queries/activityCommentQuer
 import ActivityFeed from "../../components/_activityFeed_/ActivityFeed/ActivityFeed";
 import ProjectViewItem from "../../components/_projects_/ProjectViewItem/ProjectViewItem";
 import KanbanItemContainer from "../../components/_kanban_/KanbanItemContainer/KanbanItemContainer";
+import Button from "../../components/Button/Button";
 
+// UTILS
 import { formatCurrency } from "../../utilities/formatCurrency";
 
 import "./projectView.css";
-import Button from "../../components/Button/Button";
 
 const ProjectView = () => {
   const rootClass = "project-view";
@@ -53,15 +54,11 @@ const ProjectView = () => {
 
   const projectId = projectData.project.id;
 
-  const activityCommentsArray = activityCommentData.activityComments;
-
-  const matchingActivityComments = activityCommentsArray.filter(
+  const matchingActivityComments = activityCommentData.activityComments.filter(
     (activityComment) => activityComment.project.id === projectId
   );
 
-  const kanbansArray = kanbanData.kanbans;
-
-  const matchingKanbans = kanbansArray.filter(
+  const matchingKanbans = kanbanData.kanbans.filter(
     (kanban) => kanban.project.id === projectId
   );
 
@@ -78,10 +75,12 @@ const ProjectView = () => {
               className="project-view-link"
               to={`/projects/${project.id}/addKanban`}
             >
-              <Button buttonType='submit' className={`${rootClass}-add-kanban`}>Add Kanban</Button>
+              <Button buttonType="submit" className={`${rootClass}-add-kanban`}>
+                Add Kanban
+              </Button>
             </Link>
             <Link to={`/projects/${project.id}/edit`}>
-              <button className={`${rootClass}-edit-btn`}>Edit</button>
+              <Button buttonType='submit' className={`${rootClass}-edit-btn`}>Edit</Button>
             </Link>
           </div>
           <div className={`${rootClass}-project-info`}>

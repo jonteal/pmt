@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
+
+// GRAPHQL
 import { GET_CLIENT } from "../../graphql/queries/clientQueries";
 import { UPDATE_CLIENT } from "../../graphql/mutations/clientMutations";
+
+// COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
 
 import "./editClient.css";
+import Button from "../../components/Button/Button";
 
 const EditClient = () => {
   const rootClass = "edit-client";
@@ -160,20 +165,22 @@ const EditClient = () => {
             </div>
 
             <div>
-              <button
+              <Button
+                buttonType='submit'
                 onClick={onSubmit}
                 type="submit"
                 className={`${rootClass}-submit-btn`}
               >
                 Submit
-              </button>
-              <button
+              </Button>
+              <Button
+                buttonType='back'
                 onClick={handleBackNavigate}
                 type="button"
                 className={`${rootClass}-back-btn`}
               >
                 Back
-              </button>
+              </Button>
             </div>
           </form>
         </div>

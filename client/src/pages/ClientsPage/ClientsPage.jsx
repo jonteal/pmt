@@ -1,14 +1,17 @@
-import Clients from "../../components/_clients_/Clients/Clients";
 import { Link } from "react-router-dom";
 
-import "./clientsPage.css";
+// COMPONENTS
+import Clients from "../../components/_clients_/Clients/Clients";
 import Button from "../../components/Button/Button";
 
+import "./clientsPage.css";
+
 const ClientsPage = () => {
+  const rootClass = "clients-page";
   return (
-    <div className="clients-page-main-container">
-      <Button buttonType="submit" className="clients-page-add-client-btn">
-        <Link className="clients-page-add-client-btn-text" to="/addClient">
+    <div className={`${rootClass}-main-container`}>
+      <Button buttonType="submit" className={`${rootClass}-add-client-btn"`}>
+        <Link className={`${rootClass}-add-client-btn-text`} to="/addClient">
           Add Client
         </Link>
       </Button>

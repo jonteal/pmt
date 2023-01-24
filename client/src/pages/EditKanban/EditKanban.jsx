@@ -12,14 +12,12 @@ import { GET_KANBANS, GET_KANBAN } from "../../graphql/queries/kanbanQueries";
 import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 import { DELETE_KANBAN } from "../../graphql/mutations/kanbanMutations";
 
-import { FaTrashAlt } from "react-icons/fa";
-
 // COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
-
-import "./editKanban.css";
 import AlertModal from "../../components/AlertModal/AlertModal";
 import Button from "../../components/Button/Button";
+
+import "./editKanban.css";
 
 const EditKanban = () => {
   const { id } = useParams();

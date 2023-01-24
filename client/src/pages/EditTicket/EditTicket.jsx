@@ -15,6 +15,7 @@ import { DELETE_TICKET } from "../../graphql/mutations/ticketMutations";
 import AlertModal from "../../components/AlertModal/AlertModal";
 
 import "./editTicket.css";
+import Button from "../../components/Button/Button";
 
 const EditTicket = () => {
   const { id } = useParams();
@@ -140,11 +141,13 @@ const EditTicket = () => {
                 promptLabel="Delete"
                 confirmLabel="Delete"
                 action={deleteTicket}
-                buttonType='delete'
+                buttonType="delete"
               />
             </div>
 
-            <button className="add-ticket-submit-btn mb-5">Submit</button>
+            <Button buttonType="submit" className="add-ticket-submit-btn mb-5">
+              Submit
+            </Button>
           </form>
         </div>
       )}

@@ -12,6 +12,7 @@ import ProjectRow from "../../components/_projects_/ProjectRow/ProjectRow";
 import ClientCard from "../../components/_clients_/ClientCard/ClientCard";
 
 import "./clientView.css";
+import Button from "../../components/Button/Button";
 
 const ClientView = () => {
   const { id } = useParams();
@@ -53,10 +54,17 @@ const ClientView = () => {
       <div className={`${rootClass}-info-container`}>
         <div className={`${rootClass}-btn-container`}>
           <Link to="/addProject">
-            <button className={`${rootClass}-add-project-btn`}>Add Project</button>
+            <Button
+              buttonType="submit"
+              className={`${rootClass}-add-project-btn`}
+            >
+              Add Project
+            </Button>
           </Link>
           <Link to={`/clients/${client.id}/edit`}>
-            <button className={`${rootClass}-edit-btn`}>Edit Client</button>
+            <Button buttonType="submit" className={`${rootClass}-edit-btn`}>
+              Edit Client
+            </Button>
           </Link>
         </div>
         {!clientLoading && !clientError && (

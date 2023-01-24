@@ -11,11 +11,11 @@ import { GET_KANBAN, GET_KANBANS } from "../../graphql/queries/kanbanQueries";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 import "./kanban.css";
+import Button from "../../components/Button/Button";
 
 const Kanban = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
 
   const {
     loading: kanbanLoading,
@@ -23,7 +23,7 @@ const Kanban = () => {
     data: kanbanData,
   } = useQuery(GET_KANBAN, {
     variables: { id },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: "cache-and-network",
   });
 
   const {
@@ -31,7 +31,7 @@ const Kanban = () => {
     error: ticketError,
     data: ticketData,
   } = useQuery(GET_TICKETS);
-  
+
   const statusColumns = [
     {
       id: "Ready",
@@ -46,12 +46,12 @@ const Kanban = () => {
       state: "Done",
     },
   ];
-  
+
   if (kanbanLoading) return <p>Loading kanbans...</p>;
   if (ticketLoading) return <p>Loading tickets...</p>;
   if (kanbanError) return <p>There was an error loading kanbans...</p>;
   if (ticketError) return <p>There was an error loading tickets...</p>;
-  
+
   const matchingTickets = ticketData.tickets.filter(
     (ticket) => ticket.kanban.id === kanbanData.kanban.id
   );
@@ -69,14 +69,15 @@ const Kanban = () => {
               <Link to={`/kanbans/${kanbanData.kanban.id}/edit`}>
                 <FaEdit className="kanban-edit-icon" />
               </Link>
-
             </div>
           </div>
 
           <div className="kanban-button-container">
-            <button className="kanban-add-ticket-btn">
-              <Link className="kanban-add-ticket-btn-text" to="/addTicket">Add Ticket</Link>
-            </button>
+            <Button buttonType="submit" className="kanban-add-ticket-btn">
+              <Link className="kanban-add-ticket-btn-text" to="/addTicket">
+                Add Ticket
+              </Link>
+            </Button>
           </div>
 
           <StatusColumn

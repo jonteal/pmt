@@ -11,6 +11,7 @@ import { GET_PROJECTS } from "../../graphql/queries/projectQueries";
 
 // COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
+import Button from "../../components/Button/Button";
 
 import "./addKanban.css";
 
@@ -102,9 +103,9 @@ const AddKanban = () => {
               </div>
             </div>
 
-            <button className="add-project-submit-btn mb-5" type="submit">
+            <Button buttonType='submit' className="add-project-submit-btn mb-5" type="submit">
               Submit
-            </button>
+            </Button>
           </form>
         </div>
       )}

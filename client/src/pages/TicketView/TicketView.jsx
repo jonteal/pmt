@@ -5,6 +5,7 @@ import Spinner from "../../components/Spinner/Spinner";
 import { FaRegEdit } from "react-icons/fa";
 
 import "./ticketView.css";
+import Button from "../../components/Button/Button";
 
 const TicketView = ({ ticket }) => {
   const { id } = useParams();
@@ -34,12 +35,13 @@ const TicketView = ({ ticket }) => {
               <Link to={`/tickets/${ticketData.ticket.id}/edit`}>
                 <FaRegEdit className="ticket-view-edit-icon" />
               </Link>
-              <button
+              <Button
+                buttonType='back'
                 onClick={handleBackNavigate}
                 className="btn btn-light btn-sm d-inline ms-auto ticket-view-back-btn"
               >
                 <span>Back</span>
-              </button>
+              </Button>
             </div>
 
             <div className="ticket-view-content">

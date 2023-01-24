@@ -17,6 +17,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import "./addProject.css";
+import Button from "../../components/Button/Button";
 
 const AddProject = () => {
   const [title, setTitle] = useState("");
@@ -211,9 +212,9 @@ const AddProject = () => {
               />
             </div>
 
-            <button className="add-project-submit-btn mb-5" type="submit">
+            <Button buttonType='submit' className="add-project-submit-btn mb-5" type="submit">
               Submit
-            </button>
+            </Button>
           </form>
         </div>
       )}

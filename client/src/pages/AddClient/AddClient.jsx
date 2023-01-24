@@ -7,6 +7,8 @@ import { useMutation } from "@apollo/client";
 import { ADD_CLIENT } from "../../graphql/mutations/clientMutations";
 import { GET_CLIENTS } from "../../graphql/queries/clientQueries";
 
+import Button from '../../components/Button/Button';
+
 import "./addClient.css";
 
 const AddClient = () => {
@@ -132,9 +134,9 @@ const AddClient = () => {
           <option value="former">Former</option>
         </select>
 
-        <button className="client-add-submit-btn mb-3" type="submit">
+        <Button buttonType='submit' className="client-add-submit-btn mb-3" type="submit">
           Submit
-        </button>
+        </Button>
 
       </form>
     </div>
