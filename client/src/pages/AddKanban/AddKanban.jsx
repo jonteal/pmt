@@ -38,7 +38,7 @@ const AddKanban = () => {
     },
   });
 
-  const { loading, error, data } = useQuery(GET_PROJECTS);
+  const { loading: projectsLoading, error: projectsError, data: projectsData } = useQuery(GET_PROJECTS);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -50,12 +50,12 @@ const AddKanban = () => {
     setProjectId("");
   };
 
-  if (loading) return <Spinner />;
-  if (error) return <p>There was an error loading the content</p>;
+  if (projectsLoading) return <Spinner />;
+  if (projectsError) return <p>There was an error loading the content</p>;
 
   return (
     <div>
-      {!loading && !error && (
+      {!projectsLoading && !projectsError && (
         <div className={`${rootClass}-container`}>
           <label className="form-label client-select">Associated Project</label>
           <select
@@ -66,13 +66,13 @@ const AddKanban = () => {
             onChange={(e) => setProjectId(e.target.value)}
           >
             <option value="">Select Project</option>
-            {data.projects.map((project) => (
+            {projectsData.projects.map((project) => (
               <option key={project.id} value={project.id}>
                 {project.title}
               </option>
             ))}
           </select>
-          <form className={`${rootClass}-form`} onSubmit={onSubmit}>
+          <form className={`${rootClass}-form mt-3`} onSubmit={onSubmit}>
             <div className="mb-3">
               <div className="mb-3">
                 <label className="form-label">Title</label>

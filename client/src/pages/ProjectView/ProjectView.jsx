@@ -72,7 +72,7 @@ const ProjectView = () => {
         <div>
           <div className={`${rootClass}-btn-container`}>
             <Link
-              className="project-view-link"
+              className={`${rootClass}-link`}
               to={`/projects/${project.id}/addKanban`}
             >
               <Button buttonType="submit" className={`${rootClass}-add-kanban`}>

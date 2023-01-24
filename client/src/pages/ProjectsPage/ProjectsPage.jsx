@@ -16,6 +16,7 @@ const ProjectsPage = () => {
           Add Project
         </Link>
       </Button>
+      <hr />
       <Projects />
     </div>
   );

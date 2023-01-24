@@ -15,6 +15,7 @@ const ClientsPage = () => {
           Add Client
         </Link>
       </Button>
+      <hr />
       <Clients />
     </div>
   );

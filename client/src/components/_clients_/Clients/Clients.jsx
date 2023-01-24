@@ -42,7 +42,7 @@ const Clients = () => {
     <div className={`${rootClass}-parent-container`}>
       <div className={`${rootClass}-header-container`}>
         <FaUserAlt className={`${rootClass}-header-icon`} />
-        <h4 className={`${rootClass}-header-label`}>Clients ({clientData?.clients.length})</h4>
+        <h5 className={`${rootClass}-header-label`}>Clients ({clientData?.clients.length})</h5>
       </div>
       <ul>
         {clientContainers.map((clientContainer) => (

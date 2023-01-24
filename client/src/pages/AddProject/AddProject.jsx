@@ -105,7 +105,7 @@ const AddProject = () => {
   return (
     <div>
       {!loading && !error && (
-        <div className={`${rootClass}-container"`}>
+        <div className={`${rootClass}-container`}>
           {alertOn && (
             <div className="alert alert-danger mt-3" role="alert">
               Please provide a title, description, and status!
