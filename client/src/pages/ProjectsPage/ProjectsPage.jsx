@@ -11,11 +11,11 @@ const ProjectsPage = () => {
 
   return (
     <div className={`${rootClass}-main-container`}>
-      <Button buttonType="submit" className={`${rootClass}-add-project-btn`}>
-        <Link className={`${rootClass}-add-project-text`} to="/addProject">
+      <Link className={`${rootClass}-add-project-text`} to="/addProject">
+        <Button buttonType="submit" className={`${rootClass}-add-project-btn`}>
           Add Project
-        </Link>
-      </Button>
+        </Button>
+      </Link>
       <hr />
       <Projects />
     </div>

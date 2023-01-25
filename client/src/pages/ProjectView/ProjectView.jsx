@@ -80,7 +80,9 @@ const ProjectView = () => {
               </Button>
             </Link>
             <Link to={`/projects/${project.id}/edit`}>
-              <Button buttonType='submit' className={`${rootClass}-edit-btn`}>Edit</Button>
+              <Button buttonType="submit" className={`${rootClass}-edit-btn`}>
+                Edit
+              </Button>
             </Link>
           </div>
           <div className={`${rootClass}-project-info`}>

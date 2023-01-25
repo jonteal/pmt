@@ -1,11 +1,30 @@
 // ROUTING
 import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+
+// GRAPHQL
+import { DELETE_CLIENT } from '../../../graphql/mutations/clientMutations';
+import { GET_CLIENTS } from "../../../graphql/queries/clientQueries";
+import { GET_PROJECTS } from "../../../graphql/queries/projectQueries";
+
+// COMPONENTS
 import ClientRowItem from "../ClientRowItem/ClientRowItem";
 
 import "./clientRow.css";
 
+const rootClass = "client-row";
+
 const ClientRow = ({ client }) => {
-  const rootClass = "client-row";
+
+  const [deleteClient] = useMutation(DELETE_CLIENT, {
+    variables: { id: client.id },
+    refetchQueries: [
+      { query: GET_CLIENTS },
+      {
+        query: GET_PROJECTS,
+      },
+    ],
+  });
 
   let formatPhoneNumber = (str) => {
     let cleaned = ("" + str).replace(/\D/g, "");
@@ -45,13 +64,13 @@ const ClientRow = ({ client }) => {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           ></button>
-          {/* <ul className="dropdown-menu">
-          <li>
-            <Link onClick={deleteClient} className="dropdown-item" to="/">
-              Delete Client
-            </Link>
-          </li>
-  </ul> */}
+          <ul className="dropdown-menu">
+            <li>
+              <Link onClick={deleteClient} className="dropdown-item" to="/">
+                Delete Client
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
