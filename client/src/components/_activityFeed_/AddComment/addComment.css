@@ -1,12 +1,12 @@
 .add-comment-main-container {
-  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .add-comment-form {
-  width: 90%;
+  width: 100%;
 }
 
 .add-comment-input {

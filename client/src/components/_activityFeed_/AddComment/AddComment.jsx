@@ -11,7 +11,7 @@ import Button from "../../Button/Button";
 import "./addComment.css";
 
 const AddComment = ({ projectId }) => {
-  const rootClass = 'add-comment';
+  const rootClass = "add-comment";
 
   const [commentText, setCommentText] = useState("");
 
@@ -42,7 +42,7 @@ const AddComment = ({ projectId }) => {
 
   return (
     <div className={`${rootClass}-main-container`}>
-      <form className={`{rootClass}-form`} onSubmit={onSubmit}>
+      <form className={`${rootClass}-form`} onSubmit={onSubmit}>
         <label className="form-label">Activity Feed</label>
         <input
           type="text"
@@ -52,13 +52,10 @@ const AddComment = ({ projectId }) => {
           className={`${rootClass}-input`}
           id="activityComment"
         />
+        <Button type="submit" buttonType="submit">
+          Post
+        </Button>
       </form>
-      <Button
-        buttonType="submit"
-        onClick={onSubmit}
-      >
-        Post
-      </Button>
     </div>
   );
 };

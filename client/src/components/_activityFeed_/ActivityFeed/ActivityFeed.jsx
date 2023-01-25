@@ -2,21 +2,23 @@
 import AddComment from "../AddComment/AddComment";
 import ActivityComment from "../ActivityComment/ActivityComment";
 
-import './activityFeed.css';
+import "./activityFeed.css";
 
 const ActivityFeed = ({ projectId, matchingActivityComments }) => {
   const rootClass = "activity-feed";
 
   return (
     <div className={`${rootClass}-main-container`}>
-      <AddComment projectId={projectId} />
-      <ul className={`${rootClass}-comment-list`}>
-        {matchingActivityComments.map((comment) => (
-          <li key={comment.id}>
-            <ActivityComment key={comment.id} comment={comment} />
-          </li>
-        ))}
-      </ul>
+      <div className={`${rootClass}-inner-container`}>
+        <AddComment projectId={projectId} />
+        <ul className={`${rootClass}-comment-list`}>
+          {matchingActivityComments.map((comment) => (
+            <li key={comment.id}>
+              <ActivityComment key={comment.id} comment={comment} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
