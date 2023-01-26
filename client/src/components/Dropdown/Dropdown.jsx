@@ -15,9 +15,6 @@ const Dropdown = ({ type }) => {
       </button>
       <ul className="dropdown-menu">
         <li>
-          {/* <Link onClick={} className="dropdown-item" to="/">
-            Delete Project
-  </Link>*/}
         </li>
       </ul>
     </div>
