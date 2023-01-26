@@ -17,8 +17,9 @@ import { formatCurrency } from "../../utilities/formatCurrency";
 
 import "./projectView.css";
 
+const rootClass = "project-view";
+
 const ProjectView = () => {
-  const rootClass = "project-view";
   const { id } = useParams();
 
   const {

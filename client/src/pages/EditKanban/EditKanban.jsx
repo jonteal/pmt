@@ -19,9 +19,10 @@ import Button from "../../components/Button/Button";
 
 import "./editKanban.css";
 
+const rootClass = "edit-kanban";
+
 const EditKanban = () => {
   const { id } = useParams();
-  const rootClass = "edit-kanban";
   const navigate = useNavigate();
 
   const {

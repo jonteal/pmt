@@ -1,5 +1,6 @@
 
 import Button from '../Button/Button';
+
 import './alertModal.css';
 
 const AlertModal = ({ buttonType, action, promptLabel, confirmLabel, modalHeader, modalBody }) => {
@@ -34,7 +35,7 @@ const AlertModal = ({ buttonType, action, promptLabel, confirmLabel, modalHeader
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">Are you sure you want to delete this kanban? Once you delete it you cannot undo that action.</div>
+            <div className="modal-body">{modalBody}</div>
             <div className="modal-footer">
               <button
                 type="button"

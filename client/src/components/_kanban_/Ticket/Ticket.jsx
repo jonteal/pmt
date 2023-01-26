@@ -9,8 +9,9 @@ import { FaEye } from "react-icons/fa";
 
 import "./ticket.css";
 
+const rootClass = "ticket";
+
 const Ticket = ({ ticket }) => {
-  const rootClass = "ticket";
 
   return (
     <div className={`${rootClass}-container`}>

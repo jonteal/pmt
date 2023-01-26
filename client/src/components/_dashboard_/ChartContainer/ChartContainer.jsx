@@ -1,8 +1,9 @@
 
 import './chartContainer.css';
 
+const rootClass = "chart-container";
+
 const ChartContainer = ({ title, children, width }) => {
-  const rootClass = "chart-container";
   return (
     <div className={`${rootClass}-data-container`}>
       <h2 className={`${rootClass}-chart-title`}>{title}</h2>

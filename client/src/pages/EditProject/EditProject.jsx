@@ -1,24 +1,33 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
+
+// GRAPHQL
 import { GET_PROJECT } from "../../graphql/queries/projectQueries";
 import { GET_CLIENTS } from "../../graphql/queries/clientQueries";
 import { UPDATE_PROJECT } from "../../graphql/mutations/projectMutations";
+
+// COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
+import Button from "../../components/Button/Button";
 
 // DATE PICKING
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import "./editProject.css";
-import Button from "../../components/Button/Button";
+
+const rootClass = "edit-project";
 
 const EditProject = () => {
-  const rootClass = "edit-project";
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { loading, error, data } = useQuery(GET_PROJECT, {
+  const {
+    loading: projectLoading,
+    error: projectError,
+    data: projectData,
+  } = useQuery(GET_PROJECT, {
     variables: { id },
   });
 
@@ -26,11 +35,13 @@ const EditProject = () => {
     navigate(-1);
   };
 
-  const [title, setTitle] = useState(data.project.title);
-  const [description, setDescription] = useState(data.project.description);
-  const [clientId, setClientId] = useState(data.project.clientId);
+  const [title, setTitle] = useState(projectData.project.title);
+  const [description, setDescription] = useState(
+    projectData.project.description
+  );
+  const [clientId, setClientId] = useState(projectData.project.clientId);
   const [status, setStatus] = useState(() => {
-    switch (data.project.status) {
+    switch (projectData.project.status) {
       case "Not Started":
         return "new";
       case "In Progress":
@@ -38,18 +49,22 @@ const EditProject = () => {
       case "Completed":
         return "completed";
       default:
-        throw new Error(`Unknown status: ${data.project.status}`);
+        throw new Error(`Unknown status: ${projectData.project.status}`);
     }
   });
   const [deadline, setDeadline] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
-  const [notes, setNotes] = useState(data.project.notes);
-  const [clientBudget, setClientBudget] = useState(data.project.clientBudget);
-  const [projectEstimate, setProjectEstimate] = useState(data.project.projectEstimate);
+  const [notes, setNotes] = useState(projectData.project.notes);
+  const [clientBudget, setClientBudget] = useState(
+    projectData.project.clientBudget
+  );
+  const [projectEstimate, setProjectEstimate] = useState(
+    projectData.project.projectEstimate
+  );
 
   const [updateProject] = useMutation(UPDATE_PROJECT, {
     variables: {
-      id: data.project.id,
+      id: projectData.project.id,
       title,
       description,
       status,
@@ -58,10 +73,10 @@ const EditProject = () => {
       clientId,
       notes,
       clientBudget,
-      projectEstimate
+      projectEstimate,
     },
     refetchQueries: [
-      { query: GET_PROJECT, variables: { id: data.project.id } },
+      { query: GET_PROJECT, variables: { id: projectData.project.id } },
     ],
   });
 
@@ -71,7 +86,7 @@ const EditProject = () => {
     data: clientData,
   } = useQuery(GET_CLIENTS);
 
-  const projectLocation = `/projects/${data.project.id}`;
+  const projectLocation = `/projects/${projectData.project.id}`;
 
   const handleStartDateChange = (date) => {
     setStartDate(date);
@@ -88,16 +103,25 @@ const EditProject = () => {
       return alert("Please fill out all fields");
     }
 
-    updateProject(title, description, status, startDate, deadline, notes, projectEstimate, clientBudget);
+    updateProject(
+      title,
+      description,
+      status,
+      startDate,
+      deadline,
+      notes,
+      projectEstimate,
+      clientBudget
+    );
     navigate(projectLocation);
   };
 
-  if (loading) return <Spinner />;
-  if (error) return <p>There was an error...</p>;
+  if (projectLoading) return <Spinner />;
+  if (projectError) return <p>There was an error...</p>;
 
   return (
     <div className={`${rootClass}-main-container`}>
-      {!loading && !error && (
+      {!projectLoading && !projectError && (
         <div className="mt-2">
           <label className="form-label client-select">Client Name</label>
           <select
@@ -174,32 +198,32 @@ const EditProject = () => {
             </div>
 
             <div className="mb-3">
-            <label className="form-label">Budget</label>
-            <input
-              type="clientBudget"
-              className="form-control"
-              id="exampleFormControlInput1"
-              placeholder="What is the budget for this project?"
-              value={clientBudget}
-              onChange={(e) => setClientBudget(e.target.value)}
-            />
-          </div>
+              <label className="form-label">Budget</label>
+              <input
+                type="clientBudget"
+                className="form-control"
+                id="exampleFormControlInput1"
+                placeholder="What is the budget for this project?"
+                value={clientBudget}
+                onChange={(e) => setClientBudget(e.target.value)}
+              />
+            </div>
 
-          <div className="mb-3">
-            <label className="form-label">Project Estimate</label>
-            <input
-              type="projectEstimate"
-              className="form-control"
-              id="exampleFormControlInput1"
-              placeholder="What is the estimate for this project?"
-              value={projectEstimate}
-              onChange={(e) => setProjectEstimate(e.target.value)}
-            />
-          </div>
+            <div className="mb-3">
+              <label className="form-label">Project Estimate</label>
+              <input
+                type="projectEstimate"
+                className="form-control"
+                id="exampleFormControlInput1"
+                placeholder="What is the estimate for this project?"
+                value={projectEstimate}
+                onChange={(e) => setProjectEstimate(e.target.value)}
+              />
+            </div>
 
             <div>
               <Button
-                buttonType='submit'
+                buttonType="submit"
                 onClick={onSubmit}
                 type="submit"
                 className={`${rootClass}-submit-btn`}
@@ -207,7 +231,7 @@ const EditProject = () => {
                 Submit
               </Button>
               <Button
-                buttonType='back'
+                buttonType="back"
                 onClick={handleBackNavigate}
                 type="button"
                 className={`${rootClass}-back-btn`}

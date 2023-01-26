@@ -2,8 +2,9 @@ import KanbanItem from "../KanbanItem/KanbanItem";
 
 import "./kanbanItemContainer.css";
 
+const rootClass = 'kanban-item-container';
+
 const KanbanItemContainer = ({ matchingKanbans }) => {
-  const rootClass = 'kanban-item-container';
   
   return (
     <div className={rootClass}>

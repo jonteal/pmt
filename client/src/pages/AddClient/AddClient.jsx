@@ -11,6 +11,8 @@ import Button from '../../components/Button/Button';
 
 import "./addClient.css";
 
+const rootClass = "add-client";
+
 const AddClient = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -19,7 +21,6 @@ const AddClient = () => {
   const [companyName, setCompanyName] = useState("");
   const [status, setStatus] = useState("prospect");
 
-  const rootClass = "add-client";
 
   const [addClient] = useMutation(ADD_CLIENT, {
     variables: {

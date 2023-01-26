@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 // GRAPHQL
-import { DELETE_CLIENT } from '../../../graphql/mutations/clientMutations';
+import { DELETE_CLIENT } from "../../../graphql/mutations/clientMutations";
 import { GET_CLIENTS } from "../../../graphql/queries/clientQueries";
 import { GET_PROJECTS } from "../../../graphql/queries/projectQueries";
 
@@ -15,7 +15,6 @@ import "./clientRow.css";
 const rootClass = "client-row";
 
 const ClientRow = ({ client }) => {
-
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
     refetchQueries: [
@@ -36,6 +35,9 @@ const ClientRow = ({ client }) => {
 
     return null;
   };
+
+  const deleteMessage =
+    "Are you sure you want to delete this client? You cannot undo this action.";
 
   return (
     <div>
@@ -64,9 +66,14 @@ const ClientRow = ({ client }) => {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           ></button>
-          <ul className="dropdown-menu">
-            <li>
-              <Link onClick={deleteClient} className="dropdown-item" to="/">
+          <ul className={`dropdown-menu ${rootClass}-dropdown-list`}>
+            <li className={`${rootClass}-dropdown-list-item`}>
+              <Link to={`/clients/${client.id}/edit`} className="dropdown-item">
+                Edit Client
+              </Link>
+            </li>
+            <li className={`${rootClass}-dropdown-list-item`}>
+              <Link onClick={deleteClient} to='/' className="dropdown-item">
                 Delete Client
               </Link>
             </li>

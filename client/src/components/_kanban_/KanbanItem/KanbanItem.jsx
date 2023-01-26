@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 
 import "./kanbanItem.css";
 
+const rootClass = "kanban-item";
+
 const KanbanItem = ({ kanban }) => {
-  const rootClass = "kanban-item";
 
   return (
     <div className={rootClass}>

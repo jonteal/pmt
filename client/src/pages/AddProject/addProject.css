@@ -11,18 +11,3 @@
 .add-project-form {
   margin-top: 15px;
 }
-
-.add-project-submit-btn {
-  border: none;
-  background-color: #545e75;
-  padding: 10px;
-  /* color: #f7f7ff; */
-  color: white;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-.add-project-submit-btn:hover {
-  background-color: #f2d0a4;
-  color: #545e75;
-}

@@ -15,8 +15,9 @@ import Button from "../../components/Button/Button";
 
 import "./addKanban.css";
 
+const rootClass = "add-kanban";
+
 const AddKanban = () => {
-  const rootClass = "add-kanban";
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

@@ -4,8 +4,9 @@ import ClientRow from "../ClientRow/ClientRow";
 
 import "./clientsContainer.css";
 
+const rootClass = "client-container";
+
 const ClientsContainer = ({ clientData, clientContainer }) => {
-  const rootClass = "client-container";
 
   const [isExpanded, setIsExpanded] = useState(false);
 

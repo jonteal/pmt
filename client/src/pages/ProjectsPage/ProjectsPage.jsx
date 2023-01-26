@@ -6,8 +6,9 @@ import Button from "../../components/Button/Button";
 
 import "./projectsPage.css";
 
+const rootClass = "projects-page";
+
 const ProjectsPage = () => {
-  const rootClass = "projects-page";
 
   return (
     <div className={`${rootClass}-main-container`}>

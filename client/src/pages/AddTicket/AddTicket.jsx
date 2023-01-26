@@ -12,12 +12,13 @@ import { ADD_TICKET } from "../../graphql/mutations/ticketMutations";
 
 // COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
-
-import "./addTicket.css";
 import Button from "../../components/Button/Button";
 
+import "./addTicket.css";
+
+const rootClass = "add-ticket";
+
 const AddKanban = () => {
-  const rootClass = "add-ticket";
 
   const navigate = useNavigate();
 
@@ -122,7 +123,7 @@ const AddKanban = () => {
 
             <Button
               buttonType="submit"
-              className={`${rootClass}-submit-btn mb-5`}
+              className="mb-5"
             >
               Submit
             </Button>

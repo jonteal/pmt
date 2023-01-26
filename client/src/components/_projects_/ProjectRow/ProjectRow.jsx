@@ -7,12 +7,14 @@ import { DELETE_PROJECT } from "../../../graphql/mutations/projectMutations";
 import { GET_PROJECTS } from "../../../graphql/queries/projectQueries";
 import { GET_CLIENTS } from "../../../graphql/queries/clientQueries";
 
-import "./projectRow.css";
-import AlertModal from "../../AlertModal/AlertModal";
+// COMPONENTS
 import ProjectRowItem from "../ProjectRowItem/ProjectRowItem";
 
+import "./projectRow.css";
+
+const rootClass = "project";
+
 const ProjectRow = ({ project }) => {
-  const rootClass = "project";
 
   const clientName = project.client.firstName + " " + project.client.lastName;
 
@@ -62,15 +64,15 @@ const ProjectRow = ({ project }) => {
           aria-expanded="false"
         ></button>
         <ul className="dropdown-menu">
-          <li>
-            <AlertModal
-              modalHeader="Heads up!"
-              modalBody={deleteMessage}
-              promptLabel="Delete"
-              confirmLabel="Delete"
-              action={deleteProject}
-              buttonType="no-class"
-            />
+          <li className={`${rootClass}-dropdown-list-item`}>
+            <Link to={`/projects/${project.id}/edit`} className="dropdown-item">
+              Edit Project
+            </Link>
+          </li>
+          <li className={`${rootClass}-dropdown-list-item`}>
+            <Link onClick={deleteProject} to="/" className="dropdown-item">
+              Delete Project
+            </Link>
           </li>
         </ul>
       </div>

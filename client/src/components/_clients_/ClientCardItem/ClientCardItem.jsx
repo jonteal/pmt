@@ -1,8 +1,9 @@
 
 import '../ClientCard/clientCard.css';
 
+const rootClass = 'client-card';
+
 const ClientCardItem = ({ value, header }) => {
-  const rootClass = 'client-card';
   return (
     <div className={`${rootClass}-item-container`}>
       <p className={`${rootClass}-header`}>{header}</p>

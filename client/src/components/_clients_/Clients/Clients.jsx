@@ -11,8 +11,9 @@ import { FaUserAlt } from "react-icons/fa";
 
 import "./clients.css";
 
+const rootClass = 'clients';
+
 const Clients = () => {
-  const rootClass = 'clients';
 
   const {
     loading: clientLoading,

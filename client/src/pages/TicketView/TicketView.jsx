@@ -1,15 +1,21 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+
+// GRAPHQL
 import { GET_TICKET } from "../../graphql/queries/ticketQueries";
+
+// COMPONENTS
 import Spinner from "../../components/Spinner/Spinner";
+import Button from "../../components/Button/Button";
+
 import { FaRegEdit } from "react-icons/fa";
 
 import "./ticketView.css";
-import Button from "../../components/Button/Button";
+
+const rootClass = "ticket-view";
 
 const TicketView = ({ ticket }) => {
   const { id } = useParams();
-  const rootClass = "ticket-view";
   const {
     loading: ticketLoading,
     error: ticketError,

@@ -3,8 +3,9 @@ import ClientCardItem from "../ClientCardItem/ClientCardItem";
 
 import "./clientCard.css";
 
+const rootClass = "client-card";
+
 const ClientCard = ({ clientData }) => {
-  const rootClass = "client-card";
 
   let formatPhoneNumber = (str) => {
     let cleaned = ("" + str).replace(/\D/g, "");

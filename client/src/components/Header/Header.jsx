@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 
 import "./header.css";
 
+const rootClass = 'header';
+
 const Header = () => {
-  const rootClass = 'header';
 
   return (
     <div className="nav-bar">

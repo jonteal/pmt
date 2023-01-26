@@ -12,8 +12,9 @@ import Button from "../../components/Button/Button";
 
 import "./editClient.css";
 
+const rootClass = "edit-client";
+
 const EditClient = () => {
-  const rootClass = "edit-client";
   const { id } = useParams();
   const navigate = useNavigate();
 

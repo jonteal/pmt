@@ -4,8 +4,9 @@ import ActivityComment from "../ActivityComment/ActivityComment";
 
 import "./activityFeed.css";
 
+const rootClass = "activity-feed";
+
 const ActivityFeed = ({ projectId, matchingActivityComments }) => {
-  const rootClass = "activity-feed";
 
   return (
     <div className={`${rootClass}-main-container`}>

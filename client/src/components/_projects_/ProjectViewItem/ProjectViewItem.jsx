@@ -1,7 +1,8 @@
 import '../../../pages/ProjectView/projectView.css';
 
+const rootClass = "project-view";
+
 const ProjectViewItem = ({ header, value }) => {
-  const rootClass = "project-view";
   return (
     <div className={`${rootClass}-item-container`}>
       <p className={`${rootClass}-header`}>{header}</p>

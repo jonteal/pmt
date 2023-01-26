@@ -10,8 +10,9 @@ import Button from "../../Button/Button";
 
 import "./addComment.css";
 
+const rootClass = "add-comment";
+
 const AddComment = ({ projectId }) => {
-  const rootClass = "add-comment";
 
   const [commentText, setCommentText] = useState("");
 

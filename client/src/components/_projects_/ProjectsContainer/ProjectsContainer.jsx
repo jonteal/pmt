@@ -4,8 +4,9 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 import "./projectsContainer.css";
 
+const rootClass = "project-container";
+
 const ProjectsContainer = ({ projectData, projectContainer }) => {
-  const rootClass = "project-container";
 
   const [isExpanded, setIsExpanded] = useState(false);
 

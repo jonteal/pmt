@@ -8,8 +8,9 @@ import { DELETE_ACTIVITY_COMMENT } from "../../../graphql/mutations/activityComm
 
 import "./activityComment.css";
 
+const rootClass = "activity-comment";
+
 const ActivityComment = ({ comment }) => {
-  const rootClass = "activity-comment";
 
   const [deleteComment] = useMutation(DELETE_ACTIVITY_COMMENT, {
     variables: { id: comment.id },

@@ -13,8 +13,9 @@ import PieChart from "../../components/_dashboard_/PieChart/PieChart";
 
 import "./dashboard.css";
 
+const rootClass = "dashboard";
+
 const Dashboard = () => {
-  const rootClass = "dashboard";
 
   const { data: projectData } = useQuery(GET_PROJECTS);
   const [projects, setProjects] = useState([]);

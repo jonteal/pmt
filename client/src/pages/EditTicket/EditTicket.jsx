@@ -13,13 +13,14 @@ import { DELETE_TICKET } from "../../graphql/mutations/ticketMutations";
 
 // COMPONENT
 import AlertModal from "../../components/AlertModal/AlertModal";
+import Button from "../../components/Button/Button";
 
 import "./editTicket.css";
-import Button from "../../components/Button/Button";
+
+const rootClass = "edit-ticket";
 
 const EditTicket = () => {
   const { id } = useParams();
-  const rootClass = "edit-ticket";
   const navigate = useNavigate();
 
   const {

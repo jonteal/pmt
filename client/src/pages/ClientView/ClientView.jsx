@@ -14,9 +14,10 @@ import ClientCard from "../../components/_clients_/ClientCard/ClientCard";
 import "./clientView.css";
 import Button from "../../components/Button/Button";
 
+const rootClass = "client-view";
+
 const ClientView = () => {
   const { id } = useParams();
-  const rootClass = "client-view";
 
   const {
     loading: clientLoading,
@@ -50,40 +51,44 @@ const ClientView = () => {
   );
 
   return (
-    <div className={`${rootClass}-container`}>
-      <div className={`${rootClass}-info-container`}>
-        <div className={`${rootClass}-btn-container`}>
-          <Link to="/addProject">
-            <Button
-              buttonType="submit"
-              className={`${rootClass}-add-project-btn`}
-            >
-              Add Project
-            </Button>
-          </Link>
-          <Link to={`/clients/${client.id}/edit`}>
-            <Button buttonType="submit" className={`${rootClass}-edit-btn`}>
-              Edit Client
-            </Button>
-          </Link>
-        </div>
-        {!clientLoading && !clientError && (
-          <ClientCard clientData={clientData} />
-        )}
-      </div>
+    <div>
+      {!clientLoading && !clientError && (
+        <div className={`${rootClass}-container`}>
+          <div className={`${rootClass}-info-container`}>
+            <div className={`${rootClass}-btn-container`}>
+              <Link to="/addProject">
+                <Button
+                  buttonType="submit"
+                  className={`${rootClass}-add-project-btn`}
+                >
+                  Add Project
+                </Button>
+              </Link>
+              <Link to={`/clients/${client.id}/edit`}>
+                <Button buttonType="submit" className={`${rootClass}-edit-btn`}>
+                  Edit Client
+                </Button>
+              </Link>
+            </div>
+            {!clientLoading && !clientError && (
+              <ClientCard clientData={clientData} />
+            )}
+          </div>
 
-      <div className={`${rootClass}-projects-container`}>
-        <h3 className={`${rootClass}-project-header`}>Projects</h3>
-        {!projectsLoading &&
-          !projectsError &&
-          (matchingProjects ? (
-            matchingProjects.map((project) => (
-              <ProjectRow key={project.id} project={project} />
-            ))
-          ) : (
-            <p>No current projects for this client</p>
-          ))}
-      </div>
+          <div className={`${rootClass}-projects-container`}>
+            <h3 className={`${rootClass}-project-header`}>Projects</h3>
+            {!projectsLoading &&
+              !projectsError &&
+              (matchingProjects ? (
+                matchingProjects.map((project) => (
+                  <ProjectRow key={project.id} project={project} />
+                ))
+              ) : (
+                <p>No current projects for this client</p>
+              ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

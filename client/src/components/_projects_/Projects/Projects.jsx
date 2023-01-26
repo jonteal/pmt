@@ -6,8 +6,9 @@ import { FaProjectDiagram } from "react-icons/fa";
 
 import "./projects.css";
 
+const rootClass = 'projects';
+
 const Projects = () => {
-  const rootClass = 'projects';
 
   const {
     loading: projectLoading,
